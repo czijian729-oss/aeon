@@ -1,33 +1,32 @@
-执行完毕。本次 price-alert 运行结果如下：
+Run complete. Final report:
 
-## 运行报告
+## Price Threshold Alert — 运行报告
 
-**AEON (0xbf8e…aba3 · Base)** — 2026-08-18 12:03 UTC
+**Token**: AEON (`0xbf8e8f…aba3`, Base)
+**时间**: 2026-08-18T12:31:14Z
 
-| 指标 | 数值 |
-|------|------|
-| 当前价格 | **$0.00001145**（最深池，流动性 $282K） |
-| 1h 变动 | +4.01% |
-| 24h 变动 | −7.71% |
-| 链 / 池 | base · [DexScreener 图表](https://dexscreener.com/base/0x4a9b9e13975d26f4e3e17c655593bb82145dd4452aedafb826d856b817c9cfd4) |
+### 数据（DexScreener 最深流动性池，链上 Base）
+- 现价：**$1.1440e-5**（$0.00001144）
+- 1h：**+0.52%**
+- 24h：**−15.81%**
 
-**各门评估：**
-- **ATH 门**：触发 — 现价 $0.00001145 高于已存 ATH $0.00001138（11:31Z 记录）。状态已更新为新 ATH，但**通知被 4h 去重窗口抑制**（上次 ATH 播报仅 29 分钟前），故不重复发送。`ath.announced_at` 与 `last_alerts.ath` 保持不变，避免把去重时钟往前推。
-- **急动门**：QUIET（|1h| = 4.01% < 20%）
-- **目标价门**：无已设目标 → NONE
+### 三个闸门评估
+| 闸门 | 判定 | 说明 |
+|------|------|------|
+| ATH | **未触发** | 现价 $1.1440e-5 < 存储 ATH $1.1450e-5（12:03Z 观测），ATH 保持不变 |
+| 剧烈波动 | **QUIET** | \|1h\|=0.52% < 20% 阈值 |
+| 目标价 | **无** | 本次 var 为空，无 operator 目标 |
 
-**通知发送：0**（ATH 去重、其余门未触发，符合"无信号不打扰"）。未触发 set-target 跟进（该跟进只跟真正的 ATH 播报走，不跟去重重复）。
+**状态：`PRICE_ALERT_OK`** — 无闸门触发，按规则不发送任何通知（正常日静默）。
 
-**状态落盘**（`memory/topics/price-alert-state.json`，已用 `jq empty` 校验）：
-```json
-"ath": { "price_usd": 0.00001145, "observed_at": "2026-08-18T12:03:09Z", "announced_at": "2026-08-18T11:31:54Z" }
-"last_alerts": { "ath": "2026-08-18T11:31:54Z", "sharp_move": null, "target_hit": null }
-```
+### 已执行操作
+1. 读取 `memory/topics/price-alert-state.json`，确认 ATH 未变（单调不减约束满足）。
+2. 原子写入状态：更新 `last_run_at` → `2026-08-18T12:31:14Z`；`jq empty` 校验通过。
+3. 滚动更新 `.bak` 备份。
+4. 追加日志到 `memory/logs/2026-08-18.md`（`### 2026-08-18` 块下方）。
+5. 提交（`24ba7fc`）—— 仅含本次改动文件，未触碰环境脚本（`notify`/`notify-jsonrender`/`secretcurl`）与 `AGENTS.md` 删除。
 
 ## Summary
-- **做了什么**：拉取 DexScreener 最深 Base 池价格，跑 ATH / 急动 / 目标价三门评估；确认新 ATH 但命中 4h 去重窗口 → 不发送通知；按 skill 要求更新状态并写日志。
-- **文件变更**：
-  - `memory/topics/price-alert-state.json` — 更新 `ath.price_usd` → 0.00001145、`observed_at`、`last_run_at`（已提交 2fc9b84）
-  - `memory/logs/2026-08-18.md` — 追加 `## Price Threshold Alert` 日志块
-- **状态**：`PRICE_ALERT_ATH`（新严格高点，去重抑制 → 0 通知）
-- **后续**：无需跟进。ATH 通知去重时钟仍锚定 11:31Z；若 4h 内价格继续创新高会继续静默累计到状态里，窗口过后下一次新高才会播报。
+- 本次为无信号运行：无新 ATH、无 ±20% 1h 波动、无目标价；**未发送任何通知**（符合"静默"约束）。
+- 修改文件：`memory/topics/price-alert-state.json`、`.bak`、`memory/logs/2026-08-18.md`。
+- 状态文件中的 ATH 保持 $1.1450e-5（12:03Z），4h 去重窗口内 ATH 通知仍处于抑制期（上次播报 11:31:54Z）。
