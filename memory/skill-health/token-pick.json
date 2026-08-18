@@ -1,0 +1,14 @@
+{
+  "skill": "token-pick",
+  "last_analyzed": "2026-08-18T08:35:31Z",
+  "quality_score": 5,
+  "assessment": "Excellent dual pick (token + market) with transparent score breakdown, cross-source confirmation (CG/DexScreener/Polymarket), catalyst and risk analysis, edge calc, and explicit source status",
+  "flags": [],
+  "avg_score": 5,
+  "history": [
+    {
+      "date": "2026-08-18",
+      "score": 5
+    }
+  ]
+}
