@@ -1,0 +1,429 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "每日精选 — 2026-08-18",
+        "description": "token-pick"
+      },
+      "children": [
+        "token-section",
+        "sep1",
+        "market-section",
+        "sep2",
+        "footer"
+      ]
+    },
+    "token-section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "token-heading",
+        "token-badges",
+        "token-stats",
+        "token-score-title",
+        "token-score-table",
+        "token-catalyst-title",
+        "token-catalyst-text",
+        "token-risk",
+        "token-note"
+      ]
+    },
+    "token-heading": {
+      "type": "Heading",
+      "props": {
+        "text": "代币：ANSEM（The Black Bull）",
+        "level": "h2"
+      },
+      "children": []
+    },
+    "token-badges": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "badge-token-high",
+        "badge-token-signal"
+      ]
+    },
+    "badge-token-high": {
+      "type": "Badge",
+      "props": {
+        "text": "HIGH",
+        "variant": "default"
+      },
+      "children": []
+    },
+    "badge-token-signal": {
+      "type": "Badge",
+      "props": {
+        "text": "signal 11",
+        "variant": "secondary"
+      },
+      "children": []
+    },
+    "token-stats": {
+      "type": "Grid",
+      "props": {
+        "columns": 3,
+        "gap": "md"
+      },
+      "children": [
+        "stat-price",
+        "stat-mcap",
+        "stat-vol"
+      ]
+    },
+    "stat-price": {
+      "type": "Stat",
+      "props": {
+        "label": "价格",
+        "value": "$0.257",
+        "delta": "24h +14.2% / 7d +27.6%",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "stat-mcap": {
+      "type": "Stat",
+      "props": {
+        "label": "市值",
+        "value": "$107M"
+      },
+      "children": []
+    },
+    "stat-vol": {
+      "type": "Stat",
+      "props": {
+        "label": "24h 量（vol/mcap 0.37）",
+        "value": "$40M"
+      },
+      "children": []
+    },
+    "token-score-title": {
+      "type": "Heading",
+      "props": {
+        "text": "得分明细",
+        "level": "h4"
+      },
+      "children": []
+    },
+    "token-score-table": {
+      "type": "Table",
+      "props": {
+        "columns": [
+          "指标",
+          "得分"
+        ],
+        "rows": [
+          [
+            "24h 为正",
+            "+1"
+          ],
+          [
+            "7d 为正",
+            "+1"
+          ],
+          [
+            "双超 5%",
+            "+2"
+          ],
+          [
+            "CG 热门榜",
+            "+2"
+          ],
+          [
+            "vol/mcap ≥ 0.20",
+            "+3"
+          ],
+          [
+            "7d 强于 BTC/ETH",
+            "+2"
+          ],
+          [
+            "合计",
+            "11"
+          ]
+        ]
+      },
+      "children": []
+    },
+    "token-catalyst-title": {
+      "type": "Heading",
+      "props": {
+        "text": "催化剂",
+        "level": "h4"
+      },
+      "children": []
+    },
+    "token-catalyst-text": {
+      "type": "Text",
+      "props": {
+        "text": "Solana 链上 Meme 复兴，KOL Ansem（@blknoiz06，约 100 万粉）将约 $7M 创作者费以「stimmy for the trenches」形式空投回馈社区（6/27–29 分发至 704 地址），持币地址破 11 万，MEXC/Aster 已上线永续。",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "token-risk": {
+      "type": "Alert",
+      "props": {
+        "title": "风险",
+        "message": "Ansem 钱包仍持约 58–60% 供应量，RugCheck 标记操纵/集中度风险；空投高度集中于 7 个钱包（约 74%），纯情绪驱动的 Meme 币，抛压一现回撤会很快。",
+        "type": "warning"
+      },
+      "children": []
+    },
+    "token-note": {
+      "type": "Text",
+      "props": {
+        "text": "近期对比：首次入选（近 7 天无重复）",
+        "variant": "muted"
+      },
+      "children": []
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "market-section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "market-heading",
+        "market-badges",
+        "market-stats",
+        "market-progress",
+        "stat-fair",
+        "market-fair-basis",
+        "market-logic-title",
+        "market-logic-text",
+        "market-risk"
+      ]
+    },
+    "market-heading": {
+      "type": "Heading",
+      "props": {
+        "text": "市场：「比特币会在 2026-12-31 前跌破 $45,000 吗？」",
+        "level": "h2"
+      },
+      "children": []
+    },
+    "market-badges": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "badge-market-high",
+        "badge-edge"
+      ]
+    },
+    "badge-market-high": {
+      "type": "Badge",
+      "props": {
+        "text": "HIGH",
+        "variant": "default"
+      },
+      "children": []
+    },
+    "badge-edge": {
+      "type": "Badge",
+      "props": {
+        "text": "edge 13.5pp",
+        "variant": "secondary"
+      },
+      "children": []
+    },
+    "market-stats": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "md"
+      },
+      "children": [
+        "stat-yes",
+        "stat-no",
+        "stat-vol-mkt",
+        "stat-settle"
+      ]
+    },
+    "stat-yes": {
+      "type": "Stat",
+      "props": {
+        "label": "YES 现价",
+        "value": "21.5¢"
+      },
+      "children": []
+    },
+    "stat-no": {
+      "type": "Stat",
+      "props": {
+        "label": "NO 现价",
+        "value": "78.5¢"
+      },
+      "children": []
+    },
+    "stat-vol-mkt": {
+      "type": "Stat",
+      "props": {
+        "label": "24h 量",
+        "value": "$476k"
+      },
+      "children": []
+    },
+    "stat-settle": {
+      "type": "Stat",
+      "props": {
+        "label": "结算",
+        "value": "2027-01-01"
+      },
+      "children": []
+    },
+    "market-progress": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "progress-yes",
+        "progress-fair"
+      ]
+    },
+    "progress-yes": {
+      "type": "Progress",
+      "props": {
+        "value": 21.5,
+        "label": "市场 YES 定价 21.5¢"
+      },
+      "children": []
+    },
+    "progress-fair": {
+      "type": "Progress",
+      "props": {
+        "value": 35,
+        "label": "Fair YES 约 35%"
+      },
+      "children": []
+    },
+    "stat-fair": {
+      "type": "Stat",
+      "props": {
+        "label": "Fair YES 估值",
+        "value": "约 35%",
+        "delta": "edge +13.5pp",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "market-fair-basis": {
+      "type": "Text",
+      "props": {
+        "text": "依据：Galaxy Research 6/14 预测年底 $40k 概率 32% → $45k 应 ≥32%；Kalshi 8/17 显示年底前跌破 $50k 概率 57% → 推得 $45k 约 44%；Polymarket 3 月时 $45k 定价 53%（BTC $67k），按剩余时间衰减约 35%",
+        "variant": "caption"
+      },
+      "children": []
+    },
+    "market-logic-title": {
+      "type": "Heading",
+      "props": {
+        "text": "逻辑",
+        "level": "h4"
+      },
+      "children": []
+    },
+    "market-logic-text": {
+      "type": "Text",
+      "props": {
+        "text": "市场对 BTC 下行过于自满——BTC 已从 ATH $126k 跌至 $64k，分析师下看 $50k，宏观脆弱（霍尔木兹海峡、油价、美股转负），且 Kalshi 明显更空（$50k：57% vs Polymarket 36%），Polymarket 的 $45k=21.5% 偏便宜。",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "market-risk": {
+      "type": "Alert",
+      "props": {
+        "title": "风险",
+        "message": "BTC 已在 $64k 附近横盘数月，若 6 月 $58k 低点即为底部则 $45k 不会触及；我的 fair 估计可能偏空。",
+        "type": "warning"
+      },
+      "children": []
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "footer": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "sources",
+        "disclaimer"
+      ]
+    },
+    "sources": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "badge-cg",
+        "badge-dex",
+        "badge-poly"
+      ]
+    },
+    "badge-cg": {
+      "type": "Badge",
+      "props": {
+        "text": "cg=ok",
+        "variant": "outline"
+      },
+      "children": []
+    },
+    "badge-dex": {
+      "type": "Badge",
+      "props": {
+        "text": "dex=ok",
+        "variant": "outline"
+      },
+      "children": []
+    },
+    "badge-poly": {
+      "type": "Badge",
+      "props": {
+        "text": "poly=ok",
+        "variant": "outline"
+      },
+      "children": []
+    },
+    "disclaimer": {
+      "type": "Text",
+      "props": {
+        "text": "非投资建议 — 仅作模式匹配",
+        "variant": "muted"
+      },
+      "children": []
+    }
+  }
+}
