@@ -7,11 +7,6 @@
   "factory_last_tx_time": "2026-08-18T17:01:28Z",
   "factory_launched": false,
   "launched_token": "",
-  "is_contract": false,
-  "tx_count": 0,
-  "balance": "0",
-  "token_symbol": "",
-  "creation_tx": "",
   "last_tweet_id": "",
   "last_tweet_time": "",
   "site_code": "200"
