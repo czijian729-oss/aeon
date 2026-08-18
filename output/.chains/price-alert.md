@@ -1,32 +1,38 @@
-Run complete. Final report:
+State and log are updated, and the workflow's "Commit results" step auto-commits `memory/` changes on main (including removing the generated `notify`/`secretcurl` scripts), so no manual commit is needed.
 
-## Price Threshold Alert — 运行报告
+Run complete. Summary of the execution:
 
-**Token**: AEON (`0xbf8e8f…aba3`, Base)
-**时间**: 2026-08-18T12:31:14Z
+**Gate evaluation (AEON, base, 2026-08-18 13:01 UTC):**
+- **当前价**: $1.1430e-5（最深流动性池 Liquidity $281,967 · 1h −0.17% · 24h −20.84%）
+- **ATH 门控**: 未触发 — 当前价低于已记录 ATH $1.1450e-5（12:03 UTC），ATH [UNCHANGED]
+- **1h 波动门控**: QUIET（|−0.17%| < 20%）
+- **目标价门控**: 无已设目标 → NONE
+- **触发**: 无 → 按规则静默，**不发任何通知**
 
-### 数据（DexScreener 最深流动性池，链上 Base）
-- 现价：**$1.1440e-5**（$0.00001144）
-- 1h：**+0.52%**
-- 24h：**−15.81%**
+已更新 `memory/topics/price-alert-state.json`（`last_run_at` → 13:01:39Z，其余不变）并追加 `memory/logs/2026-08-18.md` 日志块；git 提交由工作流自动完成。
 
-### 三个闸门评估
-| 闸门 | 判定 | 说明 |
+---
+
+# Price Alert 运行报告（2026-08-18 13:01 UTC）
+
+**Token**: AEON · base · `0xbf8e8f0e8866a7052f948c16508644347c57aba3`
+
+**当前价**: $1.1430e-5（最深流动性池，Liquidity $281,967）
+**1h**: −0.17% · **24h**: −20.84%
+
+## 门控判定
+| 门控 | 判定 | 说明 |
 |------|------|------|
-| ATH | **未触发** | 现价 $1.1440e-5 < 存储 ATH $1.1450e-5（12:03Z 观测），ATH 保持不变 |
-| 剧烈波动 | **QUIET** | \|1h\|=0.52% < 20% 阈值 |
-| 目标价 | **无** | 本次 var 为空，无 operator 目标 |
+| ATH | UNCHANGED | 当前价 $1.1430e-5 低于已记录 ATH $1.1450e-5（12:03 UTC） |
+| 1h 剧烈波动（±20%） | QUIET | 1h 仅 −0.17% |
+| 目标价交叉 | NONE | 无已设目标 |
 
-**状态：`PRICE_ALERT_OK`** — 无闸门触发，按规则不发送任何通知（正常日静默）。
-
-### 已执行操作
-1. 读取 `memory/topics/price-alert-state.json`，确认 ATH 未变（单调不减约束满足）。
-2. 原子写入状态：更新 `last_run_at` → `2026-08-18T12:31:14Z`；`jq empty` 校验通过。
-3. 滚动更新 `.bak` 备份。
-4. 追加日志到 `memory/logs/2026-08-18.md`（`### 2026-08-18` 块下方）。
-5. 提交（`24ba7fc`）—— 仅含本次改动文件，未触碰环境脚本（`notify`/`notify-jsonrender`/`secretcurl`）与 `AGENTS.md` 删除。
+**触发**: 无 · **通知**: 0 条 · **状态**: `PRICE_ALERT_OK`
 
 ## Summary
-- 本次为无信号运行：无新 ATH、无 ±20% 1h 波动、无目标价；**未发送任何通知**（符合"静默"约束）。
-- 修改文件：`memory/topics/price-alert-state.json`、`.bak`、`memory/logs/2026-08-18.md`。
-- 状态文件中的 ATH 保持 $1.1450e-5（12:03Z），4h 去重窗口内 ATH 通知仍处于抑制期（上次播报 11:31:54Z）。
+- 从 DexScreener 拉取 AEON 价格，按链内最深流动性池选标（base，$281,967）；评估 ATH / 1h 剧烈波动 / 目标价三个门控
+- 无任何门控触发 → 按规则静默，不发送通知（干净运行不产生空报告）
+- 更新 `memory/topics/price-alert-state.json`：`last_run_at` → `2026-08-18T13:01:39Z`（ATH 与 last_alerts 不变）
+- 追加 `memory/logs/2026-08-18.md` 日志块，状态 `PRICE_ALERT_OK`
+- 提交由工作流 "Commit results" 步骤自动完成（memory/ 自动入库）
+- 后续动作：无需处理；若操作者想在某价位收到提醒，可回复目标价（如 `0.00002`）
