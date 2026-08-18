@@ -1,11 +1,15 @@
 {
   "skill": "token-pick",
-  "last_analyzed": "2026-08-18T09:54:44Z",
+  "last_analyzed": "2026-08-18T12:11:17Z",
   "quality_score": 5,
-  "assessment": "Substantive, well-sourced, and actionable: transparent 11/12 score breakdown with catalyst and risk detail, prediction-market fair value triangulated from three independent sources with explicit edge calculation, clean structure, and proper dedup handling. All data sources healthy.",
+  "assessment": "高质量执行：COMP 与美联储市场的 pick 均附完整数据表、打分明细、催化剂来源链接、风险提示及有依据的 thesis override（弃 GPS 选 COMP），可操作性强且结构清晰。",
   "flags": [],
   "avg_score": 5,
   "history": [
+    {
+      "date": "2026-08-18",
+      "score": 5
+    },
     {
       "date": "2026-08-18",
       "score": 5

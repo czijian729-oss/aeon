@@ -1,0 +1,323 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "每日精选 — 2026-08-18"
+      },
+      "children": [
+        "main-stack"
+      ]
+    },
+    "main-stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "comp-heading-row",
+        "comp-stats",
+        "comp-score",
+        "comp-score-detail",
+        "comp-catalyst",
+        "comp-risk",
+        "comp-recent",
+        "sep1",
+        "mkt-heading-row",
+        "mkt-stats",
+        "mkt-fair",
+        "mkt-fair-note",
+        "mkt-logic",
+        "mkt-risk",
+        "sep2",
+        "sources-row",
+        "footer"
+      ]
+    },
+    "comp-heading-row": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "comp-heading",
+        "comp-badge-high",
+        "comp-badge-signal"
+      ]
+    },
+    "comp-heading": {
+      "type": "Heading",
+      "props": {
+        "text": "代币：COMP（Compound）",
+        "level": "h2"
+      }
+    },
+    "comp-badge-high": {
+      "type": "Badge",
+      "props": {
+        "text": "HIGH",
+        "variant": "secondary"
+      }
+    },
+    "comp-badge-signal": {
+      "type": "Badge",
+      "props": {
+        "text": "signal 10/10",
+        "variant": "default"
+      }
+    },
+    "comp-stats": {
+      "type": "Grid",
+      "props": {
+        "columns": 3,
+        "gap": "sm"
+      },
+      "children": [
+        "stat-price",
+        "stat-7d",
+        "stat-mcap",
+        "stat-vol",
+        "stat-volmcap"
+      ]
+    },
+    "stat-price": {
+      "type": "Stat",
+      "props": {
+        "label": "价格",
+        "value": "$17.65",
+        "delta": "24h +7.4%",
+        "trend": "up"
+      }
+    },
+    "stat-7d": {
+      "type": "Stat",
+      "props": {
+        "label": "7d",
+        "value": "+6.9%",
+        "trend": "up"
+      }
+    },
+    "stat-mcap": {
+      "type": "Stat",
+      "props": {
+        "label": "市值",
+        "value": "$176M"
+      }
+    },
+    "stat-vol": {
+      "type": "Stat",
+      "props": {
+        "label": "24h 量",
+        "value": "$42M"
+      }
+    },
+    "stat-volmcap": {
+      "type": "Stat",
+      "props": {
+        "label": "vol/mcap",
+        "value": "0.24"
+      }
+    },
+    "comp-score": {
+      "type": "Progress",
+      "props": {
+        "value": 10,
+        "max": 10,
+        "label": "信号得分 10/10"
+      }
+    },
+    "comp-score-detail": {
+      "type": "Text",
+      "props": {
+        "text": "得分明细：24h 为正 +1，7d 为正 +1，双超 5% +2，vol/mcap≥0.20 +3，7d 强于 BTC/ETH +2，匹配价值埋伏逻辑（真产品+深回调+非追涨）+1 = 10/10"
+      }
+    },
+    "comp-catalyst": {
+      "type": "Text",
+      "props": {
+        "text": "催化剂：Compound DAO 批准 $52M 两年预算、转向机构级 DeFi（消息驱动 24h +10%）；老牌借贷龙头，COMP 较 ATH（$854）已深跌约 98%，属洗盘后的价值重估。"
+      }
+    },
+    "comp-risk": {
+      "type": "Alert",
+      "props": {
+        "type": "warning",
+        "title": "风险",
+        "message": "$52M 预算执行不力会被视为烧钱；机构化转型尚未验证为真实协议收入；BTC 若跌破 $64k，高 beta DeFi 资产回撤更深。"
+      }
+    },
+    "comp-recent": {
+      "type": "Text",
+      "props": {
+        "text": "近期对比：首次入选（近 7 天无重复；今日早前 ANSEM 已 dedup）",
+        "variant": "muted"
+      }
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "mkt-heading-row": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "mkt-heading",
+        "mkt-badge-high",
+        "mkt-badge-edge"
+      ]
+    },
+    "mkt-heading": {
+      "type": "Heading",
+      "props": {
+        "text": "市场：「美联储会在 2026 年 9 月会议后加息 25bp 吗？」",
+        "level": "h2"
+      }
+    },
+    "mkt-badge-high": {
+      "type": "Badge",
+      "props": {
+        "text": "HIGH",
+        "variant": "secondary"
+      }
+    },
+    "mkt-badge-edge": {
+      "type": "Badge",
+      "props": {
+        "text": "edge 11.5pp",
+        "variant": "default"
+      }
+    },
+    "mkt-stats": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "sm"
+      },
+      "children": [
+        "mkt-stat-yes",
+        "mkt-stat-no",
+        "mkt-stat-vol",
+        "mkt-stat-settle"
+      ]
+    },
+    "mkt-stat-yes": {
+      "type": "Stat",
+      "props": {
+        "label": "现价 YES",
+        "value": "28.5¢"
+      }
+    },
+    "mkt-stat-no": {
+      "type": "Stat",
+      "props": {
+        "label": "现价 NO",
+        "value": "71.5¢"
+      }
+    },
+    "mkt-stat-vol": {
+      "type": "Stat",
+      "props": {
+        "label": "24h 量",
+        "value": "$591k"
+      }
+    },
+    "mkt-stat-settle": {
+      "type": "Stat",
+      "props": {
+        "label": "结算",
+        "value": "2026-09-16"
+      }
+    },
+    "mkt-fair": {
+      "type": "Progress",
+      "props": {
+        "value": 17,
+        "max": 100,
+        "label": "Fair YES 约 17%"
+      }
+    },
+    "mkt-fair-note": {
+      "type": "Text",
+      "props": {
+        "text": "Fair YES：约 17%（依据：高盛 8/17 称 9 月加息\"极不可能\"、通胀回落、市场定价偏鹰；路透调查近八成经济学家预计今年按兵不动；Polymarket 不加息=71.5%）"
+      }
+    },
+    "mkt-logic": {
+      "type": "Text",
+      "props": {
+        "text": "逻辑：市场把 9 月加息概率定到 28.5% 偏贵，机构共识指向不加息——价值侧是买 NO @71.5¢。"
+      }
+    },
+    "mkt-risk": {
+      "type": "Alert",
+      "props": {
+        "type": "warning",
+        "title": "风险",
+        "message": "霍尔木兹断供若令油价持续上行、通胀二次抬头，美联储可能被迫加息——这是让市场转对的最大尾部。"
+      }
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "sources-row": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "src-label",
+        "src-cg",
+        "src-dex",
+        "src-poly"
+      ]
+    },
+    "src-label": {
+      "type": "Text",
+      "props": {
+        "text": "sources:",
+        "variant": "muted"
+      }
+    },
+    "src-cg": {
+      "type": "Badge",
+      "props": {
+        "text": "cg=ok",
+        "variant": "outline"
+      }
+    },
+    "src-dex": {
+      "type": "Badge",
+      "props": {
+        "text": "dex=ok",
+        "variant": "outline"
+      }
+    },
+    "src-poly": {
+      "type": "Badge",
+      "props": {
+        "text": "poly=ok",
+        "variant": "outline"
+      }
+    },
+    "footer": {
+      "type": "Text",
+      "props": {
+        "text": "非投资建议 — 仅作模式匹配",
+        "variant": "muted"
+      }
+    }
+  }
+}
