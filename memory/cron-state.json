@@ -20,11 +20,11 @@
     "last_quality_score": 5
   },
   "price-alert": {
-    "last_dispatch": "2026-08-18T09:00:33Z",
-    "last_status": "dispatched",
-    "last_success": "2026-08-18T08:47:51Z",
-    "total_runs": 1,
-    "total_successes": 1,
+    "last_dispatch": "2026-08-18T09:30:33Z",
+    "last_status": "success",
+    "last_success": "2026-08-18T09:31:47Z",
+    "total_runs": 3,
+    "total_successes": 3,
     "total_failures": 0,
     "consecutive_failures": 0,
     "success_rate": 1,
