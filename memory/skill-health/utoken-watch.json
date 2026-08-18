@@ -1,10 +1,10 @@
 {
   "skill": "utoken-watch",
-  "last_analyzed": "2026-08-18T14:04:46Z",
-  "quality_score": 4,
-  "assessment": "链上状态双重验证扎实，结论清晰，并主动暴露了 read-only 导致状态无法落盘的操作问题；唯 X 时间线不可读使核心信号缺失一角，未达满分。",
+  "last_analyzed": "2026-08-18T19:11:24Z",
+  "quality_score": 5,
+  "assessment": "Substantive, well-sourced watch report — caught dev's full-stack launchpad redeploy (~20 new contracts including a new factory), correctly judged launch is not open yet, and flagged an actionable monitoring-gap fix; the X fetch failure was transparently noted and didn't block the core signal.",
   "flags": [],
-  "avg_score": 4,
+  "avg_score": 4.17,
   "history": [
     {
       "date": "2026-08-18",
@@ -25,6 +25,10 @@
     {
       "date": "2026-08-18",
       "score": 4
+    },
+    {
+      "date": "2026-08-18",
+      "score": 5
     }
   ]
 }

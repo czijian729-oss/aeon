@@ -1,0 +1,326 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "⚠️ µToken watch",
+        "description": "dev 重建整套 launchpad 合约，新工厂地址已上线"
+      },
+      "children": [
+        "header",
+        "sep1",
+        "factory_section",
+        "sep2",
+        "dev_section",
+        "sep3",
+        "advice_section",
+        "sep4",
+        "other_section",
+        "sep5",
+        "conclusion"
+      ]
+    },
+    "header": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "title",
+        "time"
+      ]
+    },
+    "title": {
+      "type": "Heading",
+      "props": {
+        "text": "µToken watch — dev 重建整套 launchpad 合约，新工厂地址已上线",
+        "level": "h2"
+      },
+      "children": []
+    },
+    "time": {
+      "type": "Text",
+      "props": {
+        "text": "时间: 2026-08-18 18:19:22–18:20:08 UTC（约 20 笔部署）",
+        "variant": "caption"
+      },
+      "children": []
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "factory_section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "factory_h",
+        "factory_new",
+        "factory_note",
+        "old_row",
+        "old_note"
+      ]
+    },
+    "factory_h": {
+      "type": "Heading",
+      "props": {
+        "text": "🔥 新 TokenLaunchFactory",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "factory_new": {
+      "type": "StoryLink",
+      "props": {
+        "title": "新工厂: 0xB8300d93F6d127357eef5f6A9AC98F52B64B9366",
+        "href": "https://robinhoodchain.blockscout.com/address/0xB8300d93F6d127357eef5f6A9AC98F52B64B9366",
+        "source": "verified"
+      },
+      "children": []
+    },
+    "factory_note": {
+      "type": "Text",
+      "props": {
+        "text": "新工厂仅收到 dev 5 笔 setup 调用，尚无 created_contract → 仍未开放 token 部署",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "old_row": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "old_label",
+        "old_link"
+      ]
+    },
+    "old_label": {
+      "type": "Text",
+      "props": {
+        "text": "旧工厂:",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "old_link": {
+      "type": "Link",
+      "props": {
+        "label": "0x83C33B39",
+        "href": "https://robinhoodchain.blockscout.com/address/0x83C33B39b086B03661a510Ec70a91D4d1800a3Fe"
+      },
+      "children": []
+    },
+    "old_note": {
+      "type": "Text",
+      "props": {
+        "text": "自 17:01Z 后无新交易",
+        "variant": "muted"
+      },
+      "children": []
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "dev_section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "dev_h",
+        "dev_stats",
+        "latest_row",
+        "deploys"
+      ]
+    },
+    "dev_h": {
+      "type": "Heading",
+      "props": {
+        "text": "Dev 钱包",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "dev_stats": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "md"
+      },
+      "children": [
+        "stat_tx",
+        "stat_deploys"
+      ]
+    },
+    "stat_tx": {
+      "type": "Stat",
+      "props": {
+        "label": "Dev tx",
+        "value": "34 → 68"
+      },
+      "children": []
+    },
+    "stat_deploys": {
+      "type": "Stat",
+      "props": {
+        "label": "新部署",
+        "value": "~20"
+      },
+      "children": []
+    },
+    "latest_row": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "latest_label",
+        "latest_link",
+        "latest_time"
+      ]
+    },
+    "latest_label": {
+      "type": "Text",
+      "props": {
+        "text": "最新交易:",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "latest_link": {
+      "type": "Link",
+      "props": {
+        "label": "0x99019e76",
+        "href": "https://robinhoodchain.blockscout.com/tx/0x99019e7683addd0653999e1486acfc1e6c037f962bcc09f8f23462fa5866ae47"
+      },
+      "children": []
+    },
+    "latest_time": {
+      "type": "Text",
+      "props": {
+        "text": "@ 18:20:08Z",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "deploys": {
+      "type": "Text",
+      "props": {
+        "text": "新部署: TokenLaunchFactory / HookFactory / QuoteEthSwapper / V4LiquidityHelper / SystemConfig / PlainTokenProvider / TaxCollector / SvgArtAssetsDeployer 等 ~20 个（全栈重部署，新版本合约）",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "sep3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "advice_section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "advice_h",
+        "advice"
+      ]
+    },
+    "advice_h": {
+      "type": "Heading",
+      "props": {
+        "text": "⚠️ 监控建议",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "advice": {
+      "type": "Alert",
+      "props": {
+        "type": "warning",
+        "message": "新工厂可能取代旧工厂作为 token 发射入口，需考虑把 skill 监控地址更新为 0xB8300d93...，否则可能漏掉 launch 信号。"
+      },
+      "children": []
+    },
+    "sep4": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "other_section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "other_h",
+        "x_item",
+        "site_item"
+      ]
+    },
+    "other_h": {
+      "type": "Heading",
+      "props": {
+        "text": "其他",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "x_item": {
+      "type": "Text",
+      "props": {
+        "text": "X @uTokenPro: 仍无法抓取（x.com 402），无新信号",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "site_item": {
+      "type": "Text",
+      "props": {
+        "text": "网站 utoken.gg: HTTP 200（不变）",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "sep5": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "conclusion": {
+      "type": "Alert",
+      "props": {
+        "type": "info",
+        "title": "结论",
+        "message": "尚未开放 launch，但 dev 正在快速迭代部署，距离开放很近。"
+      },
+      "children": []
+    }
+  }
+}
