@@ -1,11 +1,15 @@
 {
   "skill": "price-alert",
-  "last_analyzed": "2026-08-18T08:47:50Z",
+  "last_analyzed": "2026-08-18T09:02:42Z",
   "quality_score": 3,
-  "assessment": "Clean no-op exit: token not configured, run correctly exited PRICE_ALERT_NO_TOKEN per spec with a clear log and actionable activation guidance.",
+  "assessment": "Legitimate no-op handled correctly: detected missing tracked-token config, exited silently per spec with clear log and actionable follow-up.",
   "flags": [],
   "avg_score": 3,
   "history": [
+    {
+      "date": "2026-08-18",
+      "score": 3
+    },
     {
       "date": "2026-08-18",
       "score": 3
