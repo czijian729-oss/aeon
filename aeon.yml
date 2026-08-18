@@ -18,19 +18,19 @@ skills:
   github-trending: { enabled: false, schedule: "0 9 * * *", var: "" } # trending repos + Hugging Face Hub. var: empty=GitHub | <lang> | hf | hf:{models,datasets,spaces}
 
   # --- Midday (12 PM UTC) ---
-  token-movers: { enabled: false, schedule: "0 12 * * *", var: "" } # market-movers scan + single-token deep report. var: empty=movers (CoinGecko) | geckoterminal[:chain]=on-chain runners | category:<slug> | <address|symbol|token:sym>=single-token report. Optional COINGECKO/ALCHEMY/XAI/BASE_RPC keys.
-  onchain-monitor: { enabled: false, schedule: "0 12 * * *" }
+  token-movers: { enabled: true, schedule: "0 12 * * *", var: "" } # market-movers scan + single-token deep report. var: empty=movers (CoinGecko) | geckoterminal[:chain]=on-chain runners | category:<slug> | <address|symbol|token:sym>=single-token report. Optional COINGECKO/ALCHEMY/XAI/BASE_RPC keys.
+  onchain-monitor: { enabled: true, schedule: "0 12 * * *" }
   distribute-tokens: { enabled: false, schedule: "workflow_dispatch", var: "" } # on-demand contributor rewards. var: empty/<label>=distribute (send) | plan[:week]=compute reward plan | all[:week]=plan+send | dry-run (folds in contributor-reward). BANKR_API_KEY for send.
   defi-overview: { enabled: false, schedule: "0 12 * * *", var: "" } # one-pass DeFi read: tracked-protocol positions + macro context (regime verdict, movers, yields, fees, F&G, prediction markets; refreshes memory/topics/market-context.md). var: empty=full | positions[:label] | macro | <chain/protocol focus>. Optional COINGECKO_API_KEY.
 
   # --- Hound onchain investigation (on-demand; var = address / tx hash) ---
-  investigation-report: { enabled: false, schedule: "workflow_dispatch", var: "" } # var: <token-address> [--checks=rug,contract,deployer,holders,honeypot,lp] [--depth=quick|deep] — composite investigation (folds in rug-scan/contract-audit/deployer-trace/holder-concentration/honeypot-check/lp-lock). read-only
+  investigation-report: { enabled: true, schedule: "workflow_dispatch", var: "" } # var: <token-address> [--checks=rug,contract,deployer,holders,honeypot,lp] [--depth=quick|deep] — composite investigation (folds in rug-scan/contract-audit/deployer-trace/holder-concentration/honeypot-check/lp-lock). read-only
   tx-explain: { enabled: false, schedule: "workflow_dispatch", var: "" } # var: tx hash — plain-English decode
   deploy-uni-hook: { enabled: false, schedule: "workflow_dispatch", harness: "claude", model: "claude-opus-4-8", var: "" } # generate+audit+simulate+deploy a Uniswap v4 hook + test pool on any v4 chain. var: [arm:][template:dynamic|noop|skim] [chain:base-sepolia] <brief>. Dry-run by default; arm: to broadcast (needs HOOK_DEPLOYER_PRIVATE_KEY burner). Testnet default; mainnet behind arm:+explicit chain:+HOOK_MAINNET_OK=1. Opus-pinned: freeform hook-gen is hard.
 
   monitor-polymarket: { enabled: false, schedule: "30 12 * * *", var: "" } # prediction-market monitor (Polymarket + Kalshi) — 24h moves, volume, comments, conviction alerts. var: empty=both | polymarket | kalshi | polymarket:<slug> | kalshi:<ticker>
-  token-pick: { enabled: false, schedule: "0 12 * * *" }
-  price-alert: { enabled: false, schedule: "*/30 * * * *", var: "" } # every 30 minutes — fire on tracked-token ATH, ±20% 1h move, or operator-set target crossing (var=target_price,target_price2,...). Silent on normal runs. Set var=dry-run to skip notify.
+  token-pick: { enabled: true, schedule: "0 12 * * *" }
+  price-alert: { enabled: true, schedule: "*/30 * * * *", var: "" } # every 30 minutes — fire on tracked-token ATH, ±20% 1h move, or operator-set target crossing (var=target_price,target_price2,...). Silent on normal runs. Set var=dry-run to skip notify.
   narrative-tracker: { enabled: false, schedule: "30 13 * * *" } # track rising/peaking/fading narratives
   unlock-monitor: { enabled: false, schedule: "0 10 * * 1" } # weekly token unlock/vesting tracker
 
@@ -108,7 +108,7 @@ skills:
   # --- Ported from aeon-aaron ---
   # Infra & health
   # Markets & crypto
-  picks-tracker: { enabled: false, schedule: "0 9 * * 0" } # Sunday 09:00 UTC — 30-day retrospective scoring token + prediction-market picks from logs against current prices; W/H/L + hit rate; honest record-keeping. Pairs with token-pick / monitor-polymarket.
+  picks-tracker: { enabled: true, schedule: "0 9 * * 0" } # Sunday 09:00 UTC — 30-day retrospective scoring token + prediction-market picks from logs against current prices; W/H/L + hit rate; honest record-keeping. Pairs with token-pick / monitor-polymarket.
   # Content pipeline
   soul-builder: { enabled: false, schedule: "workflow_dispatch", var: "" } # on-demand — build a SOUL from any mix of sources (X handle, full name, links), drafting soul/SOUL.md + STYLE.md + examples so every content skill speaks in that voice. var: bare X handle, or structured brief "x=handle | name=Full Name | links=url1,url2". Powers the dashboard Soul → Build my soul button. XAI_API_KEY optional (name/links use built-in WebSearch/WebFetch).
   # Social
@@ -194,7 +194,7 @@ chains:
 # The non-claude harnesses use their OWN model ids (codex openai/*, kimi moonshotai/*,
 # vibe mistralai/*, pi deepseek/*) — surfaced in the dashboard picker per harness; see
 # docs/harnesses.md. The value below only applies to the claude/grok harnesses.
-model: claude-sonnet-5
+model: deepseek-chat
 
 # Agent harness — which coding-agent CLI runs your skills.
 #   claude (default)  — Claude Code (`claude -p`); uses the AI Gateway below.
