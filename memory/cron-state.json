@@ -32,10 +32,10 @@
     "last_quality_score": 5
   },
   "utoken-watch": {
-    "last_status": "dispatched",
-    "last_success": "2026-08-18T10:03:32Z",
-    "total_runs": 3,
-    "total_successes": 3,
+    "last_status": "success",
+    "last_success": "2026-08-18T12:03:29Z",
+    "total_runs": 4,
+    "total_successes": 4,
     "total_failures": 0,
     "consecutive_failures": 0,
     "success_rate": 1,
