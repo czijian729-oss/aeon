@@ -1,0 +1,41 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "price-alert"
+      },
+      "children": [
+        "stack"
+      ]
+    },
+    "stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "badge",
+        "alert"
+      ]
+    },
+    "badge": {
+      "type": "Badge",
+      "props": {
+        "text": "price-alert::set-target",
+        "variant": "outline"
+      }
+    },
+    "alert": {
+      "type": "Alert",
+      "props": {
+        "title": "创下新高",
+        "message": "想在 AEON 突破更高价位时收到提醒吗？回复一个价格即可。",
+        "type": "success"
+      }
+    }
+  }
+}

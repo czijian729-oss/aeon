@@ -1,10 +1,10 @@
 {
   "skill": "price-alert",
-  "last_analyzed": "2026-08-18T11:02:56Z",
-  "quality_score": 4,
-  "assessment": "Clean no-signal run executed properly: fetched live price, evaluated all three gates, persisted state and log, committed — well-structured Chinese report with clear reasoning for not notifying.",
+  "last_analyzed": "2026-08-18T11:34:37Z",
+  "quality_score": 5,
+  "assessment": "ATH 告警运行完整：触发数据具体、门控评估清晰、动作与校验详尽，输出结构良好且可操作，无标记问题。",
   "flags": [],
-  "avg_score": 3.33,
+  "avg_score": 3.57,
   "history": [
     {
       "date": "2026-08-18",
@@ -29,6 +29,10 @@
     {
       "date": "2026-08-18",
       "score": 4
+    },
+    {
+      "date": "2026-08-18",
+      "score": 5
     }
   ]
 }
