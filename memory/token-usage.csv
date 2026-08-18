@@ -6,3 +6,4 @@ date,skill,model,input_tokens,output_tokens,cache_read,cache_creation
 2026-08-18,utoken-watch,deepseek-chat,38774,13001,751744,0
 2026-08-18,utoken-watch,deepseek-chat,41032,19976,1185280,0
 2026-08-18,token-pick,deepseek-chat,59678,42155,2893696,0
+2026-08-18,price-alert,deepseek-chat,55342,13524,519296,0
