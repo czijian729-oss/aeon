@@ -258,6 +258,17 @@ elif [ -n "$BUTTONS_JSON" ]; then
   echo "notify: inbound Messages workflow disabled — suppressing inline buttons (set TELEGRAM_FORCE_BUTTONS=1 to keep them)" >&2
 fi
 
+# Pulse 桥接（零侵入）：本地运行时把播报写入 Pulse 通知流。
+# 设 AEON_PULSE_BRIDGE=/path/to/aeon_notifications.jsonl 启用；
+# GitHub Actions 云端 runner 无该路径自动跳过。任何失败不影响主流程。
+if [ -n "${AEON_PULSE_BRIDGE:-}" ]; then
+  if [ -d "$(dirname "$AEON_PULSE_BRIDGE" 2>/dev/null || true)" ] 2>/dev/null; then
+    if command -v jq >/dev/null 2>&1; then
+      printf '%s\n' "$(jq -cn --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --arg skill "${SKILL_NAME:-manual}" --arg title "${TITLE:-}" --arg text "$MSG" '{ts:$ts,skill:$skill,title:$title,text:$text}' 2>/dev/null || true)" >> "$AEON_PULSE_BRIDGE" 2>/dev/null || true
+    fi
+  fi
+fi
+
 # Telegram — fence-safe chunks (parse_mode Markdown, fallback to none)
 if [ -n "${TELEGRAM_BOT_TOKEN:-}" ] && [ -n "${TELEGRAM_CHAT_ID:-}" ]; then
   TG_CHUNKS_B64=$(printf '%s' "$MSG" | python3 "$FMT" telegram --title "$TITLE" --severity "$SEVERITY" || true)
