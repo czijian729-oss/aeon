@@ -1,0 +1,1 @@
+[onchain-monitor::add-address] 链上监控还没配置任何地址。粘贴一个 0x… 钱包开始监控，可选附上链名（如 base）。

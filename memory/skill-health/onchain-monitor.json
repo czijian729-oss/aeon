@@ -1,0 +1,14 @@
+{
+  "skill": "onchain-monitor",
+  "last_analyzed": "2026-08-18T12:02:41Z",
+  "quality_score": 4,
+  "assessment": "Legitimate no-op handled excellently: no config existed, so it cleanly exited per skill definition, read context, offered an interactive add-address force-reply, logged to memory, and committed — no false alarms or errors.",
+  "flags": [],
+  "avg_score": 4,
+  "history": [
+    {
+      "date": "2026-08-18",
+      "score": 4
+    }
+  ]
+}
