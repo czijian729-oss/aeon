@@ -1,0 +1,2 @@
+date,skill,model,input_tokens,output_tokens,cache_read,cache_creation
+2026-08-18,token-pick,deepseek-chat,52013,39638,2709120,0
