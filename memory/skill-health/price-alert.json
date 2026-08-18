@@ -1,10 +1,10 @@
 {
   "skill": "price-alert",
-  "last_analyzed": "2026-08-18T10:03:01Z",
-  "quality_score": 3,
-  "assessment": "按规范执行并正确判定 PRICE_ALERT_NO_TOKEN 退出，日志与决策信号清晰，但任务本身为空跑、无实质产出",
+  "last_analyzed": "2026-08-18T10:33:01Z",
+  "quality_score": 4,
+  "assessment": "基线运行执行正确：三个门全部判定、ATH 基线已持久化并校验、按设计保持静默并清楚说明理由，结构清晰可操作。",
   "flags": [],
-  "avg_score": 3,
+  "avg_score": 3.2,
   "history": [
     {
       "date": "2026-08-18",
@@ -21,6 +21,10 @@
     {
       "date": "2026-08-18",
       "score": 3
+    },
+    {
+      "date": "2026-08-18",
+      "score": 4
     }
   ]
 }
