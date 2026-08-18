@@ -1,0 +1,18 @@
+{
+  "last_run": "2026-08-18T17:05:00Z",
+  "dev_last_tx_hash": "0x58f2b60f6fc423e0ba414f8bc40d81f5d88b012083e11330186aee17d25959f3",
+  "dev_last_tx_time": "2026-08-18T15:56:58Z",
+  "dev_tx_count": 34,
+  "factory_last_tx_hash": "0x9bd245fddf4d8ea9ec43d813a80080ad49ad6ceb644c7423db149a806010ea57",
+  "factory_last_tx_time": "2026-08-18T17:01:28Z",
+  "factory_launched": false,
+  "launched_token": "",
+  "is_contract": false,
+  "tx_count": 0,
+  "balance": "0",
+  "token_symbol": "",
+  "creation_tx": "",
+  "last_tweet_id": "",
+  "last_tweet_time": "",
+  "site_code": "200"
+}
