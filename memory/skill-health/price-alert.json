@@ -1,10 +1,10 @@
 {
   "skill": "price-alert",
-  "last_analyzed": "2026-08-18T11:34:37Z",
-  "quality_score": 5,
-  "assessment": "ATH 告警运行完整：触发数据具体、门控评估清晰、动作与校验详尽，输出结构良好且可操作，无标记问题。",
+  "last_analyzed": "2026-08-18T12:03:58Z",
+  "quality_score": 4,
+  "assessment": "完整执行三门评估，正确识别新 ATH 并因 4h 去重窗口抑制通知，状态落盘与日志清晰、逻辑透明，属高质量例行运行。",
   "flags": [],
-  "avg_score": 3.57,
+  "avg_score": 3.63,
   "history": [
     {
       "date": "2026-08-18",
@@ -33,6 +33,10 @@
     {
       "date": "2026-08-18",
       "score": 5
+    },
+    {
+      "date": "2026-08-18",
+      "score": 4
     }
   ]
 }
