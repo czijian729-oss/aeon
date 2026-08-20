@@ -1,10 +1,10 @@
 {
   "skill": "price-alert",
-  "last_analyzed": "2026-08-20T08:59:55Z",
+  "last_analyzed": "2026-08-20T09:03:50Z",
   "quality_score": 4,
-  "assessment": "真实 ATH 告警运行：价格、流动性、时间差等具体数据齐全，gate 评估清晰，通知与状态写入均验证通过，结构良好且可执行",
+  "assessment": "Clean, well-structured monitoring run — all three gates evaluated with real DexScreener data, dedup logic correctly applied (legitimate no-op, not empty), state and log updates documented. Solid but routine.",
   "flags": [],
-  "avg_score": 3.8,
+  "avg_score": 3.81,
   "history": [
     {
       "date": "2026-08-18",
@@ -60,6 +60,10 @@
     },
     {
       "date": "2026-08-18",
+      "score": 4
+    },
+    {
+      "date": "2026-08-20",
       "score": 4
     },
     {
