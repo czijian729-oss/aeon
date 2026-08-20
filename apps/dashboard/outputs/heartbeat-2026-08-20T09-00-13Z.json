@@ -1,0 +1,110 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "🚨 Heartbeat 08-20"
+      },
+      "children": [
+        "alert-degraded",
+        "sep-1",
+        "heading-selfcheck",
+        "text-selfcheck",
+        "sep-2",
+        "heading-schedule",
+        "table-schedule",
+        "sep-3",
+        "alert-suggestion"
+      ]
+    },
+    "alert-degraded": {
+      "type": "Alert",
+      "props": {
+        "title": "🔴 舰队调度停滞 · Overall: DEGRADED",
+        "message": "自 2026-08-18 19:32 UTC 后无任何 skill dispatch，状态页已 48h 未更新。",
+        "type": "error"
+      }
+    },
+    "sep-1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "heading-selfcheck": {
+      "type": "Heading",
+      "props": {
+        "text": "🔴 心跳自检",
+        "level": "h3"
+      }
+    },
+    "text-selfcheck": {
+      "type": "Text",
+      "props": {
+        "text": "heartbeat 上次成功 2026-08-18 08:48 UTC（48h 前），错过 08-19 定时调度 —— agent 可能不可靠",
+        "variant": "body"
+      }
+    },
+    "sep-2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "heading-schedule": {
+      "type": "Heading",
+      "props": {
+        "text": "🟡 调度停滞 / 超时未跑",
+        "level": "h3"
+      }
+    },
+    "table-schedule": {
+      "type": "Table",
+      "props": {
+        "columns": [
+          "Skill",
+          "调度频率",
+          "状态"
+        ],
+        "rows": [
+          [
+            "price-alert",
+            "每 30 分钟",
+            "已 36h 未跑"
+          ],
+          [
+            "utoken-watch",
+            "每 2 小时",
+            "已 36h 未跑"
+          ],
+          [
+            "token-pick / token-movers / onchain-monitor",
+            "每日 12:00",
+            "已 44h 未跑，错过 08-19"
+          ],
+          [
+            "picks-tracker",
+            "每周日",
+            "从未被调度"
+          ]
+        ]
+      }
+    },
+    "sep-3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "alert-suggestion": {
+      "type": "Alert",
+      "props": {
+        "title": "建议",
+        "message": "GitHub Actions 定时器疑似停摆 —— 检查 Actions 调度是否被禁用或暂停。本次 heartbeat 于 08-20 08:58 UTC 触发。",
+        "type": "warning"
+      }
+    }
+  }
+}

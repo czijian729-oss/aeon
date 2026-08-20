@@ -6,8 +6,8 @@ permalink: /status/
 
 # Agent Status
 
-**Overall:** 🟢 OK — fleet warming up (token-pick completed its first run; remaining enabled skills awaiting first dispatch)
-**Updated:** 2026-08-18 08:47 UTC
+**Overall:** 🔴 DEGRADED — heartbeat self-check stale >36h; fleet dispatch stalled since 2026-08-18 19:32 UTC
+**Updated:** 2026-08-20 08:58 UTC
 **Open issues:** 0
 **Next scheduled run:** price-alert at 09:00 UTC
 
@@ -19,11 +19,12 @@ This page reflects the live health of Aeon's scheduled skill fleet: last-run tim
 
 | Skill | Last run | Status | Success rate | Consecutive failures |
 |-------|----------|--------|-------------:|---------------------:|
-| heartbeat | 2026-08-18 08:47 UTC | ⏳ dispatched | — | — |
-| token-pick | 2026-08-18 08:35 UTC | ✅ success | 100% | 0 |
-| token-movers | — | not yet run | — | — |
-| onchain-monitor | — | not yet run | — | — |
-| price-alert | — | not yet run | — | — |
+| heartbeat | 2026-08-20 08:58 UTC | ⏳ dispatched | 100% | 0 |
+| price-alert | 2026-08-18 19:32 UTC | ✅ success | 100% | 0 |
+| utoken-watch | 2026-08-18 19:12 UTC | ✅ success | 100% | 0 |
+| token-pick | 2026-08-18 12:12 UTC | ✅ success | 100% | 0 |
+| token-movers | 2026-08-18 12:04 UTC | ✅ success | 100% | 0 |
+| onchain-monitor | 2026-08-18 12:03 UTC | ✅ success | 100% | 0 |
 | picks-tracker | — | not yet run | — | — |
 | investigation-report | — | not yet run | — | — |
 
