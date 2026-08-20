@@ -1,0 +1,214 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "⚠️ µToken 重大信号：第二工厂已开放部署 🔥",
+        "description": "utoken-watch"
+      },
+      "children": [
+        "alert-main",
+        "sep1",
+        "heading-run",
+        "grid-stats",
+        "text-activity",
+        "sep2",
+        "heading-confirmed",
+        "text-ttp",
+        "link-pool",
+        "link-ttp",
+        "sep3",
+        "heading-status",
+        "alert-orig",
+        "text-withdraw",
+        "stack-site",
+        "stack-x"
+      ]
+    },
+    "alert-main": {
+      "type": "Alert",
+      "props": {
+        "title": "🚨 uToken 第二工厂已开放部署 token",
+        "message": "发现 dev 钱包(0x02ed...)于 08-18 部署了第二个 TokenLaunchFactory 0xB8300d93F6（SKILL 未覆盖！），现已在运行：",
+        "type": "warning"
+      }
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "heading-run": {
+      "type": "Heading",
+      "props": {
+        "text": "运行数据",
+        "level": "h3"
+      }
+    },
+    "grid-stats": {
+      "type": "Grid",
+      "props": {
+        "columns": 3,
+        "gap": "md"
+      },
+      "children": [
+        "stat-tx",
+        "stat-wallets",
+        "stat-launch"
+      ]
+    },
+    "stat-tx": {
+      "type": "Stat",
+      "props": {
+        "label": "交易",
+        "value": "390+"
+      }
+    },
+    "stat-wallets": {
+      "type": "Stat",
+      "props": {
+        "label": "钱包",
+        "value": "40+"
+      }
+    },
+    "stat-launch": {
+      "type": "Stat",
+      "props": {
+        "label": "launchId",
+        "value": "198"
+      }
+    },
+    "text-activity": {
+      "type": "Text",
+      "props": {
+        "text": "40+ 钱包持续 prepareLaunch+launch",
+        "variant": "muted"
+      }
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "heading-confirmed": {
+      "type": "Heading",
+      "props": {
+        "text": "已确认真实 token 上线",
+        "level": "h3"
+      }
+    },
+    "text-ttp": {
+      "type": "Text",
+      "props": {
+        "text": "Ten Thousand Pixel (TTP) 通过它部署池子（08-20 08:07）",
+        "variant": "body"
+      }
+    },
+    "link-pool": {
+      "type": "StoryLink",
+      "props": {
+        "title": "Pool",
+        "href": "https://robinhoodchain.blockscout.com/address/0x1C6771Dd1d14CAeBba62F03717C7cfcAac50d66D",
+        "source": "robinhoodchain.blockscout.com"
+      }
+    },
+    "link-ttp": {
+      "type": "StoryLink",
+      "props": {
+        "title": "TTP",
+        "href": "https://robinhoodchain.blockscout.com/address/0xf8040c783F7Df40F1690c8bEeC0a8Fb419641FDD",
+        "source": "robinhoodchain.blockscout.com"
+      }
+    },
+    "sep3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "heading-status": {
+      "type": "Heading",
+      "props": {
+        "text": "其他状态",
+        "level": "h3"
+      }
+    },
+    "alert-orig": {
+      "type": "Alert",
+      "props": {
+        "title": "原盯守工厂 0x83C33B39",
+        "message": "仍无新交易（未开放）",
+        "type": "info"
+      }
+    },
+    "text-withdraw": {
+      "type": "Text",
+      "props": {
+        "text": "dev 钱包 08-19 大量 withdrawCreatorQuoteAll（LaunchTaxHook）",
+        "variant": "body"
+      }
+    },
+    "stack-site": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "text-site-label",
+        "link-site",
+        "badge-site"
+      ]
+    },
+    "text-site-label": {
+      "type": "Text",
+      "props": {
+        "text": "官网",
+        "variant": "body"
+      }
+    },
+    "link-site": {
+      "type": "Link",
+      "props": {
+        "label": "utoken.gg",
+        "href": "https://utoken.gg"
+      }
+    },
+    "badge-site": {
+      "type": "Badge",
+      "props": {
+        "text": "= 200（已开放）",
+        "variant": "default"
+      }
+    },
+    "stack-x": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "text-x",
+        "badge-x"
+      ]
+    },
+    "text-x": {
+      "type": "Text",
+      "props": {
+        "text": "X 暂无法抓取",
+        "variant": "body"
+      }
+    },
+    "badge-x": {
+      "type": "Badge",
+      "props": {
+        "text": "x.com 402",
+        "variant": "destructive"
+      }
+    }
+  }
+}
