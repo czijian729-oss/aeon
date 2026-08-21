@@ -1,10 +1,10 @@
 {
   "skill": "utoken-watch",
-  "last_analyzed": "2026-08-20T09:06:29Z",
+  "last_analyzed": "2026-08-21T12:33:07Z",
   "quality_score": 5,
-  "assessment": "Insightful monitoring report — discovered a second, live TokenLaunchFactory missed by the skill, with verified on-chain evidence, tx links, and a clear actionable recommendation; well-structured and current.",
+  "assessment": "重大发现，结构清晰，四个信号源对比详尽，链上证据充分，后续建议可执行，质量高",
   "flags": [],
-  "avg_score": 4.29,
+  "avg_score": 4.38,
   "history": [
     {
       "date": "2026-08-18",
@@ -32,6 +32,10 @@
     },
     {
       "date": "2026-08-20",
+      "score": 5
+    },
+    {
+      "date": "2026-08-21",
       "score": 5
     }
   ]

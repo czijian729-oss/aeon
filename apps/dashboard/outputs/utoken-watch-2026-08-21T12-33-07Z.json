@@ -1,0 +1,240 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "µToken watch",
+        "description": "uToken launchpad 监控"
+      },
+      "children": [
+        "alert-main",
+        "stats-grid",
+        "sep-1",
+        "heading-changes",
+        "changes",
+        "sep-2",
+        "heading-links",
+        "links",
+        "sep-3",
+        "alert-note"
+      ]
+    },
+    "alert-main": {
+      "type": "Alert",
+      "props": {
+        "title": "🚨 uToken 发射台已开放",
+        "message": "uToken launchpad 已正式开放发币 — 官网 188 个代币已注册，总市值约 791.3K USD，42.28M holders，uDAY 已完成 bonding 毕业到 Uniswap。",
+        "type": "warning"
+      },
+      "children": []
+    },
+    "stats-grid": {
+      "type": "Grid",
+      "props": {
+        "columns": 3,
+        "gap": "md"
+      },
+      "children": [
+        "stat-tokens",
+        "stat-mcap",
+        "stat-holders",
+        "stat-uday",
+        "stat-nerfs"
+      ]
+    },
+    "stat-tokens": {
+      "type": "Stat",
+      "props": {
+        "label": "官网已注册代币",
+        "value": "188"
+      },
+      "children": []
+    },
+    "stat-mcap": {
+      "type": "Stat",
+      "props": {
+        "label": "总市值",
+        "value": "791.3K USD"
+      },
+      "children": []
+    },
+    "stat-holders": {
+      "type": "Stat",
+      "props": {
+        "label": "Holders",
+        "value": "42.28M"
+      },
+      "children": []
+    },
+    "stat-uday": {
+      "type": "Stat",
+      "props": {
+        "label": "uDAY (24h)",
+        "value": "+1308.6%",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "stat-nerfs": {
+      "type": "Stat",
+      "props": {
+        "label": "NERFS (24h)",
+        "value": "+305.5%",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "sep-1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "heading-changes": {
+      "type": "Heading",
+      "props": {
+        "text": "关键变化（vs 08-18 17:05Z）",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "changes": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "change-1",
+        "change-2",
+        "change-3",
+        "change-4",
+        "change-5"
+      ]
+    },
+    "change-1": {
+      "type": "Text",
+      "props": {
+        "text": "🌐 网站全面开放 — utoken.gg 200 OK，顶部 Launch a µToken CTA，188 tokens / 791.3K mcap / 42.28M holders。uDAY +1308.6% (24h)、NERFS +305.5%。",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "change-2": {
+      "type": "Text",
+      "props": {
+        "text": "🔥 TokenLaunchFactory 0xB8300d93 (dev部署) 今日密集 launch — 大量 launch/prepareLaunch 调用（至 08-21 12:21Z），多个外部钱包参与。",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "change-3": {
+      "type": "Text",
+      "props": {
+        "text": "👤 Dev 今日活跃 — 最新 tx 0xab0284ca… @ 09:07Z (nonce 152)；买入 CLOWN/SLS/UNVEIL/W3WF；withdrawCreatorQuoteAll / claimRefund；0.165 ETH 转出。",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "change-4": {
+      "type": "Text",
+      "props": {
+        "text": "✅ 链上已发射 — uDAY 0x359211…46146 (291 holders，已毕业)、NERFS 0x90a018…aFaF15 (262 holders)。",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "change-5": {
+      "type": "Alert",
+      "props": {
+        "title": "⚠️ 原监视 factory 无 created_contract",
+        "message": "原监视 factory 0x83C33B39 仍无 created_contract；真正发币走 0xB8300d93。",
+        "type": "warning"
+      },
+      "children": []
+    },
+    "sep-2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "heading-links": {
+      "type": "Heading",
+      "props": {
+        "text": "链接",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "links": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "link-dev",
+        "link-factory",
+        "link-uday",
+        "link-site"
+      ]
+    },
+    "link-dev": {
+      "type": "StoryLink",
+      "props": {
+        "title": "Dev 钱包",
+        "href": "https://robinhoodchain.blockscout.com/address/0x02ed43292c6be3f49f2b287c499c77560e426e83",
+        "source": "Blockscout"
+      },
+      "children": []
+    },
+    "link-factory": {
+      "type": "StoryLink",
+      "props": {
+        "title": "TokenLaunchFactory",
+        "href": "https://robinhoodchain.blockscout.com/address/0xB8300d93F6d127357eef5f6A9AC98F52B64B9366",
+        "source": "Blockscout"
+      },
+      "children": []
+    },
+    "link-uday": {
+      "type": "StoryLink",
+      "props": {
+        "title": "uDAY",
+        "href": "https://robinhoodchain.blockscout.com/address/0x359211bb6b8CAbcE02DCBEc1c55B50f2EC884146",
+        "source": "Blockscout"
+      },
+      "children": []
+    },
+    "link-site": {
+      "type": "StoryLink",
+      "props": {
+        "title": "utoken.gg",
+        "href": "https://utoken.gg/",
+        "source": "官网"
+      },
+      "children": []
+    },
+    "sep-3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "alert-note": {
+      "type": "Alert",
+      "props": {
+        "title": "⚠️ X 官方推文抓取失败",
+        "message": "X 官方推文本次未能抓取（402/429）。Site code: 200。",
+        "type": "warning"
+      },
+      "children": []
+    }
+  }
+}
