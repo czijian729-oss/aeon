@@ -1,0 +1,42 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "token-pick"
+      },
+      "children": [
+        "stack"
+      ]
+    },
+    "stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "badge",
+        "text"
+      ]
+    },
+    "badge": {
+      "type": "Badge",
+      "props": {
+        "text": "token-movers::deep-dive",
+        "variant": "secondary"
+      },
+      "children": []
+    },
+    "text": {
+      "type": "Text",
+      "props": {
+        "text": "想要对某个榜单标的做深度报告？回复代币符号或合约地址即可。",
+        "variant": "body"
+      },
+      "children": []
+    }
+  }
+}
