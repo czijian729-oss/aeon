@@ -1,1 +1,1 @@
-[token-movers::deep-dive] 想要对某个榜单标的做深度报告？回复代币符号或合约地址即可。
+[token-movers::deep-dive] 想看某个币的深度报告？回复 ticker 或合约地址即可。

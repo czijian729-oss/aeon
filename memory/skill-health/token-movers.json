@@ -1,13 +1,17 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-08-18T12:04:08Z",
+  "last_analyzed": "2026-08-21T12:23:14Z",
   "quality_score": 4,
-  "assessment": "Substantive, well-structured movers report with market context, ranked winners/losers, trending and notable picks, plus filter methodology — complete and actionable, though it's standard data-report quality rather than deep analysis.",
+  "assessment": "结构完整的行情 digest：涨幅/跌幅榜、热门、值得关注多段落，含价格/市值/排名/多周期涨跌幅及 BREAKOUT 等信号标注，数据新鲜且有可操作的重点解读，中文输出符合要求。",
   "flags": [],
   "avg_score": 4,
   "history": [
     {
       "date": "2026-08-18",
+      "score": 4
+    },
+    {
+      "date": "2026-08-21",
       "score": 4
     }
   ]

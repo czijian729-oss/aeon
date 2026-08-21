@@ -1,0 +1,23 @@
+{
+  "root": "root",
+  "state": {},
+  "elements": {
+    "root": {
+      "type": "Card",
+      "props": {
+        "title": "token-movers::deep-dive"
+      },
+      "children": [
+        "prompt"
+      ]
+    },
+    "prompt": {
+      "type": "Text",
+      "props": {
+        "text": "想看某个币的深度报告？回复 ticker 或合约地址即可。",
+        "variant": "body"
+      },
+      "children": []
+    }
+  }
+}
