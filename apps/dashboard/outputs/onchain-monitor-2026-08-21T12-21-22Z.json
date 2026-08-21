@@ -1,0 +1,84 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "onchain-monitor",
+        "description": "add-address"
+      },
+      "children": [
+        "content"
+      ]
+    },
+    "content": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "alert",
+        "chains"
+      ]
+    },
+    "alert": {
+      "type": "Alert",
+      "props": {
+        "title": "目前没有监控地址",
+        "message": "发一个 0x… 钱包地址即可开始监控（可附带链名）",
+        "type": "info"
+      }
+    },
+    "chains": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "chain-base",
+        "chain-eth",
+        "chain-arb",
+        "chain-op",
+        "chain-poly"
+      ]
+    },
+    "chain-base": {
+      "type": "Badge",
+      "props": {
+        "text": "base",
+        "variant": "secondary"
+      }
+    },
+    "chain-eth": {
+      "type": "Badge",
+      "props": {
+        "text": "ethereum",
+        "variant": "secondary"
+      }
+    },
+    "chain-arb": {
+      "type": "Badge",
+      "props": {
+        "text": "arbitrum",
+        "variant": "secondary"
+      }
+    },
+    "chain-op": {
+      "type": "Badge",
+      "props": {
+        "text": "optimism",
+        "variant": "secondary"
+      }
+    },
+    "chain-poly": {
+      "type": "Badge",
+      "props": {
+        "text": "polygon",
+        "variant": "secondary"
+      }
+    }
+  }
+}

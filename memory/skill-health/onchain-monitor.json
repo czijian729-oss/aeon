@@ -1,13 +1,17 @@
 {
   "skill": "onchain-monitor",
-  "last_analyzed": "2026-08-18T12:02:41Z",
+  "last_analyzed": "2026-08-21T12:21:22Z",
   "quality_score": 4,
-  "assessment": "Legitimate no-op handled excellently: no config existed, so it cleanly exited per skill definition, read context, offered an interactive add-address force-reply, logged to memory, and committed — no false alarms or errors.",
+  "assessment": "无配置状态下正确执行了引导流程：发送 force-reply 邀请、记录去重窗口、按要求不发告警、提交日志，输出结构清晰且后续指引明确，属于完成度高的合规 no-op 运行。",
   "flags": [],
   "avg_score": 4,
   "history": [
     {
       "date": "2026-08-18",
+      "score": 4
+    },
+    {
+      "date": "2026-08-21",
       "score": 4
     }
   ]
