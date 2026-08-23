@@ -1,7 +1,7 @@
 {
   "heartbeat": {
-    "last_dispatch": "2026-08-21T12:19:20Z",
-    "last_status": "success",
+    "last_dispatch": "2026-08-23T08:21:11Z",
+    "last_status": "dispatched",
     "last_success": "2026-08-21T12:23:03Z",
     "total_runs": 3,
     "total_successes": 3,
@@ -21,8 +21,8 @@
     "last_dispatch": "2026-08-21T12:19:20Z"
   },
   "price-alert": {
-    "last_dispatch": "2026-08-21T12:19:20Z",
-    "last_status": "success",
+    "last_dispatch": "2026-08-23T08:21:11Z",
+    "last_status": "dispatched",
     "last_success": "2026-08-21T12:21:47Z",
     "total_runs": 17,
     "total_successes": 17,
@@ -32,7 +32,7 @@
     "last_quality_score": 4
   },
   "utoken-watch": {
-    "last_status": "success",
+    "last_status": "dispatched",
     "last_success": "2026-08-21T12:34:01Z",
     "total_runs": 8,
     "total_successes": 8,
@@ -40,7 +40,7 @@
     "consecutive_failures": 0,
     "success_rate": 1,
     "last_quality_score": 5,
-    "last_dispatch": "2026-08-21T12:19:20Z"
+    "last_dispatch": "2026-08-23T08:21:11Z"
   },
   "token-movers": {
     "last_dispatch": "2026-08-21T12:19:20Z",
