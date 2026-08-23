@@ -1,0 +1,145 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "🚨 Heartbeat · 2026-08-23"
+      },
+      "children": [
+        "alert-degraded",
+        "sec1-stack",
+        "separator",
+        "alert-picks",
+        "separator2",
+        "status-link"
+      ]
+    },
+    "alert-degraded": {
+      "type": "Alert",
+      "props": {
+        "title": "🔴 DEGRADED — 调度器第三次停摆",
+        "type": "error"
+      }
+    },
+    "sec1-stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "text-gap",
+        "row2",
+        "row3",
+        "row4"
+      ]
+    },
+    "text-gap": {
+      "type": "Text",
+      "props": {
+        "text": "调度缺口 #3：08-21 12:20 → 08-23 08:21 UTC（约 44h）无任何 skill dispatch，今晨 08:21 才恢复。一周内第三次（08-18 19:32→08-20 08:57、08-20 09:07→08-21 12:19、08-21 12:20→08-23 08:21）。"
+      }
+    },
+    "row2": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "badge-recovered",
+        "text-recovered"
+      ]
+    },
+    "badge-recovered": {
+      "type": "Badge",
+      "props": {
+        "text": "已恢复",
+        "variant": "default"
+      }
+    },
+    "text-recovered": {
+      "type": "Text",
+      "props": {
+        "text": "price-alert 已重新跑成功（08:23 ✅）；heartbeat、utoken-watch 本次 dispatch 在跑。"
+      }
+    },
+    "row3": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "badge-collat",
+        "text-collat"
+      ]
+    },
+    "badge-collat": {
+      "type": "Badge",
+      "props": {
+        "text": "连带",
+        "variant": "secondary"
+      }
+    },
+    "text-collat": {
+      "type": "Text",
+      "props": {
+        "text": "token-pick / token-movers / onchain-monitor 今日 12:00 档期未触发（缺口期）；heartbeat 自检 last_success 44h（>36h stale）。"
+      }
+    },
+    "row4": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "badge-root",
+        "text-root"
+      ]
+    },
+    "badge-root": {
+      "type": "Badge",
+      "props": {
+        "text": "根因未解",
+        "variant": "destructive"
+      }
+    },
+    "text-root": {
+      "type": "Text",
+      "props": {
+        "text": "scheduler workflow 已连续三次间歇性不触发，需核查 cron 触发/uptime pinger 配置，否则可能再次停摆。"
+      }
+    },
+    "separator": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "alert-picks": {
+      "type": "Alert",
+      "props": {
+        "title": "🔵 picks-tracker 从未调度",
+        "message": "每周日 09:00 档期，cron-state 无任何 entry（从未 dispatch）。今天 09:00 UTC 又要到了——若仍未触发即漏掉第二周。建议单独核查。",
+        "type": "info"
+      }
+    },
+    "separator2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "status-link": {
+      "type": "Link",
+      "props": {
+        "label": "状态页：docs/status.md（🔴 DEGRADED）",
+        "href": "docs/status.md"
+      }
+    }
+  }
+}
