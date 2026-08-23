@@ -1,0 +1,31 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "price-alert"
+      },
+      "children": [
+        "badge",
+        "alert"
+      ]
+    },
+    "badge": {
+      "type": "Badge",
+      "props": {
+        "text": "set-target",
+        "variant": "secondary"
+      }
+    },
+    "alert": {
+      "type": "Alert",
+      "props": {
+        "title": "AEON 新高",
+        "message": "需要在这个价位之上设置提醒吗？回复一个价格即可。",
+        "type": "info"
+      }
+    }
+  }
+}
