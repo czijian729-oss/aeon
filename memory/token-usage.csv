@@ -20,3 +20,4 @@ date,skill,model,input_tokens,output_tokens,cache_read,cache_creation
 2026-08-20,utoken-watch,deepseek-chat,99484,51507,2458752,0
 2026-08-21,utoken-watch,deepseek-chat,89935,65458,3577728,0
 2026-08-23,heartbeat,deepseek-chat,103605,43398,1205120,0
+2026-08-25,price-alert,deepseek-chat,51370,7368,744448,0

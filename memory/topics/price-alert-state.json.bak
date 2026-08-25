@@ -1,14 +1,14 @@
 {
-  "last_run_at": "2026-08-20T08:58:51Z",
+  "last_run_at": "2026-08-25T10:42:13Z",
   "contract": "0xbf8e8f0e8866a7052f948c16508644347c57aba3",
   "chain": "base",
   "ath": {
-    "price_usd": 1.492e-05,
-    "observed_at": "2026-08-20T08:58:51Z",
-    "announced_at": "2026-08-20T08:58:51Z"
+    "price_usd": 3.897e-05,
+    "observed_at": "2026-08-23T08:22:47Z",
+    "announced_at": "2026-08-23T08:22:47Z"
   },
   "last_alerts": {
-    "ath": "2026-08-20T08:58:51Z",
+    "ath": "2026-08-23T08:22:47Z",
     "sharp_move": null,
     "target_hit": null
   },

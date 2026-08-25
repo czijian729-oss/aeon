@@ -1,8 +1,8 @@
 {
   "skill": "price-alert",
-  "last_analyzed": "2026-08-23T08:23:40Z",
-  "quality_score": 5,
-  "assessment": "价格告警任务执行完整：实时拉取价格、三重门槛判定清晰、ATH 触发后发送 2 条通知并正确更新状态与日志，数据来源明确，输出结构化且附后续跟进建议。",
+  "last_analyzed": "2026-08-25T10:42:46Z",
+  "quality_score": 4,
+  "assessment": "Clean monitoring run, well-structured with real DexScreener data (price, ATH, liquidity, gate evaluations) in Chinese; a legitimate no-trigger no-op that fully completed its job.",
   "flags": [],
   "avg_score": 3.89,
   "history": [
@@ -77,6 +77,10 @@
     {
       "date": "2026-08-23",
       "score": 5
+    },
+    {
+      "date": "2026-08-25",
+      "score": 4
     }
   ]
 }
