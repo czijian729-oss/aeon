@@ -1,0 +1,88 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "µToken watch"
+      },
+      "children": [
+        "stack"
+      ]
+    },
+    "stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "alert",
+        "stats",
+        "dev",
+        "factory",
+        "sep",
+        "note"
+      ]
+    },
+    "alert": {
+      "type": "Alert",
+      "props": {
+        "type": "warning",
+        "title": "检测到变化",
+        "message": "utoken.gg 启动台已向公众开放"
+      }
+    },
+    "stats": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "md"
+      },
+      "children": [
+        "stat-tokens",
+        "stat-mcap"
+      ]
+    },
+    "stat-tokens": {
+      "type": "Stat",
+      "props": {
+        "label": "代币在交易",
+        "value": "212"
+      }
+    },
+    "stat-mcap": {
+      "type": "Stat",
+      "props": {
+        "label": "市值",
+        "value": "$827K"
+      }
+    },
+    "dev": {
+      "type": "Text",
+      "props": {
+        "text": "dev 钱包 08-24 收到 LUUT 代币"
+      }
+    },
+    "factory": {
+      "type": "Text",
+      "props": {
+        "text": "Factory 尚无 created_contract"
+      }
+    },
+    "sep": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "note": {
+      "type": "Text",
+      "props": {
+        "text": "详见输出",
+        "variant": "muted"
+      }
+    }
+  }
+}
