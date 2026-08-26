@@ -1,21 +1,31 @@
-🚨 心跳 · 调度器缺口 #4（50h，已恢复）
+Ambient check complete. Everything checks out — here's the summary.
 
-## 🟡 心跳：调度器缺口 #4（约 50h），已恢复
+## 舰队巡检结果（ambient, 2026-08-26 11:47 UTC）
 
-**调度器第四次停摆（8 天内）**：自 08-23 08:21 UTC 起约 **50h** 无任何 skill dispatch，08-25 10:40 UTC 恢复。此前三次：08-18 19:32→08-20 08:57、08-20 09:07→08-21 12:19、08-21 12:20→08-23 08:21。根因未解——GitHub `*/5` cron tick 交付率低，依赖外部 uptime pinger 触发 `cron-tick` 补位，但缺口仍反复出现。
+**结论：HEARTBEAT_OK · STATUS_PAGE=WATCH — 无新增信号，未发通知**
 
-### P0 — 失败 / 卡死
-- 🔴 **utoken-watch 上次失败**（08-23 08:36Z）：read-only 工作区超时（`harness run exceeded --timeout 900s`），consecutive_failures=1。今日 10:40 已重新 dispatch（在跑），若再失败将触发熔断。
-- 其余 skill 无 failed / stuck / 慢性失败。heartbeat 自检：last_success 08-23 08:28Z（>36h），为本次停摆连带，不计自身。
+### 分项检查
 
-### P3 — 从未调度的已启用 skill
-- 🔵 **picks-tracker**（每周日 09:00）：cron-state 仍**无 entry**，从未被调度器 dispatch。08-20、08-23 曾两度上报（48h dedup 规则跳过），本次 dedup 窗口已过，重新上报。下周若仍无 entry 需单独排查调度 wiring。
-- token-movers / onchain-monitor / token-pick：last_success 均为 08-21（每日档期），错过 08-23 与 08-25 两个 12:00 档期——系本次调度器停摆的连带效应，CATCHUP_HOURS=12 未补上 4 天前档期。
+| 层级 | 结果 |
+|------|------|
+| **P0** | ✅ 无 failed / stuck / API 降级 / 慢性失败。heartbeat 自检 last_success 08-25 10:46Z（约 25h，<36h）无 flag；utoken-watch 上次失败（08-23 超时）已恢复，consecutive_failures=0 |
+| **P1** | ✅ 无 open PR；repo 已禁用 issues |
+| **P2** | ✅ MEMORY.md 无 flagged 项 |
+| **P3** | ⚠️ picks-tracker 仍无 cron-state entry、从未被调度；token-pick/token-movers/onchain-monitor last_success 08-21（>2× 档期）——**均为 08-25 已报项，48h dedup 跳过**，且三个日级 skill 今日 12:00 档期将正常调度 |
 
-### 状态页
-- `docs/status.md` 已重写：**🟡 WATCH**（非 🔴——无当前持续故障；utoken-watch 单次失败+非恢复态按规则落 WATCH）。
+### 关键动态
+- **调度器今日 11:40:51 UTC tick 恢复**（距上次 08-25 10:40 约 25h 无 tick）——price-alert / utoken-watch / heartbeat 已 catch-up dispatch 并在跑，当前无卡死。
+- 08-25 停摆的连带影响（三个日级 skill 丢 08-22~08-25 档期）已越过 CATCHUP_HOURS=12 窗口，属已知项，今日 12:00 将正常补跑。
+- **通知：无** —— 没有新增可操作信号，同项 08-25 已报，遵守 48h dedup 规则。
 
-### 建议
-1. **根因排查**：scheduler.yml 依赖 GitHub `*/5` cron + uptime pinger `repository_dispatch`，一周内四次长缺口说明补位机制不可靠。核查 pinger 是否还在跑、`cron-tick` 是否被 rate-limit/被禁用。
-2. **utoken-watch**：连续两档 15min 超时（08-21 14m30s、08-23 15m28s），read-only 模式下的重扫描疑似超出 900s 上限，考虑给该 skill 单独加 timeout 或拆分扫描步骤。
-3. **picks-tracker**：确认调度器对 weekly 档期的 cron-due 匹配（周日 09:00 已连续三周错过）。
+### 建议（沿用前报，未新增）
+1. 调度器 tick 交付稀疏依旧（25h 无 tick），uptime pinger cron-tick 补位未根治；`CATCHUP_HOURS=12` 挡不住跨日缺口，日级 skill 仍会丢档。
+2. picks-tracker 连续多个周日未调度，需单独排查 scheduler 对 `dow=0` 的 cron-due 匹配。
+3. 待今日 12:00 确认 token-pick / token-movers / onchain-monitor 正常 dispatch。
+
+## Summary
+
+- **做了什么**：按 SKILL.md 执行 ambient 巡检（var 为空 → Ambient check 分支）；读取 MEMORY.md、近 2 天日志、cron-state.json（含 origin 最新 dispatch）、aeon.yml、issues/INDEX、PR/issue 列表。
+- **文件变更**：重写 `docs/status.md`（🟡 WATCH，技能表按最新状态刷新）；新增 `memory/logs/2026-08-26.md`（`mode: ambient` 日志 + `STATUS_PAGE=WATCH`）。工作流 auto-commit 会自动落库，无需手动 git。
+- **通知**：无（无新增信号，符合 dedup 规则）。
+- **后续**：12:00 后确认三个日级 skill 正常 dispatch；picks-tracker 的 Sunday 档期问题建议单独排查。
