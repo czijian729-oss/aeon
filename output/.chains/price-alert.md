@@ -1,35 +1,32 @@
-price-alert skill 执行完毕。
+Run complete. No gate fired — clean run, no notification needed (skill sends nothing on a no-signal day). State advanced and log appended.
 
-## 执行结果
+## 运行结果
 
-**状态：`PRICE_ALERT_OK`** — 无触发，未发送通知。
+**price-alert 技能执行完成（2026-08-26 11:42 UTC）**
 
-### 本次检查
-- **Token**: AEON (`0xbf8e8f0e8866a7052f948c16508644347c57aba3`, base)
-- **当前价**: $3.374e-5 | 1h: **−2.2%** | 24h: **−7.4%**（来源：DexScreener 最深池，流动性 $572,594）
-- **ATH**: $3.897e-5（2026-08-23 08:22 UTC 记录）— 当前价低于 ATH，**未创新高**，ATH 保持不变
-- **Sharp-move gate**: `QUIET`（|−2.2%| < 20%）
-- **Targets**: 无（`var` 为空）
-- **Verdicts fired**: NONE
+**跟踪代币**: AEON (`0xbf8e8f0e8866a7052f948c16508644347c57aba3`, base)
 
-### 所做操作
-1. 从 DexScreener 拉取 AEON 价格，选择 base 链流动性最深池（$572k）作为 canonical mark。
-2. 逐一评估 ATH / sharp-move / target 三门：均未触发。
-3. 状态文件 `memory/topics/price-alert-state.json` 原子写入并 `jq empty` 校验通过（仅更新 `last_run_at` 至 `2026-08-25T10:42:13Z`，`.bak` 保留）。
-4. 追加日志到 `memory/logs/2026-08-25.md`（新文件）。
-5. 清理临时文件（`aeon_price.json`、`update_state.py`）。
+**当前行情**（最深流动性池 = Uniswap v4，流动性 $550.5K）:
+- 现价: **$3.154e-5** ($0.00003154)
+- 1h 变动: **+4.9%** | 24h 变动: **−4.3%**
 
-### 未做
-- 未调用 `./notify` — 干净运行不发通知（符合「只在有信号时通知」）。
-- 未发 force-reply 设定价提醒（仅真正创新高 ATH 后才会触发该提示）。
+**三档门限判定**:
+| 门限 | 判定 | 说明 |
+|------|------|------|
+| ATH | UNCHANGED | 现价 $3.154e-5 < 历史新高 $3.897e-5（2026-08-23 设定），ATH 不变 |
+| Sharp 1h 大幅波动 | QUIET | 1h +4.9%，未达 ±20% 阈值 |
+| 目标价 | NONE | 未配置 target（var 为空） |
 
-### 跟进
-- 无需跟进。AEON 从 08-23 高点回落约 13%，仍在观察区；后续若 1h 波动 ≥±20% 或创新高会即时告警。
+**状态更新**:
+- `memory/topics/price-alert-state.json` — 仅 `last_run_at` 更新为 `2026-08-26T11:42:28Z`，ATH/last_alerts/targets 均不变，jq 校验通过，`.bak` 滚动备份已保留
+- `memory/logs/2026-08-26.md` — 追加 price-alert 日志块
+- 通知数: **0**（无事件触发，按技能规范静默）
+
+**Verdict**: `PRICE_ALERT_OK` — 干净运行，无门限触发。
 
 ## Summary
-- **Skill**: price-alert
-- **状态**: PRICE_ALERT_OK（无触发，无通知）
-- **当前价**: $3.374e-5（1h −2.2% / 24h −7.4%），低于 ATH $3.897e-5
-- **文件**: 更新 `memory/topics/price-alert-state.json`（last_run_at）；新建 `memory/logs/2026-08-25.md`
-- **通知**: 无
-- **跟进**: 无
+
+- **做了什么**: 解析 var（空）、解析 MEMORY.md 跟踪代币（AEON/base）、拉取 DexScreener 最新价格、评估 ATH/Sharp-move/Target 三档门限、原子更新状态文件并校验、写入今日日志。
+- **文件变更**: 修改 `memory/topics/price-alert-state.json`（`last_run_at`）；新建 `memory/logs/2026-08-26.md`；滚动备份 `price-alert-state.json.bak` 已同步。
+- **通知**: 未发送（无信号，符合规范）。
+- **后续行动**: 无。AEON 现价较 ATH 低约 19%，1h 波动温和；继续按调度监控，若突破 $3.897e-5 将触发 ATH 提醒（距上次 ATH 通知已 >4h，dedup 窗口已过）。
