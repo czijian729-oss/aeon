@@ -1,1 +1,1 @@
-[onchain-monitor::add-address] 目前没有监控地址。发一个 0x… 钱包地址即可开始监控（可附带链名，如 base / ethereum / arbitrum / optimism / polygon）。
+[onchain-monitor::add-address] No addresses on watch yet. Paste one to monitor — a 0x… wallet, optionally its chain.

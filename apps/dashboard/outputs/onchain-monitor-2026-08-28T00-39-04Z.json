@@ -1,0 +1,41 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "onchain-monitor"
+      },
+      "children": [
+        "stack"
+      ]
+    },
+    "stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "badge",
+        "alert"
+      ]
+    },
+    "badge": {
+      "type": "Badge",
+      "props": {
+        "text": "[onchain-monitor::add-address]",
+        "variant": "secondary"
+      }
+    },
+    "alert": {
+      "type": "Alert",
+      "props": {
+        "title": "No addresses on watch yet",
+        "message": "Paste one to monitor — a 0x… wallet, optionally its chain.",
+        "type": "info"
+      }
+    }
+  }
+}
