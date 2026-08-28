@@ -1,0 +1,23 @@
+{
+  "root": "root",
+  "state": {},
+  "elements": {
+    "root": {
+      "type": "Card",
+      "props": {
+        "title": "token-pick"
+      },
+      "children": [
+        "prompt"
+      ]
+    },
+    "prompt": {
+      "type": "Alert",
+      "props": {
+        "type": "info",
+        "message": "[token-movers::deep-dive] 想要对某个标的做深度报告？回复代币符号或合约地址即可。"
+      },
+      "children": []
+    }
+  }
+}

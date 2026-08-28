@@ -1,8 +1,8 @@
 {
   "skill": "token-pick",
-  "last_analyzed": "2026-08-21T12:29:50Z",
+  "last_analyzed": "2026-08-28T00:46:09Z",
   "quality_score": 5,
-  "assessment": "Substantive, well-sourced daily pick with itemized score breakdown, fair-value/edge math, dedup and strategy-aligned filtering, and clear data-source status — fully actionable.",
+  "assessment": "Substantive, well-sourced daily pick: ENA pick has clear scored rationale, cited catalysts (fee-switch proposal, CME listing, Arthur Hayes), explicit risks, and dedup check; Iran market pick shows fair-value reasoning with multiple sources and edge quantification — actionable and aligned with strategy.",
   "flags": [],
   "avg_score": 5,
   "history": [
@@ -20,6 +20,10 @@
     },
     {
       "date": "2026-08-21",
+      "score": 5
+    },
+    {
+      "date": "2026-08-28",
       "score": 5
     }
   ]
