@@ -1,0 +1,40 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "µToken Watch"
+      },
+      "children": [
+        "stack1"
+      ]
+    },
+    "stack1": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "heading1",
+        "text1"
+      ]
+    },
+    "heading1": {
+      "type": "Heading",
+      "props": {
+        "text": "µToken Watch 08-30 状态确认",
+        "level": "h2"
+      }
+    },
+    "text1": {
+      "type": "Text",
+      "props": {
+        "text": "µToken watch 状态确认",
+        "variant": "body"
+      }
+    }
+  }
+}

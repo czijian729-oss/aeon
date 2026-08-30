@@ -1,10 +1,10 @@
 {
   "skill": "utoken-watch",
-  "last_analyzed": "2026-08-25T10:50:00Z",
+  "last_analyzed": "2026-08-30T14:30:03Z",
   "quality_score": 4,
-  "assessment": "Substantive watch report: detected new dev-wallet tx (hash, nonce, block, LUUT inflow), confirmed factory unchanged, and surfaced the major state change of the website opening to the public with concrete metrics — well-sourced with explorer links and interpreted in Chinese; only gap is X unreadable, which didn't block output.",
+  "assessment": "报告扎实具体：dev 钱包新交易（TTWO 路由配置）与工厂零变化均有链上证据，结构清晰、结论可执行；X 抓取失败属外部源问题且未阻塞输出，不构成扣分。",
   "flags": [],
-  "avg_score": 4.33,
+  "avg_score": 4.3,
   "history": [
     {
       "date": "2026-08-18",
@@ -40,6 +40,10 @@
     },
     {
       "date": "2026-08-25",
+      "score": 4
+    },
+    {
+      "date": "2026-08-30",
       "score": 4
     }
   ]
