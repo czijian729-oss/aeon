@@ -1,10 +1,10 @@
 {
   "skill": "onchain-monitor",
-  "last_analyzed": "2026-08-28T00:39:04Z",
-  "quality_score": 4,
-  "assessment": "No-config run handled correctly: dedup window checked, force-reply invitation sent, logged and committed; clear, well-structured Chinese report with next steps.",
+  "last_analyzed": "2026-08-30T14:22:30Z",
+  "quality_score": 3,
+  "assessment": "配置为空时的合理空运行：检查配置、按48h去重窗口重发force-reply引导、记录日志并提交，任务完成且无错误。",
   "flags": [],
-  "avg_score": 4,
+  "avg_score": 3.75,
   "history": [
     {
       "date": "2026-08-18",
@@ -17,6 +17,10 @@
     {
       "date": "2026-08-28",
       "score": 4
+    },
+    {
+      "date": "2026-08-30",
+      "score": 3
     }
   ]
 }
