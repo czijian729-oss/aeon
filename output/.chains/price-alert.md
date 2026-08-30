@@ -1,34 +1,31 @@
-价格监控任务执行完毕。以下是本次运行的完整报告。
+## Price Alert 运行报告 — 2026-08-30
 
-## 运行报告 — price-alert（2026-08-28）
+**运行状态：`PRICE_ALERT_OK`** — 无门限触发，静默通过（不发送通知）。
 
-**输入**：`${var}` 为空 → `MODE=execute`，无自定义目标价。
+### 数据快照
+| 项 | 值 |
+|---|---|
+| 代币 | AEON (`0xbf8e...aba3`) · base |
+| 当前价格 | **$1.94e-5**（最深池：Uniswap v4，流动性 $423,971） |
+| 1h 变动 | **+3.0%** |
+| 24h 变动 | −10.9% |
+| 历史 ATH | $3.897e-5（2026-08-23 08:22 UTC） |
 
-**跟踪代币**：AEON `0xbf8e8f0e8866a7052f948c16508644347c57aba3` @ base（来自 `memory/MEMORY.md`）
+### 门限评估
+- **ATH 门限**：当前价 $1.94e-5 < 已存 ATH $3.897e-5 → **UNCHANGED**（ATH 单调不减，未更新）
+- **急涨急跌门限**：`abs(+3.0%) < 20%` → **QUIET**
+- **目标价门限**：无已设目标 → **NONE**
 
-**行情数据**（DexScreener，取 base 链流动性最深池，LP $540K）：
-- 当前价格：**$3.003e-5**（$0.00003003）
-- 1h：**−1.9%** · 24h：**+9.6%**
-- 池子：https://dexscreener.com/base/0x4a9b9e13975d26f4e3e17c655593bb82145dd4452aedafb826d856b817c9cfd4
-
-**三门评估**：
-| 闸门 | 结果 |
-|------|------|
-| ATH | 3.003e-5 < 历史高位 3.897e-5（08-23）→ **UNCHANGED** |
-| Sharp move | \|−1.9%\| < 20% → **QUIET** |
-| Targets | 无 operator 目标 → **NONE** |
-
-**判定**：无闸门触发 → 状态 `PRICE_ALERT_OK`，按设计静默（正常日不发送通知）。
-
-**状态更新**：`memory/topics/price-alert-state.json` 仅刷新 `last_run_at = 2026-08-28T00:38:20Z`；ATH、last_alerts、targets 均保持不变（ATH 只单调上升，本次价格低于历史高位故不动）。已通过 `jq empty` 校验。
-
-**日志**：追加至 `memory/logs/2026-08-28.md`。
+### 执行动作
+1. 解析 var：无（MODE=execute，无目标）
+2. 解析追踪代币：AEON / base，与状态文件一致（无 token 变更）
+3. DexScreener 拉取成功（curl 直连，无回退），取 base 链最深流动性池为价格基准
+4. 三扇门均未触发 → **零通知**（符合静默原则）
+5. 状态文件原子写入：仅更新 `last_run_at=2026-08-30T14:21:51Z`，`.bak` 滚动保留，`jq empty` 校验通过
+6. 日志追加至 `memory/logs/2026-08-30.md`
+7. 提交：`0b2d5af`
 
 ## Summary
-
-- **做了什么**：读取 SKILL.md → 解析 token（AEON/base）→ curl 拉取 DexScreener 价格 → 依次评估 ATH / 1h 急动 / 目标价三闸门 → 更新状态文件 → 写今日日志。
-- **文件变更**：
-  - `memory/topics/price-alert-state.json` — 更新 `last_run_at`（已验证）
-  - `memory/logs/2026-08-28.md` — 新建，含本次运行日志块
-- **通知**：无（无闸门触发，静默日符合设计）。
-- **遗留事项**：仓库根目录残留一个未跟踪的临时文件 `.dexscreener-tmp.json`（本会话 curl 抓取用）；`rm` 不在工具白名单内，无法删除，请忽略或手动清理。另外工作树中 `AGENTS.md` 处于已删除状态、`notify`/`notify-jsonrender`/`secretcurl` 为未跟踪文件——均非本技能改动。
+- **结果**：AEON 当前 $1.94e-5，较 ATH $3.897e-5 回撤约 50%，1h/24h 波动平缓，无新 ATH、无 ±20% 急变、无目标价穿越 → 无通知发出。
+- **文件**：更新 `memory/topics/price-alert-state.json`（+`.bak`）、新建 `memory/logs/2026-08-30.md`，已提交 `0b2d5af`。
+- **后续**：无需人工介入；若操作者希望设置目标价（如 $2.5e-5 或 $4e-5），可用 `set-target:<price>` 回复登记。
