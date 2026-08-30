@@ -1,7 +1,7 @@
 {
   "heartbeat": {
-    "last_dispatch": "2026-08-26T11:41:00Z",
-    "last_status": "success",
+    "last_dispatch": "2026-08-30T14:20:31Z",
+    "last_status": "dispatched",
     "last_success": "2026-08-26T11:48:44Z",
     "total_runs": 6,
     "total_successes": 6,
@@ -10,7 +10,7 @@
     "success_rate": 1
   },
   "token-pick": {
-    "last_status": "success",
+    "last_status": "dispatched",
     "last_success": "2026-08-28T00:46:21Z",
     "total_runs": 5,
     "total_successes": 5,
@@ -18,11 +18,11 @@
     "consecutive_failures": 0,
     "success_rate": 1,
     "last_quality_score": 5,
-    "last_dispatch": "2026-08-28T00:36:57Z"
+    "last_dispatch": "2026-08-30T14:20:31Z"
   },
   "price-alert": {
-    "last_dispatch": "2026-08-28T00:36:57Z",
-    "last_status": "success",
+    "last_dispatch": "2026-08-30T14:20:31Z",
+    "last_status": "dispatched",
     "last_success": "2026-08-28T00:39:17Z",
     "total_runs": 21,
     "total_successes": 21,
@@ -32,7 +32,7 @@
     "last_quality_score": 4
   },
   "utoken-watch": {
-    "last_status": "failed",
+    "last_status": "dispatched",
     "last_success": "2026-08-25T10:50:42Z",
     "total_runs": 12,
     "total_successes": 9,
@@ -40,13 +40,13 @@
     "consecutive_failures": 2,
     "success_rate": 0.75,
     "last_quality_score": 4,
-    "last_dispatch": "2026-08-28T00:36:57Z",
+    "last_dispatch": "2026-08-30T14:20:31Z",
     "last_failed": "2026-08-28T00:52:46Z",
     "last_error": "read-only: workspace write-locked via bwrap error: harness run exceeded --timeout 900s "
   },
   "token-movers": {
-    "last_dispatch": "2026-08-28T00:36:57Z",
-    "last_status": "success",
+    "last_dispatch": "2026-08-30T14:20:31Z",
+    "last_status": "dispatched",
     "last_success": "2026-08-28T00:40:36Z",
     "total_runs": 3,
     "total_successes": 3,
@@ -56,8 +56,8 @@
     "last_quality_score": 4
   },
   "onchain-monitor": {
-    "last_dispatch": "2026-08-28T00:36:57Z",
-    "last_status": "success",
+    "last_dispatch": "2026-08-30T14:20:31Z",
+    "last_status": "dispatched",
     "last_success": "2026-08-28T00:39:21Z",
     "total_runs": 3,
     "total_successes": 3,
@@ -65,5 +65,9 @@
     "consecutive_failures": 0,
     "success_rate": 1,
     "last_quality_score": 4
+  },
+  "picks-tracker": {
+    "last_dispatch": "2026-08-30T14:20:31Z",
+    "last_status": "dispatched"
   }
 }
