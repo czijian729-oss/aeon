@@ -1,0 +1,209 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "Heartbeat 2026-08-31",
+        "description": "2026-08-31 08:45 UTC"
+      },
+      "children": [
+        "stack-failed",
+        "sep1",
+        "stack-scheduler",
+        "sep2",
+        "stack-suggest"
+      ]
+    },
+    "stack-failed": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "h-failed",
+        "alert-fail",
+        "stats-failed",
+        "text-fail-err",
+        "text-fail-history"
+      ]
+    },
+    "h-failed": {
+      "type": "Heading",
+      "props": {
+        "text": "🔴 FAILED",
+        "level": "h3"
+      }
+    },
+    "alert-fail": {
+      "type": "Alert",
+      "props": {
+        "type": "error",
+        "title": "token-pick",
+        "message": "08-30 14:36 失败，未恢复（连续 1 次）"
+      }
+    },
+    "stats-failed": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "md"
+      },
+      "children": [
+        "stat-fail-count",
+        "progress-fail-rate"
+      ]
+    },
+    "stat-fail-count": {
+      "type": "Stat",
+      "props": {
+        "label": "连续失败",
+        "value": "1 次"
+      }
+    },
+    "progress-fail-rate": {
+      "type": "Progress",
+      "props": {
+        "value": 83,
+        "label": "历史胜率（6 跑 5 胜）"
+      }
+    },
+    "text-fail-err": {
+      "type": "Text",
+      "props": {
+        "variant": "muted",
+        "text": "错误：read-only: workspace write-locked via bwrap error: harness run exceeded --timeout 900s"
+      }
+    },
+    "text-fail-history": {
+      "type": "Text",
+      "props": {
+        "variant": "body",
+        "text": "历史：6 跑 5 胜（83%），上次成功 08-28；今日 12:00 UTC 档期应补跑"
+      }
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "stack-scheduler": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "h-scheduler",
+        "alert-sched",
+        "stats-sched",
+        "text-sched-schedules",
+        "text-sched-rootcause"
+      ]
+    },
+    "h-scheduler": {
+      "type": "Heading",
+      "props": {
+        "text": "🟡 SCHEDULER — 停摆第 6 次",
+        "level": "h3"
+      }
+    },
+    "alert-sched": {
+      "type": "Alert",
+      "props": {
+        "type": "warning",
+        "title": "SCHEDULER 停摆",
+        "message": "自 08-30 14:20 恢复后，~18h 无任何新 dispatch（08-30 日志报“已恢复”未维持，实为继续停摆）"
+      }
+    },
+    "stats-sched": {
+      "type": "Grid",
+      "props": {
+        "columns": 3,
+        "gap": "md"
+      },
+      "children": [
+        "stat-count",
+        "stat-dispatch",
+        "stat-max"
+      ]
+    },
+    "stat-count": {
+      "type": "Stat",
+      "props": {
+        "label": "停摆次数",
+        "value": "6"
+      }
+    },
+    "stat-dispatch": {
+      "type": "Stat",
+      "props": {
+        "label": "无新 dispatch",
+        "value": "~18h"
+      }
+    },
+    "stat-max": {
+      "type": "Stat",
+      "props": {
+        "label": "最长停摆",
+        "value": "62h"
+      }
+    },
+    "text-sched-schedules": {
+      "type": "Text",
+      "props": {
+        "variant": "body",
+        "text": "price-alert（30min 档）最后 08-30 14:22、utoken-watch（2h 档）最后 08-30 14:30 —— 均超 2× 档期未跑"
+      }
+    },
+    "text-sched-rootcause": {
+      "type": "Text",
+      "props": {
+        "variant": "muted",
+        "text": "根因（GitHub `*/5` cron tick 交付率低 + uptime pinger 补位不足）仍未根治"
+      }
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "stack-suggest": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "h-suggest",
+        "rec1",
+        "rec2"
+      ]
+    },
+    "h-suggest": {
+      "type": "Heading",
+      "props": {
+        "text": "建议",
+        "level": "h3"
+      }
+    },
+    "rec1": {
+      "type": "Text",
+      "props": {
+        "variant": "body",
+        "text": "1. 根治 scheduler cron tick + uptime pinger 补位（第 6 次复发，最长一次 62h）"
+      }
+    },
+    "rec2": {
+      "type": "Text",
+      "props": {
+        "variant": "body",
+        "text": "2. token-pick 连续 read-only 超时 900s，需拆分任务或单独加长 timeout"
+      }
+    }
+  }
+}

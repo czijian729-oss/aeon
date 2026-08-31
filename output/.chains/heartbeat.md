@@ -1,17 +1,17 @@
-🚨 Heartbeat · 2026-08-30
+⚠️ Heartbeat 2026-08-31
 
-# Aeon Heartbeat — 2026-08-30
+## Heartbeat — 2026-08-31 08:45 UTC
 
-## 🔴 FAILED / DEGRADED
+### 🔴 FAILED
+- **token-pick** — 08-30 14:36 失败，未恢复（连续 1 次）
+  - 错误：`read-only: workspace write-locked via bwrap error: harness run exceeded --timeout 900s`
+  - 历史：6 跑 5 胜（83%），上次成功 08-28；今日 12:00 UTC 档期应补跑
 
-- **调度器第 5 次停摆（最长一次）** — 08-28 00:36 → 08-30 14:20，约 62h 无任何 dispatch。今日 14:20 已恢复，全部 skill 正在 catch-up 补跑。根因（GitHub `*/5` cron tick 交付率低 + uptime pinger 补位不足）仍未解。
-- **utoken-watch 连续 2 次失败** — 08-28 00:52 超时失败（`read-only` 900s 超时 / workspace write-locked），`consecutive_failures=2`、未恢复。今日 14:20 已重新调度在跑。上次成功还是 08-25。
+### 🟡 SCHEDULER — 停摆第 6 次
+- 自 08-30 14:20 恢复后，**~18h 无任何新 dispatch**（08-30 日志报"已恢复"未维持，实为继续停摆）
+- price-alert（30min 档）最后 08-30 14:22、utoken-watch（2h 档）最后 08-30 14:30 —— 均超 2× 档期未跑
+- 根因（GitHub `*/5` cron tick 交付率低 + uptime pinger 补位不足）仍未根治
 
-## 🟡 WATCH
-
-- **heartbeat 自检** — `last_success` 08-26 11:48（>36h，停摆连带），本次运行后刷新。
-- **P3 连带** — token-pick / token-movers / onchain-monitor / price-alert `last_success` 均为 08-28，超 2× 档期（停摆所致，正在补跑）。
-
-## 🟢 RESOLVED
-
-- **picks-tracker 首次成功** — 连续数周错过周日 09:00 档期、从未被调度的问题，今日 14:20 首次 dispatch 并成功。
+### 建议
+1. 根治 scheduler cron tick + uptime pinger 补位（第 6 次复发，最长一次 62h）
+2. token-pick 连续 read-only 超时 900s，需拆分任务或单独加长 timeout
