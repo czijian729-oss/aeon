@@ -1,0 +1,294 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "µToken Watch 08-31：重大变化",
+        "description": "⚠️ µToken watch"
+      },
+      "children": [
+        "heading-site",
+        "stack-site",
+        "sep1",
+        "heading-dev",
+        "stack-dev",
+        "sep2",
+        "heading-factory",
+        "stack-factory",
+        "sep3",
+        "heading-x",
+        "stack-x",
+        "sep4",
+        "alert-conclusion"
+      ]
+    },
+    "heading-site": {
+      "type": "Heading",
+      "props": {
+        "text": "官网已是完整可用的启动台",
+        "level": "h3"
+      }
+    },
+    "stack-site": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "stack-site-status",
+        "grid-site-stats",
+        "text-launch",
+        "text-mech",
+        "stat-upeg"
+      ]
+    },
+    "stack-site-status": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "link-site",
+        "badge-200"
+      ]
+    },
+    "link-site": {
+      "type": "Link",
+      "props": {
+        "label": "utoken.gg",
+        "href": "https://utoken.gg"
+      }
+    },
+    "badge-200": {
+      "type": "Badge",
+      "props": {
+        "text": "200（非预售墙）",
+        "variant": "secondary"
+      }
+    },
+    "grid-site-stats": {
+      "type": "Grid",
+      "props": {
+        "columns": 3,
+        "gap": "md"
+      },
+      "children": [
+        "stat-listings",
+        "stat-supply",
+        "stat-volume"
+      ]
+    },
+    "stat-listings": {
+      "type": "Stat",
+      "props": {
+        "label": "上架代币",
+        "value": "256"
+      }
+    },
+    "stat-supply": {
+      "type": "Stat",
+      "props": {
+        "label": "发行量",
+        "value": "50.7M"
+      }
+    },
+    "stat-volume": {
+      "type": "Stat",
+      "props": {
+        "label": "成交量",
+        "value": "$9.03M"
+      }
+    },
+    "text-launch": {
+      "type": "Text",
+      "props": {
+        "text": "Launch 表单完整、无白名单门槛"
+      }
+    },
+    "text-mech": {
+      "type": "Text",
+      "props": {
+        "text": "机制：bonding curve → 4 ETH 毕业 → Uniswap v4（LP key 销毁），1% 手续费"
+      }
+    },
+    "stat-upeg": {
+      "type": "Stat",
+      "props": {
+        "label": "uPEG 已毕业至 Uniswap v4（属旧项目）",
+        "value": "$2.63M"
+      }
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "heading-dev": {
+      "type": "Heading",
+      "props": {
+        "text": "Dev 钱包活跃",
+        "level": "h3"
+      }
+    },
+    "stack-dev": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "grid-dev-stats",
+        "text-dev-latest",
+        "text-ops",
+        "text-no-contract"
+      ]
+    },
+    "grid-dev-stats": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "md"
+      },
+      "children": [
+        "stat-trades",
+        "stat-nonce"
+      ]
+    },
+    "stat-trades": {
+      "type": "Stat",
+      "props": {
+        "label": "新交易",
+        "value": "178"
+      }
+    },
+    "stat-nonce": {
+      "type": "Stat",
+      "props": {
+        "label": "nonce",
+        "value": "34→212"
+      }
+    },
+    "text-dev-latest": {
+      "type": "Text",
+      "props": {
+        "text": "最新：08-30 15:39 UTC",
+        "variant": "muted"
+      }
+    },
+    "text-ops": {
+      "type": "Text",
+      "props": {
+        "text": "全为基建操作：setQuoteEthRoute / setQuoteTokenAllowed / withdrawCreatorQuoteAll / sell"
+      }
+    },
+    "text-no-contract": {
+      "type": "Text",
+      "props": {
+        "text": "未部署新合约"
+      }
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "heading-factory": {
+      "type": "Heading",
+      "props": {
+        "text": "工厂 TokenLaunchFactory（0x83C33B…）：未发币",
+        "level": "h3"
+      }
+    },
+    "stack-factory": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "text-factory-deploy",
+        "alert-signal",
+        "text-latest-factory"
+      ]
+    },
+    "text-factory-deploy": {
+      "type": "Text",
+      "props": {
+        "text": "唯一 created_contract 是其自身部署（08-18 15:56）"
+      }
+    },
+    "alert-signal": {
+      "type": "Alert",
+      "props": {
+        "title": "「工厂发币」硬信号",
+        "message": "未触发",
+        "type": "warning"
+      }
+    },
+    "text-latest-factory": {
+      "type": "Text",
+      "props": {
+        "text": "最新工厂交易仍为 08-18 17:01"
+      }
+    },
+    "sep3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "heading-x": {
+      "type": "Heading",
+      "props": {
+        "text": "X @uTokenPro",
+        "level": "h3"
+      }
+    },
+    "stack-x": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "link-x",
+        "alert-x"
+      ]
+    },
+    "link-x": {
+      "type": "Link",
+      "props": {
+        "label": "@uTokenPro",
+        "href": "https://x.com/uTokenPro"
+      }
+    },
+    "alert-x": {
+      "type": "Alert",
+      "props": {
+        "title": "无法抓取",
+        "message": "x.com 402 / nitter 离线",
+        "type": "warning"
+      }
+    },
+    "sep4": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "alert-conclusion": {
+      "type": "Alert",
+      "props": {
+        "title": "结论",
+        "message": "网页已开放、Dev 积极运维，但经工厂发行新代币的硬信号尚未出现。继续密切盯防。",
+        "type": "info"
+      }
+    }
+  }
+}
