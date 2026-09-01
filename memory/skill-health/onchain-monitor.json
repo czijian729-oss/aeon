@@ -1,10 +1,10 @@
 {
   "skill": "onchain-monitor",
-  "last_analyzed": "2026-08-30T14:22:30Z",
+  "last_analyzed": "2026-09-01T13:25:22Z",
   "quality_score": 3,
-  "assessment": "配置为空时的合理空运行：检查配置、按48h去重窗口重发force-reply引导、记录日志并提交，任务完成且无错误。",
+  "assessment": "空配置的合法空跑：正确检测无监控地址、按去重窗口重发 Telegram 邀请、记录状态并说明后续动作，结构清晰但无实质发现。",
   "flags": [],
-  "avg_score": 3.75,
+  "avg_score": 3.6,
   "history": [
     {
       "date": "2026-08-18",
@@ -20,6 +20,10 @@
     },
     {
       "date": "2026-08-30",
+      "score": 3
+    },
+    {
+      "date": "2026-09-01",
       "score": 3
     }
   ]
