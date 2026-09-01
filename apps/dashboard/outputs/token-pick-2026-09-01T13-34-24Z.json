@@ -1,0 +1,352 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "Daily Pick — 2026-09-01"
+      },
+      "children": [
+        "stack"
+      ]
+    },
+    "stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "token-section",
+        "sep1",
+        "market-section",
+        "sep2",
+        "sources-disclaimer"
+      ]
+    },
+    "token-section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "token-heading",
+        "token-meta",
+        "token-stats",
+        "score-breakdown",
+        "catalyst",
+        "token-risk",
+        "vs-recent"
+      ]
+    },
+    "token-heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Token: ARB",
+        "level": "h2"
+      },
+      "children": []
+    },
+    "token-meta": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "badge-high",
+        "badge-signal"
+      ]
+    },
+    "badge-high": {
+      "type": "Badge",
+      "props": {
+        "text": "HIGH",
+        "variant": "destructive"
+      },
+      "children": []
+    },
+    "badge-signal": {
+      "type": "Badge",
+      "props": {
+        "text": "Signal 10/10 (raw 12)",
+        "variant": "secondary"
+      },
+      "children": []
+    },
+    "token-stats": {
+      "type": "Grid",
+      "props": {
+        "columns": 3,
+        "gap": "sm"
+      },
+      "children": [
+        "stat-price",
+        "stat-mcap",
+        "stat-vol"
+      ]
+    },
+    "stat-price": {
+      "type": "Stat",
+      "props": {
+        "label": "Price",
+        "value": "$0.1104",
+        "delta": "±28.8% 24h / ±15.4% 7d",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "stat-mcap": {
+      "type": "Stat",
+      "props": {
+        "label": "Market Cap",
+        "value": "$737M"
+      },
+      "children": []
+    },
+    "stat-vol": {
+      "type": "Stat",
+      "props": {
+        "label": "24h Volume",
+        "value": "$527M",
+        "delta": "vol/mcap 0.71"
+      },
+      "children": []
+    },
+    "score-breakdown": {
+      "type": "Text",
+      "props": {
+        "text": "Score breakdown: [24h>0 +1, 7d>0 +1, 24h&7d>5% +2, trending +2, vol/mcap≥0.20 +3, RS vs BTC/ETH +2, DexScreener确认 +1] = 12 → 封顶 10/10",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "catalyst": {
+      "type": "Alert",
+      "props": {
+        "title": "Catalyst",
+        "message": "Robinhood Chain 与其他 Arbitrum L2 将 10% 费用注入 ARB 生态（8% 进代币持有者金库），带来结构性收入来源",
+        "type": "info"
+      },
+      "children": []
+    },
+    "token-risk": {
+      "type": "Alert",
+      "props": {
+        "title": "Risk",
+        "message": "9/16 解锁 ~92.6M ARB（约 $9M，占市值 1.39%，团队/顾问/投资者分配）+ 单日 +28% 后的获利回吐",
+        "type": "warning"
+      },
+      "children": []
+    },
+    "vs-recent": {
+      "type": "Text",
+      "props": {
+        "text": "Vs recent picks: 首次入选（token-pick 此前从未产出正式 pick）",
+        "variant": "muted"
+      },
+      "children": []
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "market-section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "market-heading",
+        "market-meta",
+        "market-stats",
+        "fair-progress",
+        "inputs-heading",
+        "input-1",
+        "input-2",
+        "input-3",
+        "thesis",
+        "market-risk"
+      ]
+    },
+    "market-heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Market: 美联储9月会议后利率维持不变？",
+        "level": "h2"
+      },
+      "children": []
+    },
+    "market-meta": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "badge-market",
+        "badge-edge"
+      ]
+    },
+    "badge-market": {
+      "type": "Badge",
+      "props": {
+        "text": "MEDIUM",
+        "variant": "secondary"
+      },
+      "children": []
+    },
+    "badge-edge": {
+      "type": "Badge",
+      "props": {
+        "text": "Edge 8.5pp",
+        "variant": "outline"
+      },
+      "children": []
+    },
+    "market-stats": {
+      "type": "Grid",
+      "props": {
+        "columns": 3,
+        "gap": "sm"
+      },
+      "children": [
+        "stat-yes",
+        "stat-no",
+        "stat-mvol",
+        "stat-resolves"
+      ]
+    },
+    "stat-yes": {
+      "type": "Stat",
+      "props": {
+        "label": "YES",
+        "value": "42.5¢"
+      },
+      "children": []
+    },
+    "stat-no": {
+      "type": "Stat",
+      "props": {
+        "label": "NO",
+        "value": "57.5¢"
+      },
+      "children": []
+    },
+    "stat-mvol": {
+      "type": "Stat",
+      "props": {
+        "label": "24h Volume",
+        "value": "$1.77M"
+      },
+      "children": []
+    },
+    "stat-resolves": {
+      "type": "Stat",
+      "props": {
+        "label": "Resolves",
+        "value": "2026-09-16"
+      },
+      "children": []
+    },
+    "fair-progress": {
+      "type": "Progress",
+      "props": {
+        "value": 51,
+        "max": 100,
+        "label": "Fair YES ~51%"
+      },
+      "children": []
+    },
+    "inputs-heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Inputs",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "input-1": {
+      "type": "Text",
+      "props": {
+        "text": "7月非农 -23k，2020/12以来首次负值",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "input-2": {
+      "type": "Text",
+      "props": {
+        "text": "Warsh 讲话后加息概率从 <40% 急拉至 ~55%，市场在定价「一场讲话」而非「一次投票」",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "input-3": {
+      "type": "Text",
+      "props": {
+        "text": "MUFG：沃什表态并非 9 月加息信号",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "thesis": {
+      "type": "Alert",
+      "props": {
+        "title": "Thesis",
+        "message": "市场 56.5% 的加息定价偏高——美联储现代史上从未在负新增非农时加息，7 月就业走弱构成硬约束，「维持不变」一边提供更好风险回报",
+        "type": "info"
+      },
+      "children": []
+    },
+    "market-risk": {
+      "type": "Alert",
+      "props": {
+        "title": "Risk",
+        "message": "若 9/5 非农超预期（>100k）且上修前值，加息概率将向 ~55% 回归，fair 估计失效",
+        "type": "warning"
+      },
+      "children": []
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "sources-disclaimer": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "sources",
+        "disclaimer"
+      ]
+    },
+    "sources": {
+      "type": "Text",
+      "props": {
+        "text": "sources: cg=ok, dex=ok, poly=ok",
+        "variant": "muted"
+      },
+      "children": []
+    },
+    "disclaimer": {
+      "type": "Text",
+      "props": {
+        "text": "not financial advice — pattern-matching only",
+        "variant": "muted"
+      },
+      "children": []
+    }
+  }
+}

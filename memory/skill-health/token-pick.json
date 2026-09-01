@@ -1,8 +1,8 @@
 {
   "skill": "token-pick",
-  "last_analyzed": "2026-08-31T08:53:39Z",
+  "last_analyzed": "2026-09-01T13:34:24Z",
   "quality_score": 5,
-  "assessment": "选仓逻辑完整可辩护（信号拆解、风险提示、跨源交叉确认），预测市场逐一否决理由充分且带来源，通知与日志闭环齐全，属高质量可执行输出。",
+  "assessment": "Substantive, well-sourced token-pick report: ARB pick with detailed 12-point scoring, named structural catalyst and unlock risk with cited URLs, plus a Polymarket prediction with explicit fair-value estimate and edge calc. Actionable and specific, not boilerplate.",
   "flags": [],
   "avg_score": 5,
   "history": [
@@ -28,6 +28,10 @@
     },
     {
       "date": "2026-08-31",
+      "score": 5
+    },
+    {
+      "date": "2026-09-01",
       "score": 5
     }
   ]
