@@ -1,1 +1,1 @@
-[token-movers::deep-dive] 想要对某个 mover 做深度报告？回复 ticker 或合约地址即可。
+[token-movers::deep-dive] 想要对某个 mover 做深度报告？回复一个 ticker 或合约地址即可。

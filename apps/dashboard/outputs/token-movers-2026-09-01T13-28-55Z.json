@@ -1,0 +1,40 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "token-movers"
+      },
+      "children": [
+        "stack1"
+      ]
+    },
+    "stack1": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "badge1",
+        "text1"
+      ]
+    },
+    "badge1": {
+      "type": "Badge",
+      "props": {
+        "text": "token-movers::deep-dive",
+        "variant": "secondary"
+      }
+    },
+    "text1": {
+      "type": "Text",
+      "props": {
+        "text": "想要对某个 mover 做深度报告？回复一个 ticker 或合约地址即可。",
+        "variant": "body"
+      }
+    }
+  }
+}

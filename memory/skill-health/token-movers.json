@@ -1,10 +1,10 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-08-30T14:26:31Z",
-  "quality_score": 5,
-  "assessment": "Substantive, well-structured movers digest with precise data, signal labels, cross-run context (08-28 references), pump-and-dump detection, and transparent disclosure of the missing key limitation — all in the operator's Chinese.",
+  "last_analyzed": "2026-09-01T13:28:55Z",
+  "quality_score": 4,
+  "assessment": "Substantive daily movers report with specific tickers, volume figures, risk labels (CAPITULATION/PUMP-RISK), market breadth context, and proper notification/logging — well-structured and actionable.",
   "flags": [],
-  "avg_score": 4.25,
+  "avg_score": 4.2,
   "history": [
     {
       "date": "2026-08-18",
@@ -21,6 +21,10 @@
     {
       "date": "2026-08-30",
       "score": 5
+    },
+    {
+      "date": "2026-09-01",
+      "score": 4
     }
   ]
 }
