@@ -1,0 +1,106 @@
+{
+  "root": "card",
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "µToken watch"
+      },
+      "children": [
+        "stack-main"
+      ]
+    },
+    "stack-main": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "alert-tx",
+        "meta-grid",
+        "sep1",
+        "status-stack",
+        "sep2",
+        "note"
+      ]
+    },
+    "alert-tx": {
+      "type": "Alert",
+      "props": {
+        "type": "info",
+        "title": "dev 钱包新增一笔交易",
+        "message": "QuoteEthSwapper 实测 AMZN/CEO 换币"
+      }
+    },
+    "meta-grid": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "sm"
+      },
+      "children": [
+        "stat-time",
+        "stat-nonce"
+      ]
+    },
+    "stat-time": {
+      "type": "Stat",
+      "props": {
+        "label": "时间",
+        "value": "09-01 19:08Z"
+      }
+    },
+    "stat-nonce": {
+      "type": "Stat",
+      "props": {
+        "label": "nonce",
+        "value": "230"
+      }
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "status-stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "badge-launchpad",
+        "badge-factory"
+      ]
+    },
+    "badge-launchpad": {
+      "type": "Badge",
+      "props": {
+        "text": "发射台仍未开放",
+        "variant": "secondary"
+      }
+    },
+    "badge-factory": {
+      "type": "Badge",
+      "props": {
+        "text": "factory 无新代币部署",
+        "variant": "secondary"
+      }
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "note": {
+      "type": "Text",
+      "props": {
+        "text": "详情见运行输出。",
+        "variant": "muted"
+      }
+    }
+  }
+}
