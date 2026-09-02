@@ -1,10 +1,12 @@
 {
   "skill": "price-alert",
-  "last_analyzed": "2026-09-02T05:56:48Z",
-  "quality_score": 4,
-  "assessment": "Clean, well-structured no-trigger run: fetched fresh DexScreener price, evaluated all three gates with clear table, updated state atomically, wrote log — a legitimate completed task with substantive reporting.",
-  "flags": [],
-  "avg_score": 3.92,
+  "last_analyzed": "2026-09-02T06:02:30Z",
+  "quality_score": 3,
+  "assessment": "无信号静默运行，任务完整执行：拉取行情、评估三档门禁、写入状态与日志并提交，但内容基本为既定流程的重复报告",
+  "flags": [
+    "generic_content"
+  ],
+  "avg_score": 3.88,
   "history": [
     {
       "date": "2026-08-18",
@@ -105,6 +107,10 @@
     {
       "date": "2026-09-02",
       "score": 4
+    },
+    {
+      "date": "2026-09-02",
+      "score": 3
     }
   ]
 }
