@@ -1,23 +1,31 @@
-本次 price-alert 运行完成，无信号触发，不发送通知。
+本次 price-alert 运行已完成，无触发信号，未发送通知。运行细节如下。
 
-## 运行详情
+## 运行报告（price-alert，2026-09-02）
 
-- **Token**: AEON (`0xbf8e8f0e8866a7052f948c16508644347c57aba3`) · base
-- **价格来源**: DexScreener，取 base 链最深流动性池（$412K），当前 **$0.00001865** | 1h −3.6% | 24h −23.5%
-- **ATH 门**: 当前 $1.865e-5 低于存储 ATH $3.897e-5（2026-08-23）→ **QUIET**
-- **急动门**: |−3.57%| < 20% → **QUIET**
-- **目标价**: var 为空，无目标评估
-- **Verdicts fired**: NONE → **Status: PRICE_ALERT_OK**
+**跟踪标的**：AEON（`0xbf8e…aba3`，base 链），源自 `memory/MEMORY.md` 的 Tracked Token 表。
 
-**状态文件** `memory/topics/price-alert-state.json`：仅更新 `last_run_at=2026-09-01T13:24:45Z`，ATH/去重时钟/目标均保持不变，写入原子化并通过 `jq empty` 校验。
+**价格取数**：DexScreener keyless 公共接口，`curl` 一次成功（无 WebFetch 回退）。选用 base 链最深流动性池（liquidity ≈ $406K）：
 
-**日志**：已追加 `memory/logs/2026-09-01.md`。
+- 当前价：$1.826e-5
+- 1h：+0.3% ｜ 24h：−17.9%
+- 图表：[DexScreener 池](https://dexscreener.com/base/0x4a9b9e13975d26f4e3e17c655593bb82145dd4452aedafb826d856b817c9cfd4)
 
-AEON 24h 跌幅较大（−23.5%），但 1h 波动仅 −3.6%，未达 ±20% 急动阈值；距 ATH 仍低约 52%，无需关注。无通知、无状态重置、无错误。
+**闸门判定**：
+
+| 闸门 | 判定 | 说明 |
+|------|------|------|
+| ATH | 未触发 | 现价 1.826e-5 < 已存 ATH 3.897e-5（2026-08-23 08:22 UTC），ATH 保持不变 |
+| 1h 急动 | QUIET | abs(+0.3%) < 20% |
+| 目标价 | none → NONE | 本次无 var 目标，state 中无待命中目标 |
+
+**通知**：0 条（`OK` 运行保持静默，符合「只在有信号时 ping」原则）。
+
+**状态文件**：仅推进 `last_run_at` → `2026-09-02T05:56:15Z`；ATH / last_alerts / targets 均未改动；`jq empty` 校验通过。状态文件已原子写入（tmpfile + `os.replace`）。
+
+**日志**：已新建 `memory/logs/2026-09-02.md`，记录 `## Price Threshold Alert` 块，Status = `PRICE_ALERT_OK`。
 
 ## Summary
-
-- **做了什么**: 执行 price-alert skill——解析 token（AEON/base）、从 DexScreener 抓取价格、评估三个门（ATH / 急动 / 目标价）
-- **结果**: 无门触发 → PRICE_ALERT_OK，未发送任何通知
-- **文件变更**: `memory/topics/price-alert-state.json`（更新 `last_run_at`）；`memory/logs/2026-09-01.md`（新建，追加日志）
-- **后续**: 无需跟进；若操作者希望在某价位收到提醒，可通过 Telegram 回复 `set-target:<价格>` 或传 `target_price` var
+- **做了什么**：解析 var（空）→ 解析 tracked token（AEON/base）→ curl DexScreener 取价 → 评估 ATH / sharp-move / target 三闸门 → 全部未触发 → 推进状态文件并校验 → 写日志。
+- **文件变更**：`memory/topics/price-alert-state.json`（`last_run_at` 更新）；新建 `memory/logs/2026-09-02.md`。
+- **通知发送**：无（无需）。未修改任何历史日志。
+- **后续动作**：无需跟进；等待下一次调度。
