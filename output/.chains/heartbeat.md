@@ -1,35 +1,20 @@
-任务已完成。当前状态梳理如下：
+🚨 Aeon 心跳 — 调度器停摆 #8
 
-## Heartbeat 环境检查报告（2026-09-01 13:25 UTC）
+# 🔴 调度器停摆第 8 次 — 舰队空转 ~28h
 
-**总体判定：🟡 WATCH** —— 已重写 `docs/status.md`；无通知发送（见下方 dedup 说明）。
+**整体：DEGRADED** — 自 09-02 06:22 UTC 起无任何 skill 被派发（stall #8，仍在持续）。本次 heartbeat 为补位触发，非日常 cron。
 
-### 各优先级核查结果
+## 🔴 P0 — 失败 / 自检
+- **utoken-watch** 失败 @ 09-02 06:22（~27h 前，未恢复，CF=1）：`read-only timeout 900s`（workspace write-locked）
+- **heartbeat 自检**：last_success 09-01 13:27 → 已 44h（>36h）。非自身故障，是调度器没再派发
 
-**P0 — 失败/卡死 skill：全部健康 ✅**
-- token-pick：08-31 08:53 已恢复 success（CF=0，08-30 的 900s 超时失败已翻篇）
-- utoken-watch：08-31 08:50 已恢复 success（CF=0）
-- 无 failed / stuck / API 降级（CF≥3）/ 慢性失败（SR<0.5）
-- heartbeat 自检：last_success 08-31 08:47（~28h，未超 36h），正常
+## 🟡 P3 — 调度器停摆导致大面积超档
+- **price-alert**（30min 档）→ 28h 未跑，超 2× 档期几十倍
+- **utoken-watch**（2h 档）→ 28h 未跑（上次还失败了）
+- **token-movers / onchain-monitor / token-pick**（日更 12:00）→ 错过 09-02 整轮，距上次成功已 ~44h
+- picks-tracker（周日档）未受影响
 
-**P1 — PR / issue：干净** —— 无 open PR；本仓库 issues 已禁用
-**P2 — memory 标记：无 flagged 项**
-**P3 — 调度器：停摆第 7 次复发（已 dedup，不重复报警）**
-- 08-31 08:41 → 09-01 13:23 约 **28h 无 dispatch**（此前最长 62h）
-- 09-01 13:23 scheduler 已 catch-up，全部启用 skill 正在补跑（token-movers / onchain-monitor / token-pick / price-alert / utoken-watch / heartbeat 均 in-progress）
-- price-alert（30min 档）、utoken-watch（2h 档）按权威 state 文件仍超 2× 档期 → 页面判 🟡 WATCH
-
-### 通知 dedup 说明
-调度器停摆 + price-alert/utoken-watch 超档期，在 08-30 / 08-31 日志（48h 内）均已报告过 → 按 SKILL 规则**不重复发送**，本次静默。
-
-### Token pulse
-无 `output/articles/token-report-*.md` 文件 → 按规则整段省略，页面仍干净渲染。
-
----
-
-## Summary
-
-- **修改 `docs/status.md`**：整体 🟡 WATCH（调度器 ~28h 空窗 + 两 skill 超 2× 档期），标注 13:23 catch-up 补跑中；skill 表按 state 文件更新（token-pick/utoken-watch 已恢复 ✅）；status 页无需 git 命令，workflow 自动提交
-- **新建 `memory/logs/2026-09-01.md`**：`mode: ambient` 条目，含各 tier 结果、dedup 说明、STATUS_PAGE=WATCH 行
-- **通知**：未发送（48h 内已报同项，dedup）
-- **后续建议**：① 调度器 cron tick 可靠性第 7 次复发，需根治（uptime pinger 补位 + tick 冗余）；② 观察今日 catch-up 是否全部成功，下轮 heartbeat 确认恢复情况
+## 建议
+1. **根治调度器**：cron tick 第 8 次失效（历次最长 62h，本次已 ~28h 且持续）——加 uptime pinger 补位 + tick 冗余
+2. 检查 scheduler workflow 是否静默失败/被禁用（Actions 日志）
+3. 恢复后观察 12:00 日更档是否 catch-up

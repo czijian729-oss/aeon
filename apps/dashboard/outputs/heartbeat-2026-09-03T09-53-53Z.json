@@ -1,0 +1,183 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "🚨 Aeon 心跳 — 调度器停摆 #8"
+      },
+      "children": [
+        "alert-main",
+        "sep1",
+        "stack-p0",
+        "sep2",
+        "stack-p3",
+        "sep3",
+        "stack-sugg"
+      ]
+    },
+    "alert-main": {
+      "type": "Alert",
+      "props": {
+        "type": "error",
+        "title": "🔴 调度器停摆第 8 次 — 舰队空转 ~28h",
+        "message": "整体：DEGRADED — 自 09-02 06:22 UTC 起无任何 skill 被派发（stall #8，仍在持续）。本次 heartbeat 为补位触发，非日常 cron。"
+      },
+      "children": []
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "stack-p0": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "heading-p0",
+        "alert-p0-1",
+        "alert-p0-2"
+      ]
+    },
+    "heading-p0": {
+      "type": "Heading",
+      "props": {
+        "level": "h2",
+        "text": "🔴 P0 — 失败 / 自检"
+      },
+      "children": []
+    },
+    "alert-p0-1": {
+      "type": "Alert",
+      "props": {
+        "type": "error",
+        "title": "utoken-watch 失败 @ 09-02 06:22（~27h 前，未恢复，CF=1）",
+        "message": "read-only timeout 900s（workspace write-locked）"
+      },
+      "children": []
+    },
+    "alert-p0-2": {
+      "type": "Alert",
+      "props": {
+        "type": "warning",
+        "title": "heartbeat 自检：last_success 09-01 13:27 → 已 44h（>36h）",
+        "message": "非自身故障，是调度器没再派发"
+      },
+      "children": []
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "stack-p3": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "heading-p3",
+        "table-p3"
+      ]
+    },
+    "heading-p3": {
+      "type": "Heading",
+      "props": {
+        "level": "h2",
+        "text": "🟡 P3 — 调度器停摆导致大面积超档"
+      },
+      "children": []
+    },
+    "table-p3": {
+      "type": "Table",
+      "props": {
+        "columns": [
+          "Skill",
+          "档期",
+          "状态"
+        ],
+        "rows": [
+          [
+            "price-alert",
+            "30min",
+            "28h 未跑，超 2× 档期几十倍"
+          ],
+          [
+            "utoken-watch",
+            "2h",
+            "28h 未跑（上次还失败了）"
+          ],
+          [
+            "token-movers / onchain-monitor / token-pick",
+            "日更 12:00",
+            "错过 09-02 整轮，距上次成功已 ~44h"
+          ],
+          [
+            "picks-tracker",
+            "周日档",
+            "未受影响"
+          ]
+        ]
+      },
+      "children": []
+    },
+    "sep3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "stack-sugg": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "heading-sugg",
+        "text-sugg-1",
+        "text-sugg-2",
+        "text-sugg-3"
+      ]
+    },
+    "heading-sugg": {
+      "type": "Heading",
+      "props": {
+        "level": "h2",
+        "text": "建议"
+      },
+      "children": []
+    },
+    "text-sugg-1": {
+      "type": "Text",
+      "props": {
+        "text": "1. 根治调度器：cron tick 第 8 次失效（历次最长 62h，本次已 ~28h 且持续）——加 uptime pinger 补位 + tick 冗余"
+      },
+      "children": []
+    },
+    "text-sugg-2": {
+      "type": "Text",
+      "props": {
+        "text": "2. 检查 scheduler workflow 是否静默失败/被禁用（Actions 日志）"
+      },
+      "children": []
+    },
+    "text-sugg-3": {
+      "type": "Text",
+      "props": {
+        "text": "3. 恢复后观察 12:00 日更档是否 catch-up"
+      },
+      "children": []
+    }
+  }
+}

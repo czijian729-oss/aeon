@@ -42,6 +42,7 @@ tmp_*
 *.tmp
 .*-tmp.md
 .*-draft.md
+.*-notify-*.md
 .*-msg.txt
 *_msg.txt
 *_raw.txt
