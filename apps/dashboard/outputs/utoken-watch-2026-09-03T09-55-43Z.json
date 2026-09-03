@@ -1,0 +1,151 @@
+{
+  "root": "card",
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "µToken watch"
+      },
+      "children": [
+        "main-stack"
+      ]
+    },
+    "main-stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "tweet-section",
+        "sep",
+        "status-section"
+      ]
+    },
+    "tweet-section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "tweet-headline",
+        "tweet-card",
+        "tweet-link",
+        "tweet-assess"
+      ]
+    },
+    "tweet-headline": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "tweet-badge",
+        "tweet-time"
+      ]
+    },
+    "tweet-badge": {
+      "type": "Badge",
+      "props": {
+        "text": "新推文"
+      }
+    },
+    "tweet-time": {
+      "type": "Text",
+      "props": {
+        "text": "@uTokenPro · 09-03 07:48Z",
+        "variant": "caption"
+      }
+    },
+    "tweet-card": {
+      "type": "TweetCard",
+      "props": {
+        "author": "uTokenPro",
+        "handle": "@uTokenPro",
+        "text": "🏗️🟣"
+      }
+    },
+    "tweet-link": {
+      "type": "Link",
+      "props": {
+        "label": "x.com/uTokenPro/status/2095418666212843882",
+        "href": "https://x.com/uTokenPro/status/2095418666212843882"
+      }
+    },
+    "tweet-assess": {
+      "type": "Alert",
+      "props": {
+        "type": "info",
+        "title": "施工信号非发射",
+        "message": "当前为施工信号，项目尚未进入发射阶段。"
+      }
+    },
+    "sep": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "status-section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "status-head",
+        "status-grid"
+      ]
+    },
+    "status-head": {
+      "type": "Heading",
+      "props": {
+        "text": "状态",
+        "level": "h4"
+      }
+    },
+    "status-grid": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "sm"
+      },
+      "children": [
+        "dev-wallet-stat",
+        "factory-badge",
+        "launchpad-badge",
+        "site-badge"
+      ]
+    },
+    "dev-wallet-stat": {
+      "type": "Stat",
+      "props": {
+        "label": "dev 钱包最新活动",
+        "value": "09-01 19:08Z"
+      }
+    },
+    "factory-badge": {
+      "type": "Badge",
+      "props": {
+        "text": "factory 未部署代币",
+        "variant": "secondary"
+      }
+    },
+    "launchpad-badge": {
+      "type": "Badge",
+      "props": {
+        "text": "launchpad 未开放",
+        "variant": "secondary"
+      }
+    },
+    "site-badge": {
+      "type": "Badge",
+      "props": {
+        "text": "官网 200",
+        "variant": "default"
+      }
+    }
+  }
+}
