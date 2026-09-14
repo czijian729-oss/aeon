@@ -1,10 +1,10 @@
 {
   "skill": "utoken-watch",
-  "last_analyzed": "2026-09-04T07:35:35Z",
-  "quality_score": 4,
-  "assessment": "结构清晰、数据详实的监测报告：对 dev 新交易做了准确信号判定（非发射），诚实说明限流回退与 read-only 沙箱致 state 无法落盘的结构性问题，并给出可执行的后续盯盘点。",
+  "last_analyzed": "2026-09-14T14:48:40Z",
+  "quality_score": 5,
+  "assessment": "Detailed, well-sourced report that corrects a prior misjudgment, identifies root causes for the missed detection, and documents the data-source change — insightful and actionable.",
   "flags": [],
-  "avg_score": 4.27,
+  "avg_score": 4.31,
   "history": [
     {
       "date": "2026-08-18",
@@ -65,6 +65,10 @@
     {
       "date": "2026-09-04",
       "score": 4
+    },
+    {
+      "date": "2026-09-14",
+      "score": 5
     }
   ]
 }

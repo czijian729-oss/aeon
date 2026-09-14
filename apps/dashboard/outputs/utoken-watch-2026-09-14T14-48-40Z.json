@@ -1,0 +1,65 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "⚠️ µToken watch"
+      },
+      "children": [
+        "alert1",
+        "statsGrid",
+        "mintNote"
+      ]
+    },
+    "alert1": {
+      "type": "Alert",
+      "props": {
+        "title": "🔓 µToken launchpad 已开放（更正）",
+        "message": "官网列出 281 个代币，最早 2026-08-18T19:38Z。最新代币 ETHYP 今日 06:56Z 铸造。",
+        "type": "warning"
+      }
+    },
+    "statsGrid": {
+      "type": "Grid",
+      "props": {
+        "columns": 3,
+        "gap": "md"
+      },
+      "children": [
+        "statTokens",
+        "statEarliest",
+        "statLatest"
+      ]
+    },
+    "statTokens": {
+      "type": "Stat",
+      "props": {
+        "label": "官网代币总数",
+        "value": "281"
+      }
+    },
+    "statEarliest": {
+      "type": "Stat",
+      "props": {
+        "label": "最早代币",
+        "value": "2026-08-18T19:38Z"
+      }
+    },
+    "statLatest": {
+      "type": "Stat",
+      "props": {
+        "label": "最新代币",
+        "value": "ETHYP"
+      }
+    },
+    "mintNote": {
+      "type": "Text",
+      "props": {
+        "text": "最新代币 ETHYP 今日 06:56Z 铸造。",
+        "variant": "caption"
+      }
+    }
+  }
+}
