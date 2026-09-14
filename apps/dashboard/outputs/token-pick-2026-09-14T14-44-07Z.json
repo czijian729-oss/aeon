@@ -1,0 +1,41 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "token-pick",
+        "description": "token-movers::deep-dive"
+      },
+      "children": [
+        "stack"
+      ]
+    },
+    "stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "badge",
+        "body"
+      ]
+    },
+    "badge": {
+      "type": "Badge",
+      "props": {
+        "text": "token-movers::deep-dive",
+        "variant": "outline"
+      }
+    },
+    "body": {
+      "type": "Text",
+      "props": {
+        "text": "需要某个代币的深度报告？回复一个币种代码或合约地址即可。",
+        "variant": "body"
+      }
+    }
+  }
+}

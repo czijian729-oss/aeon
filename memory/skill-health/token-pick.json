@@ -1,8 +1,8 @@
 {
   "skill": "token-pick",
-  "last_analyzed": "2026-09-01T13:34:24Z",
+  "last_analyzed": "2026-09-14T14:44:07Z",
   "quality_score": 5,
-  "assessment": "Substantive, well-sourced token-pick report: ARB pick with detailed 12-point scoring, named structural catalyst and unlock risk with cited URLs, plus a Polymarket prediction with explicit fair-value estimate and edge calc. Actionable and specific, not boilerplate.",
+  "assessment": "Substantive daily token pick with concrete on-chain data, clear scoring breakdown, dedup reasoning, three specific risks (notably a valuable name-collision warning), and a prediction-market pick — well-sourced and actionable.",
   "flags": [],
   "avg_score": 5,
   "history": [
@@ -32,6 +32,10 @@
     },
     {
       "date": "2026-09-01",
+      "score": 5
+    },
+    {
+      "date": "2026-09-14",
       "score": 5
     }
   ]
