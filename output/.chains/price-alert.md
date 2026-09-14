@@ -1,34 +1,31 @@
-Run complete. No gate fired — clean run, no notification sent (per skill: silent on OK).
+Run complete — no gate fired, so no notification (correct behavior; a clean run stays silent).
 
-## 运行报告：price-alert（2026-09-04）
+## Price Threshold Alert
 
-**Token**: AEON（`0xbf8e…aba3` · base）
+- **Skill**: price-alert
+- **Token**: AEON (`0xbf8e8f0e8866a7052f948c16508644347c57aba3`, base)
+- **Current**: $2.002e-5 — deepest Base pool (Uniswap, $433K liquidity), `0x4a9b9e13…c9cfd4`
+- **1h**: −0.6% · **24h**: −8.4%
+- **ATH**: $3.897e-5（2026-08-23 08:22 UTC 记录）— 未刷新
+- **Sharp-move gate**: QUIET（阈值 ±20%，实际 −0.6%）
+- **Targets evaluated**: none（操作者未设目标价）
+- **Verdicts fired**: NONE
+- **Notifications sent**: 0
+- **Status**: `PRICE_ALERT_OK`
 
-**最新价格**（来自 DexScreener 最深流动性池，liq $459.8K）：
-- 现价：**$0.00002223**（$2.223e-5）
-- 1h：**+0.61%**
-- 24h：**+38.43%**
+**判定说明**：当前价 $2.002e-5 低于历史高点 $3.897e-5（约 −48.6%），1h 波动 −0.6% 远低于 ±20% 阈值，且无操作者目标价待触发。三个门全部静默，按 skill 约定不发通知。
 
-**三门闸门评估**：
-| 闸门 | 判定 | 说明 |
-|------|------|------|
-| ATH | 🟢 UNCHANGED | 现价 $2.223e-5 < 历史高点 $3.897e-5（08-23 创下），ATH 不变 |
-| Sharp 1h | 🟢 QUIET | \|+0.61%\| < 20%，无剧烈波动 |
-| Operator Target | 🟢 NONE | 当前无已设目标价 |
-
-**Verdict**: NONE fired → **Status: PRICE_ALERT_OK**
-
-**已执行**：
-1. 状态文件 `memory/topics/price-alert-state.json` 原子更新 `last_run_at=2026-09-04T07:24:28Z`，jq 校验通过，`.bak` 已轮转
-2. 追加日志至 `memory/logs/2026-09-04.md`（Price Threshold Alert 块）
-
-**未发送通知**：无闸门触发，保持静默（符合 skill 设计——正常日不打扰）。
-
-**备注**：24h +38.4% 值得留意，但 1h 仅 +0.6%，未达 ±20% 的 sharp-move 阈值，按规则不报。若接下来 1h 出现同量级脉冲会触发告警。
+**数据来源**：DexScreener keyless API（`curl` 直连，`http=200`），从 11 个 Base 池中取流动性最深的 Uniswap 池价作为基准价。无回退、无 fetch 失败。
 
 ## Summary
-- 读取 SKILL.md、memory 索引、state 文件及近期日志，解析 Tracked Token（AEON/base）
-- curl 拉取 DexScreener 数据，选择 base 链最深池（liq $459,793.91）作为基准：$0.00002223，1h +0.61%，24h +38.43%
-- ATH / sharp-move / target 三门闸门均未触发，无通知
-- 修改：`memory/topics/price-alert-state.json`（更新 last_run_at）、新建 `memory/logs/2026-09-04.md`
-- 后续动作：无（常规干净运行）
+
+- 读取 `skills/price-alert/SKILL.md`、`memory/MEMORY.md`（Tracked Token: AEON/base）及既有 state 文件。
+- `var` 为空 → `MODE=execute`，`TARGETS=()`。
+- 拉取 DexScreener，选定最深 Base 池（Uniswap，$433,054 流动性）取价 `$0.00002002`。
+- 评估三处 gate：ATH 未刷新（低于 $3.897e-5）、sharp-move 静默（−0.64%）、无目标价 → `PRICE_ALERT_OK`。
+- **文件修改**：
+  - `memory/topics/price-alert-state.json` — 仅更新 `last_run_at` → `2026-09-14T14:41:25Z`（ATH / last_alerts / targets 保持不变），写入经 tmpfile + `json.load` 校验。
+  - `memory/topics/price-alert-state.json.bak` — 滚动备份。
+  - `memory/logs/2026-09-14.md` — 新建并追加本次 log block。
+- **未发送通知**（无 gate 触发）。
+- **后续无需人工介入**。注意：state 显示自 2026-09-04 以来本 skill 已停跑 10 天（调度器停摆历史问题，`heartbeat` 已有记录）；本次为手动/补跑。
