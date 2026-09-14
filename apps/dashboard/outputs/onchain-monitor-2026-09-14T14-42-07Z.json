@@ -1,0 +1,105 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "onchain-monitor",
+        "description": "链上监控 · add-address"
+      },
+      "children": [
+        "badge",
+        "alert",
+        "sep",
+        "chains-label",
+        "chains-stack",
+        "hint"
+      ]
+    },
+    "badge": {
+      "type": "Badge",
+      "props": {
+        "text": "onchain-monitor::add-address",
+        "variant": "secondary"
+      }
+    },
+    "alert": {
+      "type": "Alert",
+      "props": {
+        "title": "链上监控还没配地址",
+        "message": "回一条想盯的 0x 钱包，我就开始盯它的大额进出。",
+        "type": "info"
+      }
+    },
+    "sep": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "chains-label": {
+      "type": "Text",
+      "props": {
+        "text": "支持的链（可在地址后附带）",
+        "variant": "muted"
+      }
+    },
+    "chains-stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "chain-base",
+        "chain-ethereum",
+        "chain-arbitrum",
+        "chain-optimism",
+        "chain-polygon"
+      ]
+    },
+    "chain-base": {
+      "type": "Badge",
+      "props": {
+        "text": "base",
+        "variant": "outline"
+      }
+    },
+    "chain-ethereum": {
+      "type": "Badge",
+      "props": {
+        "text": "ethereum",
+        "variant": "outline"
+      }
+    },
+    "chain-arbitrum": {
+      "type": "Badge",
+      "props": {
+        "text": "arbitrum",
+        "variant": "outline"
+      }
+    },
+    "chain-optimism": {
+      "type": "Badge",
+      "props": {
+        "text": "optimism",
+        "variant": "outline"
+      }
+    },
+    "chain-polygon": {
+      "type": "Badge",
+      "props": {
+        "text": "polygon",
+        "variant": "outline"
+      }
+    },
+    "hint": {
+      "type": "Text",
+      "props": {
+        "text": "格式示例：0x… base",
+        "variant": "caption"
+      }
+    }
+  }
+}
