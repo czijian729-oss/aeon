@@ -1,0 +1,31 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "token-movers",
+        "description": "deep-dive"
+      },
+      "children": [
+        "badge",
+        "text"
+      ]
+    },
+    "badge": {
+      "type": "Badge",
+      "props": {
+        "text": "deep-dive",
+        "variant": "secondary"
+      }
+    },
+    "text": {
+      "type": "Text",
+      "props": {
+        "text": "想要某个异动币的深度报告？直接回复代码或合约地址。",
+        "variant": "body"
+      }
+    }
+  }
+}

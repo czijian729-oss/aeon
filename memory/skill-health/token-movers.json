@@ -1,10 +1,10 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-09-01T13:28:55Z",
+  "last_analyzed": "2026-09-14T14:43:27Z",
   "quality_score": 4,
-  "assessment": "Substantive daily movers report with specific tickers, volume figures, risk labels (CAPITULATION/PUMP-RISK), market breadth context, and proper notification/logging — well-structured and actionable.",
+  "assessment": "Well-structured token movers report with market-pulse context, winners/losers/trending tables, and cross-referenced notable events (LSK -49.8% 24h vs +461% 7d); substantive and actionable with no blocking errors.",
   "flags": [],
-  "avg_score": 4.2,
+  "avg_score": 4.17,
   "history": [
     {
       "date": "2026-08-18",
@@ -24,6 +24,10 @@
     },
     {
       "date": "2026-09-01",
+      "score": 4
+    },
+    {
+      "date": "2026-09-14",
       "score": 4
     }
   ]
