@@ -1,8 +1,8 @@
 {
   "skill": "price-alert",
-  "last_analyzed": "2026-09-14T14:41:40Z",
+  "last_analyzed": "2026-09-15T07:32:22Z",
   "quality_score": 4,
-  "assessment": "Clean price-alert run: all three gates evaluated (ATH not broken, sharp-move quiet at −0.6%, no operator targets), verdict documented with source (DexScreener http=200) and state file updates; a legitimate no-op correctly stayed silent.",
+  "assessment": "Legitimate no-signal run: all three gates (ATH, volatility, target) evaluated with concrete figures, data source verified (http=200), state/log persisted, and a leftover-file follow-up flagged — full transparency for a clean no-op.",
   "flags": [],
   "avg_score": 3.9,
   "history": [
@@ -120,6 +120,10 @@
     },
     {
       "date": "2026-09-14",
+      "score": 4
+    },
+    {
+      "date": "2026-09-15",
       "score": 4
     }
   ]
