@@ -1,8 +1,8 @@
 {
   "skill": "token-pick",
-  "last_analyzed": "2026-09-14T14:44:07Z",
+  "last_analyzed": "2026-09-24T13:28:18Z",
   "quality_score": 5,
-  "assessment": "Substantive daily token pick with concrete on-chain data, clear scoring breakdown, dedup reasoning, three specific risks (notably a valuable name-collision warning), and a prediction-market pick — well-sourced and actionable.",
+  "assessment": "两条结构化 pick（代币 VERGE402 + 预测市场 Fed 加息）均含具体指标、评分明细、真产品逐项验证、催化剂与风险，且诚实标注无数据项不加分，逻辑严谨、来源明确、可操作性强。",
   "flags": [],
   "avg_score": 5,
   "history": [
@@ -36,6 +36,10 @@
     },
     {
       "date": "2026-09-14",
+      "score": 5
+    },
+    {
+      "date": "2026-09-24",
       "score": 5
     }
   ]

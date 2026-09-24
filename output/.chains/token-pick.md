@@ -1,1 +1,1 @@
-[token-movers::deep-dive] 需要某个代币的深度报告？回复一个币种代码或合约地址即可。
+[token-movers::deep-dive] 想要某个代币的深度报告？回复一个代码或合约地址即可。
