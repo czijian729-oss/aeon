@@ -1,24 +1,38 @@
-🚨 🔴 调度器停摆 10 天（第 9 次）
+🚨 舰队心跳 — 调度器第 10 次失效
 
-## 🔴 调度器停摆第 9 次 — 本次约 10 天（历史最长）
+## 🔴 舰队心跳 — 调度器第 10 次失效
 
-**恢复时间：** 2026-09-14 14:40 UTC（本次 heartbeat 为补位触发，非日常 cron）
+**全舰队 cron 停摆 ~239h**（2026-09-14 14:43 UTC → 现在），是历次最长窗口之一。
 
-### 时间线
-- 最后一次成功运行：**2026-09-04 07:37 UTC**
-- 静默时长：**约 248 小时（10 天）** — 此前最长 62h，本次刷新纪录
-- 14:40 UTC 调度器 catch-up，一次性补派 6 个 skill：price-alert ✅、onchain-monitor ✅、token-pick / token-movers / utoken-watch / heartbeat 在途
+### 本轮形态与前几次不同
 
-### 两个需要决定的问题
+调度器**并非完全静默** —— 这 10 天里它零星派发了 4 次 `price-alert`（09-15 / 09-16 / 09-21 / 09-23），但 `*/30` 的预期约 **477** 次，实际 ≈ **0.8%**。其余 6 个 cron skill **一次未派发**。
 
-**1. 停摆是复发的，不是偶发**
+> cron tick 部分存活、按 skill 的匹配/派发逻辑异常 —— 比"整体被禁用"更可能是根因，建议优先查这一层。
 
-08-18 起累计第 9 次（见 `memory/logs/` 08-21 / 08-23 / 08-25 / 08-26 / 08-30 / 08-31 / 09-01 / 09-03）。此前每次修复建议都是「uptime pinger 补位 + tick 冗余」，但每次都是自行恢复后不了了之 —— 说明根因从未被定位。本次 248h 已超出所有历史值，靠自愈等不到了。
+### 🟡 停摆导致的产出缺口
 
-**2. 自愈闭环根本没开**
+| Skill | 调度 | 上次成功 | 缺口 |
+|---|---|---|---|
+| token-pick | 12:00 每日 | 09-14 | 10 天 |
+| token-movers | 12:00 每日 | 09-14 | 10 天 |
+| onchain-monitor | 12:00 每日 | 09-14 | 10 天 |
+| heartbeat | 08:00 每日 | 09-14 | 10 天 |
+| price-alert | */30 | 09-23 | 30h |
+| picks-tracker | 周日 09:00 | 08-30 | 3 个周期 |
 
-`skill-health`（评分 + 建 issue）和 `skill-repair`（按 PR 修复）在 `aeon.yml` 里都是 `enabled: false`，`memory/issues/INDEX.md` 至今为空。也就是说：**这个仓库目前没有任何自动兜底**，skill 挂了只能等 heartbeat 被动撞见 —— 而 heartbeat 自己也在停摆期间没跑。09-02 的 utoken-watch 失败就是这么被漏掉的。
+**无 failed 态 skill** —— cron-state 内全部 `last_status=success`，`consecutive_failures` 全为 0，成功率 89%–100%。**没有一个是 skill 自身坏了，全部是"没被派发"。**
 
-### 次要项
-- `utoken-watch` / `token-pick` 的 read-only 900s 超时（`harness run exceeded --timeout 900s`）：utoken-watch 4 败 / 19 跑，任务体量需拆分或单独加长 timeout。
-- 无 open PR；GitHub issues 已禁用；MEMORY.md 无待跟进 flagged 项。
+### 🟡 自愈闭环仍未启用
+
+`skill-health` 与 `skill-repair` 在 `aeon.yml` 中依旧 `enabled: false`，`memory/issues/INDEX.md` 空。停摆期间 heartbeat 自身也不运行 → 期间任何 skill 失败都是**完全盲区**（09-02 的 utoken-watch 失败就是这样漏掉的）。
+
+### 建议
+
+1. **查调度器派发逻辑** —— 重点看为什么 price-alert 能过、其余 6 个不能过；检查 scheduler workflow 的 cron 匹配与 catch-up 分支。
+2. **启用 `skill-health` + `skill-repair`** —— 停摆时没有第二个发现机制。
+3. `token-pick` 的 900s read-only 超时仍未处理（1 失败 / 9 运行）。
+
+---
+
+*P1：无 open PR；GitHub issues 已禁用 · P2：MEMORY.md 无待跟进项 · 状态页已更新（🔴 DEGRADED）*
