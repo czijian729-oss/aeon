@@ -1,1 +1,1 @@
-[onchain-monitor::add-address] 链上监控还没配地址。回一条想盯的 0x 钱包（可带链：base / ethereum / arbitrum / optimism / polygon），我就开始盯它的大额进出。
+[onchain-monitor::add-address] 还没有监控地址。粘贴一个即可开始监控——0x… 钱包，可选加链名（如 base / ethereum / arbitrum）。
