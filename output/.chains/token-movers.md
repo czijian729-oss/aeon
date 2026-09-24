@@ -1,1 +1,1 @@
-[token-movers::deep-dive] 想要某个异动币的深度报告？直接回复代码或合约地址。
+[token-movers::deep-dive] 想要哪只的深度报告？回一个代号或合约地址即可（例：ONDO / MET / WIF）。

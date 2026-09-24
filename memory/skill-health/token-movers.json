@@ -1,10 +1,10 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-09-14T14:43:27Z",
+  "last_analyzed": "2026-09-24T13:25:48Z",
   "quality_score": 4,
-  "assessment": "Well-structured token movers report with market-pulse context, winners/losers/trending tables, and cross-referenced notable events (LSK -49.8% 24h vs +461% 7d); substantive and actionable with no blocking errors.",
+  "assessment": "Substantive token-movers digest in Chinese with ranked gainers/losers, vol/mcap context, and specific notable picks (ONDO, BP, MET) including cross-day repeat observations — well-structured and actionable.",
   "flags": [],
-  "avg_score": 4.17,
+  "avg_score": 4.14,
   "history": [
     {
       "date": "2026-08-18",
@@ -28,6 +28,10 @@
     },
     {
       "date": "2026-09-14",
+      "score": 4
+    },
+    {
+      "date": "2026-09-24",
       "score": 4
     }
   ]
