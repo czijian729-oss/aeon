@@ -1,7 +1,7 @@
 {
   "heartbeat": {
-    "last_dispatch": "2026-09-24T13:23:05Z",
-    "last_status": "success",
+    "last_dispatch": "2026-09-25T15:30:33Z",
+    "last_status": "dispatched",
     "last_success": "2026-09-24T13:25:35Z",
     "total_runs": 12,
     "total_successes": 12,
@@ -10,7 +10,7 @@
     "success_rate": 1
   },
   "token-pick": {
-    "last_status": "success",
+    "last_status": "dispatched",
     "last_success": "2026-09-24T13:28:26Z",
     "total_runs": 10,
     "total_successes": 9,
@@ -18,13 +18,13 @@
     "consecutive_failures": 0,
     "success_rate": 0.9,
     "last_quality_score": 5,
-    "last_dispatch": "2026-09-24T13:23:05Z",
+    "last_dispatch": "2026-09-25T15:30:33Z",
     "last_failed": "2026-08-30T14:36:02Z",
     "last_error": "read-only: workspace write-locked via bwrap error: harness run exceeded --timeout 900s "
   },
   "price-alert": {
-    "last_dispatch": "2026-09-24T13:23:05Z",
-    "last_status": "success",
+    "last_dispatch": "2026-09-25T15:30:33Z",
+    "last_status": "dispatched",
     "last_success": "2026-09-24T13:24:33Z",
     "total_runs": 34,
     "total_successes": 34,
@@ -34,8 +34,8 @@
     "last_quality_score": 4
   },
   "token-movers": {
-    "last_dispatch": "2026-09-24T13:23:05Z",
-    "last_status": "success",
+    "last_dispatch": "2026-09-25T15:30:33Z",
+    "last_status": "dispatched",
     "last_success": "2026-09-24T13:25:55Z",
     "total_runs": 7,
     "total_successes": 7,
@@ -45,8 +45,8 @@
     "last_quality_score": 4
   },
   "onchain-monitor": {
-    "last_dispatch": "2026-09-24T13:23:05Z",
-    "last_status": "success",
+    "last_dispatch": "2026-09-25T15:30:33Z",
+    "last_status": "dispatched",
     "last_success": "2026-09-24T13:24:47Z",
     "total_runs": 8,
     "total_successes": 8,
