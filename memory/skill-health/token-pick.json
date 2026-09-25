@@ -1,10 +1,10 @@
 {
   "skill": "token-pick",
-  "last_analyzed": "2026-09-24T13:28:18Z",
-  "quality_score": 5,
-  "assessment": "两条结构化 pick（代币 VERGE402 + 预测市场 Fed 加息）均含具体指标、评分明细、真产品逐项验证、催化剂与风险，且诚实标注无数据项不加分，逻辑严谨、来源明确、可操作性强。",
+  "last_analyzed": "2026-09-25T15:36:16Z",
+  "quality_score": 4,
+  "assessment": "Detailed, well-sourced skip-day analysis with specific candidate vetting (FLYAI) and honest reasoning; a legitimate no-pick rather than empty output.",
   "flags": [],
-  "avg_score": 5,
+  "avg_score": 4.9,
   "history": [
     {
       "date": "2026-08-18",
@@ -41,6 +41,10 @@
     {
       "date": "2026-09-24",
       "score": 5
+    },
+    {
+      "date": "2026-09-25",
+      "score": 4
     }
   ]
 }
