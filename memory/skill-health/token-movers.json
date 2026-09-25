@@ -1,10 +1,10 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-09-24T13:25:48Z",
+  "last_analyzed": "2026-09-25T15:32:56Z",
   "quality_score": 4,
-  "assessment": "Substantive token-movers digest in Chinese with ranked gainers/losers, vol/mcap context, and specific notable picks (ONDO, BP, MET) including cross-day repeat observations — well-structured and actionable.",
+  "assessment": "结构完整的代币涨跌报告，含涨幅/跌幅/热度榜与标签，数据翔实且对齐中文输出要求",
   "flags": [],
-  "avg_score": 4.14,
+  "avg_score": 4.13,
   "history": [
     {
       "date": "2026-08-18",
@@ -32,6 +32,10 @@
     },
     {
       "date": "2026-09-24",
+      "score": 4
+    },
+    {
+      "date": "2026-09-25",
       "score": 4
     }
   ]

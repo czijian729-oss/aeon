@@ -1,1 +1,1 @@
-[token-movers::deep-dive] 想要哪只的深度报告？回一个代号或合约地址即可（例：ONDO / MET / WIF）。
+[token-movers::deep-dive] Want a deep-dive report on a mover? Reply with a ticker or contract.
