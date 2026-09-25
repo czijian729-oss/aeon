@@ -1,0 +1,208 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "⚠️ Heartbeat · 调度器根因已定位",
+        "description": "skill: heartbeat · 2026-09-25"
+      },
+      "children": [
+        "h-title",
+        "fleet",
+        "sep1",
+        "h-root",
+        "root1",
+        "root2",
+        "root3",
+        "sep2",
+        "h-amp",
+        "amp1",
+        "amp2",
+        "sep3",
+        "h-overdue",
+        "table-overdue",
+        "overdue-note",
+        "sep4",
+        "h-rec",
+        "recs"
+      ]
+    },
+    "h-title": {
+      "type": "Heading",
+      "props": {
+        "text": "🟡 HEARTBEAT — 调度器根因已定位",
+        "level": "h2"
+      }
+    },
+    "fleet": {
+      "type": "Text",
+      "props": {
+        "text": "舰队现状：🟢 全部 skill 健康（6 个已启用 skill 全部 success，consecutive_failures 全为 0，无 stuck / 无 chronic failure）。本次 tick 已把 6 个 cron skill 一次性补派。问题不在 skill，在触发源。",
+        "variant": "lead"
+      }
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "h-root": {
+      "type": "Heading",
+      "props": {
+        "text": "根因（本轮首次查实）",
+        "level": "h3"
+      }
+    },
+    "root1": {
+      "type": "Alert",
+      "props": {
+        "type": "warning",
+        "title": "scheduler.yml 的 cron 从未被触发过",
+        "message": "本仓库 200 条已完成 workflow run 的事件类型只有 workflow_dispatch 一种，schedule 事件计数为 0。也就是说 on: schedule: '*/5 * * * *' 在 GitHub 侧从未投递，实际驱动调度的只有外部 uptime pinger 发来的 cron-tick（repository_dispatch）。"
+      }
+    },
+    "root2": {
+      "type": "Text",
+      "props": {
+        "text": "该 pinger 触发稀疏且高度不规则：近 30 天约 35 次，密集期每 10 分钟一次，稀疏期 24 小时才一次。此前 9 次「停摆」的全部形态由它解释。",
+        "variant": "body"
+      }
+    },
+    "root3": {
+      "type": "Badge",
+      "props": {
+        "text": "问题不在 skill，在触发源",
+        "variant": "destructive"
+      }
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "h-amp": {
+      "type": "Heading",
+      "props": {
+        "text": "二次放大：补位窗口对本仓库偏小",
+        "level": "h3"
+      }
+    },
+    "amp1": {
+      "type": "Text",
+      "props": {
+        "text": "cron-due.sh 默认 CATCHUP_HOURS=6，scheduler.yml 覆盖为 12。日级 skill（0 8 / 0 12）只有在 tick 落入 [调度时刻, +12h) 时才补派；落在 20:00–08:00 UTC 的 tick 一律跳过。",
+        "variant": "body"
+      }
+    },
+    "amp2": {
+      "type": "Text",
+      "props": {
+        "text": "验证：回溯近 30 天全部 19 次 tick，模型预测命中 19/19，零反例。落在 [12:00, 24:00) 的 tick（08-30 14:20、09-01 13:23、09-24 13:22）都补出了完整日级轮转；落在区间外的（08-28 00:36、09-15 07:30、09-23 07:23）全部跳过，当日只剩 30 分钟档期的 price-alert 在跑 —— 这正是 09-24 报告里「只有 price-alert 零星能过」之谜的答案。",
+        "variant": "body"
+      }
+    },
+    "sep3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "h-overdue": {
+      "type": "Heading",
+      "props": {
+        "text": "仍超期的项",
+        "level": "h3"
+      }
+    },
+    "table-overdue": {
+      "type": "Table",
+      "props": {
+        "columns": [
+          "Skill",
+          "档期",
+          "上次运行",
+          "缺口"
+        ],
+        "rows": [
+          [
+            "picks-tracker",
+            "周日 09:00",
+            "2026-08-30",
+            "26 天 / 5 个周期"
+          ],
+          [
+            "investigation-report",
+            "按需 dispatch",
+            "从未",
+            "依赖调度器"
+          ]
+        ]
+      }
+    },
+    "overdue-note": {
+      "type": "Text",
+      "props": {
+        "text": "picks-tracker 是唯一从未恢复到 30 天内的 skill。成因已完成推演：其 cron 0 9 * * 0 的 slot 落在 UTC weekday 的 [00:00, 12:00) 窗口，若唯一一次周日 tick 在 12:00 之后，补位窗口要到周一 09:00 才开始、而 [slot, slot+12h) 已过期 —— 两者叠加使周日档期极易整周丢失。",
+        "variant": "body"
+      }
+    },
+    "sep4": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "h-rec": {
+      "type": "Heading",
+      "props": {
+        "text": "建议（按优先级）",
+        "level": "h3"
+      }
+    },
+    "recs": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "rec1",
+        "rec2",
+        "rec3",
+        "rec4"
+      ]
+    },
+    "rec1": {
+      "type": "Text",
+      "props": {
+        "text": "1. 根治触发源 —— 降低对稀疏外部 pinger 的依赖，或显著提高其频率；这是 9 次「停摆」的共同根因。",
+        "variant": "body"
+      }
+    },
+    "rec2": {
+      "type": "Text",
+      "props": {
+        "text": "2. 放大日级 skill 的 CATCHUP_HOURS —— 使跨日 tick 仍能补位。",
+        "variant": "body"
+      }
+    },
+    "rec3": {
+      "type": "Text",
+      "props": {
+        "text": "3. 单独修正 picks-tracker 的周日档期补位逻辑。",
+        "variant": "body"
+      }
+    },
+    "rec4": {
+      "type": "Text",
+      "props": {
+        "text": "4. 启用 skill-health + skill-repair —— 建立第二发现机制；目前调度缺口期内 heartbeat 自身也不运行，是系统性盲区。",
+        "variant": "body"
+      }
+    }
+  }
+}

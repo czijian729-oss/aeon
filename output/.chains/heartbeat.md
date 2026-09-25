@@ -1,38 +1,33 @@
-🚨 舰队心跳 — 调度器第 10 次失效
+⚠️ Heartbeat · 调度器根因已定位
 
-## 🔴 舰队心跳 — 调度器第 10 次失效
+## 🟡 HEARTBEAT — 调度器根因已定位
 
-**全舰队 cron 停摆 ~239h**（2026-09-14 14:43 UTC → 现在），是历次最长窗口之一。
+**舰队现状：🟢 全部 skill 健康**（6 个已启用 skill 全部 `success`，`consecutive_failures` 全为 0，无 stuck / 无 chronic failure）。本次 tick 已把 6 个 cron skill 一次性补派。**问题不在 skill，在触发源。**
 
-### 本轮形态与前几次不同
+### 根因（本轮首次查实）
 
-调度器**并非完全静默** —— 这 10 天里它零星派发了 4 次 `price-alert`（09-15 / 09-16 / 09-21 / 09-23），但 `*/30` 的预期约 **477** 次，实际 ≈ **0.8%**。其余 6 个 cron skill **一次未派发**。
+**`scheduler.yml` 的 cron 从未被触发过。** 本仓库 200 条已完成 workflow run 的事件类型**只有 `workflow_dispatch` 一种**，`schedule` 事件计数为 **0**。也就是说 `on: schedule: '*/5 * * * *'` 在 GitHub 侧从未投递，实际驱动调度的只有外部 uptime pinger 发来的 `cron-tick`（`repository_dispatch`）。
 
-> cron tick 部分存活、按 skill 的匹配/派发逻辑异常 —— 比"整体被禁用"更可能是根因，建议优先查这一层。
+该 pinger 触发**稀疏且高度不规则**：近 30 天约 35 次，密集期每 10 分钟一次，稀疏期 24 小时才一次。此前 9 次「停摆」的全部形态由它解释。
 
-### 🟡 停摆导致的产出缺口
+### 二次放大：补位窗口对本仓库偏小
 
-| Skill | 调度 | 上次成功 | 缺口 |
-|---|---|---|---|
-| token-pick | 12:00 每日 | 09-14 | 10 天 |
-| token-movers | 12:00 每日 | 09-14 | 10 天 |
-| onchain-monitor | 12:00 每日 | 09-14 | 10 天 |
-| heartbeat | 08:00 每日 | 09-14 | 10 天 |
-| price-alert | */30 | 09-23 | 30h |
-| picks-tracker | 周日 09:00 | 08-30 | 3 个周期 |
+`cron-due.sh` 默认 `CATCHUP_HOURS=6`，`scheduler.yml` 覆盖为 **12**。日级 skill（`0 8` / `0 12`）只有在 tick 落入 **[调度时刻, +12h)** 时才补派；落在 20:00–08:00 UTC 的 tick 一律跳过。
 
-**无 failed 态 skill** —— cron-state 内全部 `last_status=success`，`consecutive_failures` 全为 0，成功率 89%–100%。**没有一个是 skill 自身坏了，全部是"没被派发"。**
+**验证：回溯近 30 天全部 19 次 tick，模型预测命中 19/19，零反例。** 落在 `[12:00, 24:00)` 的 tick（08-30 14:20、09-01 13:23、09-24 13:22）都补出了完整日级轮转；落在区间外的（08-28 00:36、09-15 07:30、09-23 07:23）全部跳过，当日只剩 30 分钟档期的 `price-alert` 在跑 —— 这正是 09-24 报告里「只有 price-alert 零星能过」之谜的答案。
 
-### 🟡 自愈闭环仍未启用
+### 仍超期的项
 
-`skill-health` 与 `skill-repair` 在 `aeon.yml` 中依旧 `enabled: false`，`memory/issues/INDEX.md` 空。停摆期间 heartbeat 自身也不运行 → 期间任何 skill 失败都是**完全盲区**（09-02 的 utoken-watch 失败就是这样漏掉的）。
+| Skill | 档期 | 上次运行 | 缺口 |
+|-------|------|----------|------|
+| picks-tracker | 周日 09:00 | 2026-08-30 | **26 天 / 5 个周期** |
+| investigation-report | 按需 dispatch | 从未 | 依赖调度器 |
 
-### 建议
+`picks-tracker` 是**唯一从未恢复到 30 天内的 skill**。成因已完成推演：其 cron `0 9 * * 0` 的 slot 落在 UTC weekday 的 [00:00, 12:00) 窗口，若唯一一次周日 tick 在 12:00 之后，补位窗口要到周一 09:00 才开始、而 `[slot, slot+12h)` 已过期 —— 两者叠加使周日档期极易整周丢失。
 
-1. **查调度器派发逻辑** —— 重点看为什么 price-alert 能过、其余 6 个不能过；检查 scheduler workflow 的 cron 匹配与 catch-up 分支。
-2. **启用 `skill-health` + `skill-repair`** —— 停摆时没有第二个发现机制。
-3. `token-pick` 的 900s read-only 超时仍未处理（1 失败 / 9 运行）。
+### 建议（按优先级）
 
----
-
-*P1：无 open PR；GitHub issues 已禁用 · P2：MEMORY.md 无待跟进项 · 状态页已更新（🔴 DEGRADED）*
+1. **根治触发源** —— 降低对稀疏外部 pinger 的依赖，或显著提高其频率；这是 9 次「停摆」的共同根因。
+2. **放大日级 skill 的 `CATCHUP_HOURS`** —— 使跨日 tick 仍能补位。
+3. **单独修正 `picks-tracker`** 的周日档期补位逻辑。
+4. **启用 `skill-health` + `skill-repair`** —— 建立第二发现机制；目前调度缺口期内 heartbeat 自身也不运行，是系统性盲区。
