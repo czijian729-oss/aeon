@@ -1,0 +1,308 @@
+{
+  "root": "card-root",
+  "state": {},
+  "elements": {
+    "card-root": {
+      "type": "Card",
+      "props": {
+        "title": "heartbeat · 调度器 67h 空窗",
+        "description": "heartbeat 自检报告"
+      },
+      "children": [
+        "alert-main",
+        "stats-row",
+        "sep-1",
+        "h-p0",
+        "text-p0-1",
+        "text-p0-2",
+        "badge-degraded",
+        "sep-2",
+        "h-fact",
+        "text-fact-1",
+        "text-fact-2",
+        "sep-3",
+        "h-window",
+        "text-window-1",
+        "alert-window",
+        "sep-4",
+        "h-p3",
+        "stats-p3",
+        "text-p3-1",
+        "text-p3-2",
+        "sep-5",
+        "h-blind",
+        "alert-blind",
+        "sep-6",
+        "h-rec",
+        "text-rec",
+        "text-rec-2",
+        "text-rec-3",
+        "text-rec-4"
+      ]
+    },
+    "alert-main": {
+      "type": "Alert",
+      "props": {
+        "title": "heartbeat 自检告警",
+        "message": "调度器出现 67h 派发空窗",
+        "type": "error"
+      }
+    },
+    "stats-row": {
+      "type": "Grid",
+      "props": {
+        "columns": 4,
+        "gap": "md"
+      },
+      "children": [
+        "stat-gap",
+        "stat-heartbeat",
+        "stat-skills",
+        "stat-rate"
+      ]
+    },
+    "stat-gap": {
+      "type": "Stat",
+      "props": {
+        "label": "派发空窗",
+        "value": "67h",
+        "delta": "09-25T15:30 → 09-28T10:50",
+        "trend": "down"
+      }
+    },
+    "stat-heartbeat": {
+      "type": "Stat",
+      "props": {
+        "label": "heartbeat last_success",
+        "value": "2026-09-25 15:34 UTC",
+        "delta": "67h 前 · > 36h 阈值",
+        "trend": "down"
+      }
+    },
+    "stat-skills": {
+      "type": "Stat",
+      "props": {
+        "label": "Skill 状态",
+        "value": "6/6 success",
+        "delta": "无 stuck / 无连续失败",
+        "trend": "neutral"
+      }
+    },
+    "stat-rate": {
+      "type": "Stat",
+      "props": {
+        "label": "最低 success_rate",
+        "value": "0.91",
+        "delta": "token-pick",
+        "trend": "neutral"
+      }
+    },
+    "sep-1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "h-p0": {
+      "type": "Heading",
+      "props": {
+        "text": "P0 — 无损坏 skill，但 heartbeat 自检触发 🔴",
+        "level": "h3"
+      }
+    },
+    "text-p0-1": {
+      "type": "Text",
+      "props": {
+        "text": "6 个 skill 全部 last_status=success；无 stuck、无连续失败、无 chronic failure（最低 success_rate = token-pick 0.91）。",
+        "variant": "body"
+      }
+    },
+    "text-p0-2": {
+      "type": "Text",
+      "props": {
+        "text": "heartbeat 自身 last_success = 2026-09-25 15:34 UTC，距今 67h（> 36h 阈值）→ 命中自检条款，公开状态页判为 🔴 DEGRADED。",
+        "variant": "body"
+      }
+    },
+    "badge-degraded": {
+      "type": "Badge",
+      "props": {
+        "text": "DEGRADED",
+        "variant": "destructive"
+      }
+    },
+    "sep-2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "h-fact": {
+      "type": "Heading",
+      "props": {
+        "text": "新增事实：09-26 / 09-27 全仓库零运行",
+        "level": "h3"
+      }
+    },
+    "text-fact-1": {
+      "type": "Text",
+      "props": {
+        "text": "09-25T15:30 → 09-28T10:50 = 67h 空窗，其间无任何 tick，也无任何 skill 日志。",
+        "variant": "body"
+      }
+    },
+    "text-fact-2": {
+      "type": "Text",
+      "props": {
+        "text": "今天 10:50 UTC 的 tick 已恢复，但只补派了 heartbeat（08:00 档期落在 12h 回溯窗内）与 price-alert（30 分钟档期）。",
+        "variant": "body"
+      }
+    },
+    "sep-3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "h-window": {
+      "type": "Heading",
+      "props": {
+        "text": "⚡ 未来 13 小时是关键窗口",
+        "level": "h3"
+      }
+    },
+    "text-window-1": {
+      "type": "Text",
+      "props": {
+        "text": "token-pick / token-movers / onchain-monitor 的档期是 12:00 UTC。按补位模型（CATCHUP_HOURS=12，判定锚定 tick 时刻回溯 12h），只有落在 [12:00, 24:00) UTC 的 tick 才能补上今天的日级轮转。",
+        "variant": "body"
+      }
+    },
+    "alert-window": {
+      "type": "Alert",
+      "props": {
+        "title": "断档风险",
+        "message": "若该窗口内没有 tick → token-pick / token-movers / onchain-monitor 将连续第 4 天断档。",
+        "type": "warning"
+      }
+    },
+    "sep-4": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "h-p3": {
+      "type": "Heading",
+      "props": {
+        "text": "P3 — picks-tracker 第 4 个周日连续丢失",
+        "level": "h3"
+      }
+    },
+    "stats-p3": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "md"
+      },
+      "children": [
+        "stat-p3-days",
+        "stat-p3-schedule"
+      ]
+    },
+    "stat-p3-days": {
+      "type": "Stat",
+      "props": {
+        "label": "picks-tracker 未运行",
+        "value": "29 天",
+        "delta": "自 2026-08-30 起（09-25 时为 26 天）",
+        "trend": "up"
+      }
+    },
+    "stat-p3-schedule": {
+      "type": "Stat",
+      "props": {
+        "label": "周日档期",
+        "value": "0 9 * * 0",
+        "delta": "整周落空",
+        "trend": "down"
+      }
+    },
+    "text-p3-1": {
+      "type": "Text",
+      "props": {
+        "text": "周日 09-27 同样无 tick，0 9 * * 0 档期再次整周落空（Sunday 09:00 超出回溯窗，tick 最早只能回溯到 Sun 22:00）。",
+        "variant": "body"
+      }
+    },
+    "text-p3-2": {
+      "type": "Text",
+      "props": {
+        "text": "自 2026-08-30 起 29 天未运行，是唯一从未恢复到档期内的 skill（09-25 时为 26 天）。",
+        "variant": "muted"
+      }
+    },
+    "sep-5": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "h-blind": {
+      "type": "Heading",
+      "props": {
+        "text": "盲区已具体化",
+        "level": "h3"
+      }
+    },
+    "alert-blind": {
+      "type": "Alert",
+      "props": {
+        "title": "第二发现机制缺失",
+        "message": "09-25 建议的「启用 skill-health + skill-repair」仍未处理。这两天空窗内没有任何日志条目 —— 若无 heartbeat，这段盲区不会被任何人发现。",
+        "type": "info"
+      }
+    },
+    "sep-6": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "h-rec": {
+      "type": "Heading",
+      "props": {
+        "text": "建议（按优先级）",
+        "level": "h3"
+      }
+    },
+    "text-rec": {
+      "type": "Text",
+      "props": {
+        "text": "1. 根治触发源：降低对稀疏外部 pinger 的依赖，或显著提高其频率（所有问题的上游）。",
+        "variant": "body"
+      }
+    },
+    "text-rec-2": {
+      "type": "Text",
+      "props": {
+        "text": "2. 对 0 8 / 0 12 日级 skill 放大 CATCHUP_HOURS。",
+        "variant": "body"
+      }
+    },
+    "text-rec-3": {
+      "type": "Text",
+      "props": {
+        "text": "3. 单独修正 picks-tracker 的周日档期补位。",
+        "variant": "body"
+      }
+    },
+    "text-rec-4": {
+      "type": "Text",
+      "props": {
+        "text": "4. 启用 skill-health + skill-repair，建立第二发现机制。",
+        "variant": "body"
+      }
+    }
+  }
+}
