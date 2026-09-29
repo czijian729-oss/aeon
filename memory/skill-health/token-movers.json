@@ -1,10 +1,10 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-09-25T15:32:56Z",
-  "quality_score": 4,
-  "assessment": "结构完整的代币涨跌报告，含涨幅/跌幅/热度榜与标签，数据翔实且对齐中文输出要求",
+  "last_analyzed": "2026-09-29T19:24:17Z",
+  "quality_score": 5,
+  "assessment": "Comprehensive Chinese-language movers report with specific prices/volumes/ranks, cross-day trend tracking, liquidity risk flags, and breakout/trending differentiation — substantive and actionable.",
   "flags": [],
-  "avg_score": 4.13,
+  "avg_score": 4.22,
   "history": [
     {
       "date": "2026-08-18",
@@ -37,6 +37,10 @@
     {
       "date": "2026-09-25",
       "score": 4
+    },
+    {
+      "date": "2026-09-29",
+      "score": 5
     }
   ]
 }
