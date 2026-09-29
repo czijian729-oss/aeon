@@ -1,0 +1,155 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "⚠️ Token Movers — 2026-09-29",
+        "description": "movers/coingecko 分支 — 本轮中止，未发布榜单"
+      },
+      "children": [
+        "alert1",
+        "note-authority",
+        "sep1",
+        "h-实际",
+        "table-paths",
+        "text-excluded",
+        "sep2",
+        "h-扫描结果",
+        "text-scan1",
+        "text-scan2",
+        "sep3",
+        "h-建议",
+        "text-rec1",
+        "text-rec2"
+      ]
+    },
+    "alert1": {
+      "type": "Alert",
+      "props": {
+        "title": "本轮未产出榜单",
+        "message": "CoinGecko /coins/markets 不可用，按技能约定中止。",
+        "type": "error"
+      }
+    },
+    "note-authority": {
+      "type": "Text",
+      "props": {
+        "text": "按 SKILL.md \"Network note\" 规定：movers/coingecko 分支下，markets 端点在 curl + WebFetch 各重试一次后仍失败 → 中止并通知，不发布部分或过时报告。",
+        "variant": "muted"
+      }
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "h-实际": {
+      "type": "Heading",
+      "props": {
+        "text": "实际发生了什么",
+        "level": "h2"
+      }
+    },
+    "table-paths": {
+      "type": "Table",
+      "props": {
+        "columns": [
+          "路径",
+          "端点",
+          "结果"
+        ],
+        "rows": [
+          [
+            "curl（匿名）",
+            "/coins/markets（250 币，1h/24h/7d）",
+            "首次 429（超匿名限速），退避后转为 403（CloudFront 阻断，919B HTML）"
+          ],
+          [
+            "curl（变体 ×3）",
+            "/coins/markets 少参数 / 显式 ids / URL 编码逗号",
+            "全部 403 / 429"
+          ],
+          [
+            "curl（User-Agent 伪装）",
+            "/coins/markets",
+            "403"
+          ],
+          [
+            "./secretcurl（demo key 头）",
+            "/coins/markets",
+            "401 — \"API Key Missing\" → COINGECKO_API_KEY 未配置"
+          ],
+          [
+            "WebFetch",
+            "/coins/markets",
+            "403"
+          ]
+        ]
+      }
+    },
+    "text-excluded": {
+      "type": "Text",
+      "props": {
+        "text": "已排除的解释：主机不可达 —— 同一主机同时刻 /ping、/global、/search/trending 均返回 200（trending 抓到 73,170B）。故障是 /coins/markets 路由级的，且与「无 demo key」相关（无 key 时该路由被 CloudFront 拒）。",
+        "variant": "body"
+      }
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "h-扫描结果": {
+      "type": "Heading",
+      "props": {
+        "text": "本次扫描结果",
+        "level": "h2"
+      }
+    },
+    "text-scan1": {
+      "type": "Text",
+      "props": {
+        "text": "Winners / Losers：无数据 — 未发布。按约定宁可空手也不发过时榜单。",
+        "variant": "body"
+      }
+    },
+    "text-scan2": {
+      "type": "Text",
+      "props": {
+        "text": "Trending：有数据但未发布 — /search/trending 抓取成功（200，73,170B），但按约定只有 markets 失败才整轮中止；单发 trending 属于部分报告，故不发送。",
+        "variant": "body"
+      }
+    },
+    "sep3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "h-建议": {
+      "type": "Heading",
+      "props": {
+        "text": "建议（可立即执行）",
+        "level": "h2"
+      }
+    },
+    "text-rec1": {
+      "type": "Text",
+      "props": {
+        "text": "1. 配置 COINGECKO_API_KEY（免费 Demo key 即可）。技能 frontmatter 已把它标为可选 COINGECKO_API_KEY?，但此环境下未配置，而这正是本次 /coins/markets 被拒的直接原因 — 加上 key 即可消除 403。",
+        "variant": "body"
+      }
+    },
+    "text-rec2": {
+      "type": "Text",
+      "props": {
+        "text": "2. 备选数据源已确认可用：GeckoTerminal networks/trending_pools 本次实测 200（31,765B），无需 key。把本 skill 的调度改为 geckoterminal 或在 CoinGecko 不可用时自动切换，即可让日线扫描恢复 — 本轮未擅自切换（会改变该 skill 的既定输出语义）。",
+        "variant": "body"
+      }
+    }
+  }
+}

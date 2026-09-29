@@ -5,6 +5,13 @@
   "assessment": "Comprehensive Chinese-language movers report with specific prices/volumes/ranks, cross-day trend tracking, liquidity risk flags, and breakout/trending differentiation — substantive and actionable.",
   "flags": [],
   "avg_score": 4.22,
+  "last_analyzed": "2026-09-29T19:29:02Z",
+  "quality_score": 3,
+  "assessment": "CoinGecko /coins/markets failure forced a convention-mandated abort — no movers list published, but the run delivered a thorough, well-structured incident diagnosis with actionable fixes.",
+  "flags": [
+    "api_error"
+  ],
+  "avg_score": 4,
   "history": [
     {
       "date": "2026-08-18",
@@ -41,6 +48,7 @@
     {
       "date": "2026-09-29",
       "score": 5
+      "score": 3
     }
   ]
 }
