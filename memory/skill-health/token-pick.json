@@ -1,10 +1,10 @@
 {
   "skill": "token-pick",
-  "last_analyzed": "2026-09-25T15:36:16Z",
+  "last_analyzed": "2026-09-29T19:27:25Z",
   "quality_score": 4,
-  "assessment": "Detailed, well-sourced skip-day analysis with specific candidate vetting (FLYAI) and honest reasoning; a legitimate no-pick rather than empty output.",
+  "assessment": "Substantive daily pick with a well-sourced Polymarket mispricing thesis (multi-source fair value, edge calc, risk) plus an honest, data-backed SKIP on tokens; minor mismatch between skill name and prediction-market focus.",
   "flags": [],
-  "avg_score": 4.9,
+  "avg_score": 4.82,
   "history": [
     {
       "date": "2026-08-18",
@@ -44,6 +44,10 @@
     },
     {
       "date": "2026-09-25",
+      "score": 4
+    },
+    {
+      "date": "2026-09-29",
       "score": 4
     }
   ]

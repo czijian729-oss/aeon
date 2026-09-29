@@ -1,0 +1,40 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "深度报告"
+      },
+      "children": [
+        "stack"
+      ]
+    },
+    "stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "alert",
+        "tag"
+      ]
+    },
+    "alert": {
+      "type": "Alert",
+      "props": {
+        "type": "info",
+        "message": "Want a deeper report on a token? Reply with a ticker or contract."
+      }
+    },
+    "tag": {
+      "type": "Badge",
+      "props": {
+        "text": "token-movers::deep-dive",
+        "variant": "secondary"
+      }
+    }
+  }
+}
