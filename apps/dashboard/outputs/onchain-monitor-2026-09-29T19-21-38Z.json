@@ -1,0 +1,112 @@
+{
+  "root": "root",
+  "state": {},
+  "elements": {
+    "root": {
+      "type": "Card",
+      "props": {
+        "title": "onchain-monitor · add-address",
+        "description": "监控钱包地址（钱包追踪）"
+      },
+      "children": [
+        "h1",
+        "alert1",
+        "sep1",
+        "chains-label",
+        "chain-stack",
+        "sep2",
+        "threshold-text"
+      ]
+    },
+    "h1": {
+      "type": "Heading",
+      "props": {
+        "text": "还没有在监控任何地址",
+        "level": "h2"
+      }
+    },
+    "alert1": {
+      "type": "Alert",
+      "props": {
+        "title": "未配置监控地址",
+        "message": "直接回复粘贴一个要监控的钱包 —— 0x… 地址，可附带链名（默认 ethereum）。",
+        "type": "info"
+      }
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "chains-label": {
+      "type": "Text",
+      "props": {
+        "text": "支持的链（可附带链名，默认 ethereum）",
+        "variant": "muted"
+      }
+    },
+    "chain-stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "chain-ethereum",
+        "chain-base",
+        "chain-arbitrum",
+        "chain-optimism",
+        "chain-polygon"
+      ]
+    },
+    "chain-ethereum": {
+      "type": "Badge",
+      "props": {
+        "text": "ethereum",
+        "variant": "secondary"
+      }
+    },
+    "chain-base": {
+      "type": "Badge",
+      "props": {
+        "text": "base",
+        "variant": "outline"
+      }
+    },
+    "chain-arbitrum": {
+      "type": "Badge",
+      "props": {
+        "text": "arbitrum",
+        "variant": "outline"
+      }
+    },
+    "chain-optimism": {
+      "type": "Badge",
+      "props": {
+        "text": "optimism",
+        "variant": "outline"
+      }
+    },
+    "chain-polygon": {
+      "type": "Badge",
+      "props": {
+        "text": "polygon",
+        "variant": "outline"
+      }
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "threshold-text": {
+      "type": "Text",
+      "props": {
+        "text": "默认阈值 ≥1000 美元，之后可改 memory/on-chain-watches.yml 调整。",
+        "variant": "body"
+      }
+    }
+  }
+}

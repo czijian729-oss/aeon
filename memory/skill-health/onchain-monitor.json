@@ -1,10 +1,10 @@
 {
   "skill": "onchain-monitor",
-  "last_analyzed": "2026-09-25T15:31:44Z",
+  "last_analyzed": "2026-09-29T19:21:38Z",
   "quality_score": 4,
-  "assessment": "Legitimate no-op (ON_CHAIN_NO_CONFIG) handled thoroughly — dedup logic explained, gap in watchlist flagged with a concrete AEON watch suggestion, no notification correctly per skill rules.",
+  "assessment": "Legitimate no-op (empty watchlist) reported clearly with state checks, a dedup-gated invitation, and an actionable recommendation to disable or seed fixed watches; substantive and well-structured.",
   "flags": [],
-  "avg_score": 3.75,
+  "avg_score": 3.78,
   "history": [
     {
       "date": "2026-08-18",
@@ -36,6 +36,10 @@
     },
     {
       "date": "2026-09-25",
+      "score": 4
+    },
+    {
+      "date": "2026-09-29",
       "score": 4
     }
   ]
