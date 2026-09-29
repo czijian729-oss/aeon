@@ -37,4 +37,4 @@ date,skill,model,input_tokens,output_tokens,cache_read,cache_creation
 2026-09-24,token-pick,deepseek-chat,100046,38971,2605824,0
 2026-09-25,token-pick,deepseek-chat,100545,47313,2589568,0
 2026-09-28,heartbeat,deepseek-chat,94413,31064,1244544,0
-2026-09-29,token-movers,deepseek-chat,98035,38646,2924288,0
+2026-09-29,heartbeat,deepseek-chat,99962,37838,1879936,0

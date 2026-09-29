@@ -1,0 +1,252 @@
+{
+  "root": "root",
+  "state": {},
+  "elements": {
+    "root": {
+      "type": "Card",
+      "props": {
+        "title": "heartbeat — 2026-09-29",
+        "description": "2026-09-29 19:23 UTC"
+      },
+      "children": [
+        "main"
+      ]
+    },
+    "main": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "status-alert",
+        "summary-text",
+        "sep1",
+        "h-dup",
+        "text-dup-intro",
+        "dup-table",
+        "text-dup-2",
+        "text-dup-3",
+        "alert-dup",
+        "sep2",
+        "h-overdue",
+        "overdue-table",
+        "text-overdue",
+        "sep3",
+        "h-mem",
+        "text-mem",
+        "sep4",
+        "h-rec",
+        "rec1",
+        "rec2",
+        "rec3",
+        "rec4",
+        "rec5"
+      ]
+    },
+    "status-alert": {
+      "type": "Alert",
+      "props": {
+        "type": "warning",
+        "title": "总体：🟡 WATCH",
+        "message": "无故障 skill；页面由上一轮 🔴 降为 🟡"
+      }
+    },
+    "summary-text": {
+      "type": "Text",
+      "props": {
+        "variant": "body",
+        "text": "本轮无 🔴 项。6 个 skill 全部 last_status=success，consecutive_failures 全为 0，无 stuck、无 chronic failure（最低 success_rate = token-pick 0.91）。上一轮触发 🔴 的 heartbeat 自检已降至 32.5h（< 36h 阈值），该条款清零。"
+      }
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "h-dup": {
+      "type": "Heading",
+      "props": {
+        "text": "⚠️ 新发现：同一 tick 内重复派发",
+        "level": "h3"
+      }
+    },
+    "text-dup-intro": {
+      "type": "Text",
+      "props": {
+        "variant": "body",
+        "text": "两个 scheduler: cron run 相隔 21 秒先后完成："
+      }
+    },
+    "dup-table": {
+      "type": "Table",
+      "props": {
+        "columns": [
+          "Run",
+          "Job 开始 → 结束",
+          "结果"
+        ],
+        "rows": [
+          [
+            "#36618469365",
+            "19:20:03 → 19:20:33",
+            "success"
+          ],
+          [
+            "#36618512759",
+            "19:20:36 → 19:21:26",
+            "success"
+          ]
+        ]
+      }
+    },
+    "text-dup-2": {
+      "type": "Text",
+      "props": {
+        "variant": "body",
+        "text": "均为 workflow_dispatch、attempt=1、success（非重试）。二者各自派发了全部 5 个 cron skill → 19:20:08–19:21:01 的 53 秒内共启动 10 个 skill run，每个 skill 本轮实际执行 2 次。"
+      }
+    },
+    "text-dup-3": {
+      "type": "Text",
+      "props": {
+        "variant": "body",
+        "text": "两个 job 在时间上并未重叠（间隔 3 秒），并发组已生效 → 成因更可能是第二个 run 读到了第一个 run 提交前的 cron-state.json（last_dispatch 水位线提交/读取竞态），而非并发失效。"
+      }
+    },
+    "alert-dup": {
+      "type": "Alert",
+      "props": {
+        "type": "warning",
+        "title": "首次观测",
+        "message": "这是补位「债务台账」模型上线以来首次观测到的重复派发形态。需下一次 tick 复现以确认——若持续，日级 skill 将以双倍频率运行，白耗 API 额度。"
+      }
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "h-overdue": {
+      "type": "Heading",
+      "props": {
+        "text": "🟡 超期项（持续中，09-28 已报过，此处仅列状态）",
+        "level": "h3"
+      }
+    },
+    "overdue-table": {
+      "type": "Table",
+      "props": {
+        "columns": [
+          "Skill",
+          "档期",
+          "上次成功",
+          "超期"
+        ],
+        "rows": [
+          [
+            "picks-tracker",
+            "0 9 * * 0",
+            "2026-08-30",
+            "30 天，连续 4 个周日丢失"
+          ],
+          [
+            "token-pick",
+            "0 12 * * *",
+            "2026-09-25",
+            "约 4 天（> 2× 日档期）"
+          ],
+          [
+            "token-movers",
+            "0 12 * * *",
+            "2026-09-25",
+            "约 4 天"
+          ],
+          [
+            "onchain-monitor",
+            "0 12 * * *",
+            "2026-09-25",
+            "约 4 天"
+          ]
+        ]
+      }
+    },
+    "text-overdue": {
+      "type": "Text",
+      "props": {
+        "variant": "body",
+        "text": "后三者本轮均已派发并正在运行，若成功则超期自动解除。picks-tracker 未派发 —— 其周日 09:00 档期落在 12h 回溯窗之外。"
+      }
+    },
+    "sep3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "h-mem": {
+      "type": "Heading",
+      "props": {
+        "text": "🔵 记忆",
+        "level": "h3"
+      }
+    },
+    "text-mem": {
+      "type": "Text",
+      "props": {
+        "variant": "body",
+        "text": "MEMORY.md 无 flagged 待跟进项。"
+      }
+    },
+    "sep4": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "h-rec": {
+      "type": "Heading",
+      "props": {
+        "text": "建议（按优先级）",
+        "level": "h3"
+      }
+    },
+    "rec1": {
+      "type": "Text",
+      "props": {
+        "variant": "body",
+        "text": "1. 排查本次重复派发 —— cron-state.json 水位线的提交/读取竞态（本轮唯一新信号）。"
+      }
+    },
+    "rec2": {
+      "type": "Text",
+      "props": {
+        "variant": "body",
+        "text": "2. 根治触发源 —— 降低对稀疏外部 pinger 的依赖（所有超期问题的上游）。"
+      }
+    },
+    "rec3": {
+      "type": "Text",
+      "props": {
+        "variant": "body",
+        "text": "3. 对 0 8 / 0 12 日级 skill 放大 CATCHUP_HOURS。"
+      }
+    },
+    "rec4": {
+      "type": "Text",
+      "props": {
+        "variant": "body",
+        "text": "4. 单独修正 picks-tracker 的周日档期补位逻辑。"
+      }
+    },
+    "rec5": {
+      "type": "Text",
+      "props": {
+        "variant": "body",
+        "text": "5. 启用 skill-health + skill-repair，补上调度缺口期内的自愈盲区。"
+      }
+    }
+  }
+}
