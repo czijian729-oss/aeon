@@ -1,62 +1,46 @@
-技能执行完毕。今日无任何门限触发 —— 按 skill 设计，OK 运行**不发送通知**。
+未触发任何门槛，`./notify` 保持静默（技能规定 OK 运行不通知）。以下是本轮实质输出。
 
 ---
 
-## Price Alert 运行报告 — 2026-09-28
+# price-alert 运行报告 — 2026-09-29
 
-**标的**：AEON (`0xbf8e8f0e8866a7052f948c16508644347c57aba3`, base)
-**当前价**：`$1.785e-05` ｜ 1h `+0.95%` ｜ 24h `−17.82%`
-**状态**：`PRICE_ALERT_OK`
+## 标的与价格
 
-### 数据来源
+| 项目 | 值 |
+|------|-----|
+| Token | `aeon` (Base) |
+| Contract | `0xbf8e8f0e8866a7052f948c16508644347c57aba3` |
+| 当前价 | **$2.1830e-05** |
+| 1h | −0.36% |
+| 24h | **+20.05%** |
+| 最深池 | uniswap `aeon/WETH`，liq **$470,568** |
 
-DexScreener 主路径 `curl` 返回 `http=200`（16,227 字节），`jq` 解析正常，未启用 WebFetch 兜底。返回的 12 个交易对**全部在 base 链**，无需跨链回退。
+- DexScreener 一次 `curl` 命中 `http=200`，`jq` 解析成功，**未启用 WebFetch 兜底**。
+- 返回 11 个 pair；其中 9 个是 `base` 链上的目标 token（另 2 个是同地址查询带出的无关币 JUNO / mmETH，已排除）。按 `.liquidity.usd` 取最深池，**无需 chain fallback**。
 
-按流动性选最深池：`uniswap aeon/WETH`，流动性 **$418,407.58** —— 是次深池（aerodrome aeon/USDC，$3,760）的 111 倍。该池 `priceUsd` 为本次唯一权威标记价。
+## 三道门槛判定
 
-| 池 | DEX | 流动性 | 价格 |
-|---|---|---|---|
-| aeon/WETH ✅ | uniswap | $418,407.58 | $1.785e-05 |
-| aeon/USDC | aerodrome | $3,760.34 | $1.771e-05 |
-| aeon/🌙8 | uniswap | $2,203.41 | $1.781e-05 |
+| 门槛 | 阈值 | 实测 | 判定 |
+|------|------|------|------|
+| ATH | 严格高于 $3.897e-05 | $2.183e-05（**低 44.0%**） | **未触发** — ATH 保持不变（单调不减约束成立） |
+| Sharp move | \|1h\| ≥ 20% | 0.36% | **QUIET** |
+| 目标价 | 无 `var` 目标 | — | 跳过 |
 
-### 门限判定
+**关于 24h +20.05%**：日线涨幅看着醒目，但它不是任何一道门槛的输入 —— sharp-move 门槛只看 1h（0.36%，远离 20% 阈值）。按技能「不做自由解读」的约束，这里只陈述事实，不延伸判断。
 
-**① ATH 门限 — 未触发**
-当前价 $1.785e-05，低于 2026-08-23 创下的历史高点 $3.897e-05，**低 54.2%**。ATH 字段保持不动（单调不减不变量已遵守），`last_alerts.ath` 亦不变。
+## 状态与日志
 
-**② 1h 急涨急跌门限 — 未触发**
-1h 波动 `+0.95%`，阈值 ±20%，差距悬殊。
-
-**③ 操作员目标价 — 无**
-本次 `var` 为空，`TARGETS=()`，状态文件中 `targets` 为空对象，无目标可评估。
-
-**结论**：无新 ATH、无急动、无目标穿越 —— 三重门限全部静默，这是本技能的预期正常态。24h `−17.82%` 虽跌幅明显，但属日线级别缓跌而非 1h 级事件，不满足 ping 条件（本技能只对同级别瞬时事件响应，不替代日线 digest）。
-
-### 状态与产出
-
-`memory/topics/price-alert-state.json` 已更新并校验：
-
-```json
-{"last_run_at":"2026-09-28T10:51:36Z","ath_price":0.00003897,"targets":0}
-```
-
-- `last_run_at`：`2026-09-25T15:31:36Z` → `2026-09-28T10:51:36Z`
-- `ath` / `last_alerts` / `targets`：**均未变更**（无事件发生）
-- 校验：`jq empty` 通过（`JQ_VALID`），未触发 `PRICE_ALERT_STATE_CORRUPT`
-- 通知：**0 条**（OK 运行按设计静默，避免噪音）
-
-`memory/logs/2026-09-28.md` 已新建并写入本次完整日志块。
-
-> 附注：`cp`（备份 `.bak`）被权限层拦截，故本次跳过滚动备份步骤；改为直接写入状态文件，并在写入前后均以 `jq` 校验。当前状态文件内容经人工核对无误，无损。
+- `memory/topics/price-alert-state.json`：`last_run_at` 由 `2026-09-28T10:51:36Z` 推进至 `2026-09-29T19:21:14Z`。`ath` / `last_alerts` / `targets` **均未变更**，写入后 `jq empty` 校验通过。
+- `memory/logs/2026-09-29.md`：已按模板追加 `### price-alert` 区块（本文件本轮新建）。
+- **去重核查**：近 3 天日志（09-27 无记录、09-28 已报、09-29 本条目为首次）中无任何重复信号需要压制 —— 本轮本就零触发。
 
 ## Summary
 
-- **执行**：price-alert skill，`var` 空 → `MODE=execute`，仅运行 ATH 与 sharp-move 两道门限。
-- **结果**：两道门限均未触发，判定 `PRICE_ALERT_OK`；AEON 现价 $1.785e-05 距 2026-08-23 历史高点 $3.897e-05 尚有 54.2% 空间。
-- **文件改动**：
-  - 修改 `memory/topics/price-alert-state.json`（仅 `last_run_at` 推进）
-  - 新建 `memory/logs/2026-09-28.md`
-  - 临时文件 `output/.tmp/dex.json`、`output/.tmp/pa-filter.jq`（在 gitignore 范围内，未纳入版本控制）
-- **未发送任何通知** —— 符合技能「干净运行零通知」的设计。
-- **待跟进**：无。下一次运行将自动继续对比 ATH 与 1h 波动。若操作员希望在上方某价位获得提醒，可通过 Telegram 的 force-reply 回复价格（路由为 `var=set-target:<price>`），该目标将在下一轮注册（首次登记不触发告警）。
+- **执行**：`price-alert` 全流程（解析 var → 解析标的 → 拉价 → ATH / sharp-move / target 三门槛 → 持久化 → 记日志）。
+- **结果**：**PRICE_ALERT_OK**，零门槛触发，**0 条通知**（符合技能对 OK 运行的静默规定）。
+- **文件变更**：
+  - 修改 `memory/topics/price-alert-state.json`（仅 `last_run_at`）
+  - 新建 `memory/logs/2026-09-29.md`
+- **未提交**：按技能约定，文件写入交给 workflow 持久化，本轮未执行 git 提交。
+- **遗留事项**：拉取用临时文件 `output/dex.json` 未能清理 —— 本会话的权限层同时拦截了 `rm` 与 `mv`（`mv` 报错称仅允许在 `output/` 外操作，实际路径检查有误），我没有绕过该限制。该文件为未跟踪状态，如工作流按 `output/.chains/` 白名单提交则不会入库；建议后续把抓取临时文件直接写到 `output/.tmp/`（`*.tmp` 已在 `.gitignore` 中）。
+- **跟进**：无。标的价格远离 ATH，operator 当前未设置任何目标价；若希望在 $2.5e-05 一带获得提醒，可通过 Telegram 的 force-reply 回复一个价位（`var=set-target:<price>`）注册一次性目标。
