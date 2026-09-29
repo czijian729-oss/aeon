@@ -35,14 +35,14 @@
   },
   "token-movers": {
     "last_dispatch": "2026-09-29T19:20:05Z",
-    "last_status": "dispatched",
-    "last_success": "2026-09-25T15:33:03Z",
-    "total_runs": 8,
-    "total_successes": 8,
+    "last_status": "success",
+    "last_success": "2026-09-29T19:24:26Z",
+    "total_runs": 9,
+    "total_successes": 9,
     "total_failures": 0,
     "consecutive_failures": 0,
     "success_rate": 1,
-    "last_quality_score": 4
+    "last_quality_score": 5
   },
   "onchain-monitor": {
     "last_dispatch": "2026-09-29T19:20:05Z",
