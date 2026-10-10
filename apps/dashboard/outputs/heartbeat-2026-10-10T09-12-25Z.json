@@ -1,0 +1,193 @@
+{
+  "root": "card1",
+  "state": {},
+  "elements": {
+    "card1": {
+      "type": "Card",
+      "props": {
+        "title": "⚠️ Heartbeat DEGRADED",
+        "description": "heartbeat 自检报告"
+      },
+      "children": [
+        "alert1",
+        "sep1",
+        "h-p0",
+        "p0-text",
+        "sep2",
+        "h-p3",
+        "table1",
+        "note1",
+        "sep3",
+        "h-sug",
+        "sug-stack",
+        "sep4",
+        "status-text"
+      ]
+    },
+    "alert1": {
+      "type": "Alert",
+      "props": {
+        "title": "🔴 DEGRADED — 调度器再度停摆，fleet 已静默 ~5 天",
+        "message": "heartbeat 自检命中，调度层故障。",
+        "type": "error"
+      }
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "h-p0": {
+      "type": "Heading",
+      "props": {
+        "text": "P0 · heartbeat 自检命中",
+        "level": "h3"
+      }
+    },
+    "p0-text": {
+      "type": "Text",
+      "props": {
+        "text": "heartbeat 自身 `last_success` = 2026-09-29 19:30 UTC，距今 ~10 天 14 小时（>36h 阈值，且已有 16 次成功）。唯一能发现调度缺口的 skill 自身已停摆。",
+        "variant": "body"
+      }
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "h-p3": {
+      "type": "Heading",
+      "props": {
+        "text": "P3 · 全局超期（上次全仓库活动：2026-10-05 02:32 UTC）",
+        "level": "h3"
+      }
+    },
+    "table1": {
+      "type": "Table",
+      "props": {
+        "columns": [
+          "Skill",
+          "档期",
+          "上次成功",
+          "缺口"
+        ],
+        "rows": [
+          [
+            "price-alert",
+            "*/30",
+            "10-05 02:32",
+            "~5 天（应运行 ~250 次）"
+          ],
+          [
+            "token-pick",
+            "0 12",
+            "09-29 19:33",
+            "~11 天"
+          ],
+          [
+            "token-movers",
+            "0 12",
+            "09-29 19:29",
+            "~11 天"
+          ],
+          [
+            "onchain-monitor",
+            "0 12",
+            "09-29 19:23",
+            "~11 天"
+          ],
+          [
+            "heartbeat",
+            "0 8",
+            "09-29 19:30",
+            "~11 天"
+          ],
+          [
+            "picks-tracker",
+            "0 9 * * 0",
+            "08-30 14:22",
+            "~6 个周日"
+          ]
+        ]
+      }
+    },
+    "note1": {
+      "type": "Alert",
+      "props": {
+        "title": "无损坏 skill",
+        "message": "无 failed、无 stuck、`consecutive_failures` 全为 0、无 chronic failure。问题在调度层，不在 skill 本身。",
+        "type": "info"
+      }
+    },
+    "sep3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "h-sug": {
+      "type": "Heading",
+      "props": {
+        "text": "建议",
+        "level": "h3"
+      }
+    },
+    "sug-stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "sug1",
+        "sug2",
+        "sug3",
+        "sug4"
+      ]
+    },
+    "sug1": {
+      "type": "Text",
+      "props": {
+        "text": "1. 恢复外部触发源（所有缺口的上游，降低对稀疏 pinger 的依赖）",
+        "variant": "body"
+      }
+    },
+    "sug2": {
+      "type": "Text",
+      "props": {
+        "text": "2. 落地已定位的 SHA 重解析修复（`scheduler.yml` 约 2 行）",
+        "variant": "body"
+      }
+    },
+    "sug3": {
+      "type": "Text",
+      "props": {
+        "text": "3. 放宽 `CATCHUP_HOURS` + 单独修正 `picks-tracker` 周日补位",
+        "variant": "body"
+      }
+    },
+    "sug4": {
+      "type": "Text",
+      "props": {
+        "text": "4. 启用 `skill-health` + `skill-repair`，建立第二发现机制",
+        "variant": "body"
+      }
+    },
+    "sep4": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "status-text": {
+      "type": "Text",
+      "props": {
+        "text": "状态页已更新：🔴 DEGRADED → docs/status.md",
+        "variant": "muted"
+      }
+    }
+  }
+}
