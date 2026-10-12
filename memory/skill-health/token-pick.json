@@ -1,60 +1,14 @@
 {
   "skill": "token-pick",
-  "last_analyzed": "2026-09-29T19:27:25Z",
+  "last_analyzed": "2026-10-12T13:16:34Z",
   "quality_score": 4,
-  "assessment": "Substantive daily pick with a well-sourced Polymarket mispricing thesis (multi-source fair value, edge calc, risk) plus an honest, data-backed SKIP on tokens; minor mismatch between skill name and prediction-market focus.",
+  "assessment": "Detailed, well-structured picks with specific on-chain metrics, named catalysts, and concrete risks for both token and prediction-market selections",
   "flags": [],
-  "avg_score": 4.82,
-  "last_analyzed": "2026-09-29T19:33:01Z",
-  "quality_score": 5,
-  "assessment": "Delivered a well-sourced, actionable prediction-market pick (Fed rate-hike YES, +17.5pp edge) with 3 cited inputs and risk analysis, plus a thoroughly justified token SKIP backed by multi-source on-chain scans — substantial and non-generic.",
-  "flags": [],
-  "avg_score": 4.91,
+  "avg_score": 4,
   "history": [
     {
-      "date": "2026-08-18",
-      "score": 5
-    },
-    {
-      "date": "2026-08-18",
-      "score": 5
-    },
-    {
-      "date": "2026-08-18",
-      "score": 5
-    },
-    {
-      "date": "2026-08-21",
-      "score": 5
-    },
-    {
-      "date": "2026-08-28",
-      "score": 5
-    },
-    {
-      "date": "2026-08-31",
-      "score": 5
-    },
-    {
-      "date": "2026-09-01",
-      "score": 5
-    },
-    {
-      "date": "2026-09-14",
-      "score": 5
-    },
-    {
-      "date": "2026-09-24",
-      "score": 5
-    },
-    {
-      "date": "2026-09-25",
+      "date": "2026-10-12",
       "score": 4
-    },
-    {
-      "date": "2026-09-29",
-      "score": 4
-      "score": 5
     }
   ]
 }
