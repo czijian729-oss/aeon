@@ -1,44 +1,33 @@
-状态已更新并通过校验。本次无任何闸门触发 → 按 skill 规则**不发送通知**（clean run 静默）。
+本次 price-alert 运行完成。无任何闸门触发 → 静默（不发通知）。
 
----
+## Price Threshold Alert — 2026-10-12T14:01Z
 
-# price-alert 运行报告 — 2026-10-12 13:31Z
+**标的**: AEON (`0xbf8e8f0e8866a7052f948c16508644347c57aba3`, Base)
 
-## 追踪标的
-- **AEON**（`0xbf8e8f0e8866a7052f948c16508644347c57aba3`，Base）
-- 数据源：DexScreener（keyless，实测 `curl` 直连成功，http 200，无需 WebFetch 兜底）
-- 最深池筛选：Base 链 6 个候选池中，取流动性最高的 `aeon/uniswap` 池（流动性 **$419,507**），其余池流动性均 < $3.2K，忽略
-
-## 当前行情
 | 指标 | 数值 |
-|------|------|
-| 现价 | **$1.8620e-05** |
-| 1h 变动 | −0.3% |
-| 24h 变动 | +1.2% |
-| 存储 ATH | $3.8970e-05（2026-08-23 08:22 UTC 设定） |
-| 距 ATH | 约 **−52%** |
+|---|---|
+| 当前价 | **$1.8620e-05** |
+| 1h 变动 | 0.0%（最深池 `priceChange.h1` 缺失 → 按 0 计） |
+| 24h 变动 | +3.5% |
+| 存储 ATH | $3.8970e-05（2026-08-23 08:22 UTC） |
+| 距 ATH | 低约 **52%** |
 
-## 闸门判定
-| 闸门 | 结果 | 说明 |
-|------|------|------|
-| ATH | **QUIET** | 现价 1.862e-05 < 存储 ATH 3.897e-05，未创新高；ATH 保持不变（单调不减） |
-| Sharp-move | **QUIET** | \|1h\| = 0.3% ≪ 20% 阈值 |
-| Target-crossing | **无** | `var` 为空，operator 未设任何 target |
-| **综合 verdict** | **`OK`** | — |
+**数据源**：DexScreener `http=200`，返回 9 个交易对，全部 `chainId=base`。按流动性选最深池 → Uniswap，流动性 **$419.5K**，`priceUsd = 0.00001862`（次深为 Aerodrome，$3.2K，1h +0.33%）。两个独立池的价格互相印证，无异常偏离。
 
-## 通知
-- **发送数：0**。无闸门触发，按 skill 规则静默（`PRICE_ALERT_OK` 不发通知）。
+**闸门评估**
+- **ATH 闸**：当前价 1.862e-05 < 存储 ATH 3.897e-05 → **未创新高**，ATH 保持不变。
+- **急涨跌闸**：|1h| = 0.0% ≪ 20% 阈值 → **QUIET**。
+- **目标价闸**：`var` 为空，无 operator target → **无目标可评估**。
 
-## 状态与日志
-- `memory/topics/price-alert-state.json` — 已原子更新，`last_run_at` 推进至 `2026-10-12T13:31:53Z`；`ath` / `last_alerts` / `targets` 均无变化；`jq empty` 校验通过。
-- `memory/logs/2026-10-12.md` — 追加一条 `## Price Threshold Alert` 记录块。
-- 幂等性：今日 13:10Z 已有一次同 verdict（OK）运行，价格完全一致（1.862e-05），本次为幂等重跑，仅推进 `last_run_at`，未产生重复通知。
+**Verdict**: `PRICE_ALERT_OK` · 通知数 **0**（正常日静默，符合 skill 设计）
+
+**幂等性说明**：今日 13:10Z、13:31Z、本轮 14:01Z 三次 price-alert 判定一致（OK），价格同为 1.862e-05 —— 本轮为幂等重跑，状态仅推进 `last_run_at`，无重复告警。
 
 ## Summary
-- 执行 `skills/price-alert/SKILL.md`（write 模式），`var` 为空 → `MODE=execute`、无 operator target。
-- 解析 MEMORY.md 追踪标的 AEON/Base，contract 与状态文件一致（无 `TOKEN_CHANGED`）。
-- 从 DexScreener 取最深 Base 池价：**$1.8620e-05**，1h −0.3%，24h +1.2%。
-- 三闸评估：ATH QUIET、Sharp-move QUIET、无 target → 综合 **PRICE_ALERT_OK**，未发送任何通知。
-- **修改文件**：`memory/topics/price-alert-state.json`（`last_run_at`）、`memory/logs/2026-10-12.md`（追加记录块）。
-- **通知**：无（clean run 静默，符合"只在有信号时通知"）。
-- **后续**：无需人工动作。若希望在某价位收到提醒，可回复 ATH 提醒消息或直接以 `set-target:<price>` 形式设置 target。
+
+- **执行结果**：`PRICE_ALERT_OK`，无闸门触发，未发送通知（符合「干净运行不打扰」原则）。
+- **文件修改**：
+  - `memory/topics/price-alert-state.json` — 原子更新 `last_run_at` → `2026-10-12T14:01:43Z`；ATH / `last_alerts` / `targets` 均无变化；写入后 `jq empty` 校验通过。
+  - `memory/logs/2026-10-12.md` — 追加一段 Price Threshold Alert 日志块（含数据来源与幂等说明）。
+- **未提交**：工作区已保存，提交由运行后的 workflow 步骤负责（历史提交信息 `chore(cron): price-alert success` 由框架生成）。
+- **后续动作**：无需处理。唯一可留意项 —— 最深池的 `priceChange.h1` 字段在 DexScreener 侧持续缺失，导致 1h 急涨跌闸长期只能按 0 判定；若希望该闸真正生效，可考虑在 skill 回退时改用次深池的 h1 或换用带 1h 数据的端点，但当前不是故障。
