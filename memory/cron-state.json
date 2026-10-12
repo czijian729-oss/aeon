@@ -23,8 +23,8 @@
     "last_error": "read-only: workspace write-locked via bwrap error: harness run exceeded --timeout 900s "
   },
   "price-alert": {
-    "last_dispatch": "2026-10-12T14:30:35Z",
-    "last_status": "success",
+    "last_dispatch": "2026-10-12T15:00:40Z",
+    "last_status": "dispatched",
     "last_success": "2026-10-12T14:32:31Z",
     "total_runs": 48,
     "total_successes": 48,
