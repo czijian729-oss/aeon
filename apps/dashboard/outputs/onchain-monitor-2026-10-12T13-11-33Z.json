@@ -1,0 +1,172 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "On-Chain Monitor",
+        "description": "待配置 · 尚未添加任何监控地址"
+      },
+      "children": [
+        "stack"
+      ]
+    },
+    "stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "heading1",
+        "badge_tag",
+        "badge_empty",
+        "alert1",
+        "sep1",
+        "heading2",
+        "text_reply",
+        "text_format",
+        "text_chains",
+        "text_example",
+        "sep2",
+        "grid_stats",
+        "text_auto",
+        "text_adjust",
+        "sep3",
+        "text_note"
+      ]
+    },
+    "heading1": {
+      "type": "Heading",
+      "props": {
+        "text": "链上监控 · 待配置",
+        "level": "h2"
+      }
+    },
+    "badge_tag": {
+      "type": "Badge",
+      "props": {
+        "text": "onchain-monitor::add-address",
+        "variant": "outline"
+      }
+    },
+    "badge_empty": {
+      "type": "Badge",
+      "props": {
+        "text": "自首次调度以来第 9 次空跑",
+        "variant": "destructive"
+      }
+    },
+    "alert1": {
+      "type": "Alert",
+      "props": {
+        "title": "还没有任何监控地址",
+        "message": "在添加地址之前，onchain-monitor 不会产生任何信号。上一次邀约 2026-09-29，至今未收到回复。",
+        "type": "info"
+      }
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "heading2": {
+      "type": "Heading",
+      "props": {
+        "text": "贴一个地址就能开始",
+        "level": "h3"
+      }
+    },
+    "text_reply": {
+      "type": "Text",
+      "props": {
+        "text": "直接回复本条消息，格式：",
+        "variant": "body"
+      }
+    },
+    "text_format": {
+      "type": "Text",
+      "props": {
+        "text": "0x… [链名]",
+        "variant": "lead"
+      }
+    },
+    "text_chains": {
+      "type": "Text",
+      "props": {
+        "text": "链名可省略，默认 ethereum；也支持 base / arbitrum / optimism / polygon",
+        "variant": "body"
+      }
+    },
+    "text_example": {
+      "type": "Text",
+      "props": {
+        "text": "例：0xbf8e8f0e8866a7052f948c16508644347c57aba3 base",
+        "variant": "muted"
+      }
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "grid_stats": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "md"
+      },
+      "children": [
+        "stat_runs",
+        "stat_threshold"
+      ]
+    },
+    "stat_runs": {
+      "type": "Stat",
+      "props": {
+        "label": "空跑次数",
+        "value": "9",
+        "delta": "自首次调度以来",
+        "trend": "neutral"
+      }
+    },
+    "stat_threshold": {
+      "type": "Stat",
+      "props": {
+        "label": "默认告警阈值",
+        "value": "≥ $1000",
+        "trend": "neutral"
+      }
+    },
+    "text_auto": {
+      "type": "Text",
+      "props": {
+        "text": "我会自动把它加入监控列表，开始盯该地址的大额转账（默认阈值 ≥ $1000），有异动即在触发时告警。",
+        "variant": "body"
+      }
+    },
+    "text_adjust": {
+      "type": "Text",
+      "props": {
+        "text": "之后想调整链、类型（wallet/contract）或金额阈值，直接编辑 memory/on-chain-watches.yml 即可。",
+        "variant": "body"
+      }
+    },
+    "sep3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "text_note": {
+      "type": "Text",
+      "props": {
+        "text": "你也可以监控自己持有的代币合约 —— 上面那条例子里用的就是 base 上 AEON 的合约地址。",
+        "variant": "muted"
+      }
+    }
+  }
+}
