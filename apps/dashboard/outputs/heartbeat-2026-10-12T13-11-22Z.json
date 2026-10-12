@@ -1,0 +1,196 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "🚨 Heartbeat — 调度器再度停摆"
+      },
+      "children": [
+        "heading_main",
+        "alert_verdict",
+        "sep1",
+        "heading_selfcheck",
+        "text_selfcheck",
+        "sep2",
+        "heading_p3",
+        "text_p3",
+        "table_p3",
+        "sep3",
+        "heading_miss",
+        "text_miss",
+        "sep4",
+        "heading_root",
+        "text_root",
+        "sep5",
+        "heading_rec",
+        "text_rec"
+      ]
+    },
+    "heading_main": {
+      "type": "Heading",
+      "props": {
+        "text": "🔴 Heartbeat — 调度器再度停摆",
+        "level": "h2"
+      }
+    },
+    "alert_verdict": {
+      "type": "Alert",
+      "props": {
+        "title": "判定：DEGRADED",
+        "message": "heartbeat 自检 >36h + P3 全局超期",
+        "type": "warning"
+      }
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "heading_selfcheck": {
+      "type": "Heading",
+      "props": {
+        "text": "🔴 heartbeat 自检命中",
+        "level": "h3"
+      }
+    },
+    "text_selfcheck": {
+      "type": "Text",
+      "props": {
+        "text": "heartbeat 上次成功 2026-10-10 09:12 UTC（~52h 前），远超 36h 阈值 → 唯一能发现调度缺口的 skill 本身可能不可靠。\n期间漏跑 10-11、10-12 两次 08:00 档期。",
+        "variant": "body"
+      }
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "heading_p3": {
+      "type": "Heading",
+      "props": {
+        "text": "🔴 P3 全局超期（新窗口）",
+        "level": "h3"
+      }
+    },
+    "text_p3": {
+      "type": "Text",
+      "props": {
+        "text": "上次全仓库活动 = 2026-10-10 10:02 UTC（price-alert），此后 ~51h 零 run：",
+        "variant": "body"
+      }
+    },
+    "table_p3": {
+      "type": "Table",
+      "props": {
+        "columns": [
+          "Skill",
+          "档期",
+          "上次成功 (UTC)",
+          "缺口"
+        ],
+        "rows": [
+          [
+            "price-alert",
+            "*/30",
+            "2026-10-10 10:01",
+            "~51h（应运行 ~102 次）"
+          ],
+          [
+            "token-pick",
+            "0 12",
+            "2026-09-29 19:33",
+            "~13 天"
+          ],
+          [
+            "token-movers",
+            "0 12",
+            "2026-09-29 19:29",
+            "~13 天"
+          ],
+          [
+            "onchain-monitor",
+            "0 12",
+            "2026-09-29 19:23",
+            "~13 天"
+          ],
+          [
+            "picks-tracker",
+            "0 9 * * 0",
+            "2026-08-30 14:22",
+            "~6 个周日"
+          ],
+          [
+            "heartbeat",
+            "0 8",
+            "2026-10-10 09:12",
+            "2 次"
+          ]
+        ]
+      }
+    },
+    "sep3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "heading_miss": {
+      "type": "Heading",
+      "props": {
+        "text": "✅ 未命中",
+        "level": "h3"
+      }
+    },
+    "text_miss": {
+      "type": "Text",
+      "props": {
+        "text": "无 last_status: failed、无 stuck skill、consecutive_failures 全为 0、无 chronic failure（最低 token-pick 92%）→ 没有 skill 自身损坏，问题在调度层，不在 skill。",
+        "variant": "body"
+      }
+    },
+    "sep4": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "heading_root": {
+      "type": "Heading",
+      "props": {
+        "text": "根因",
+        "level": "h3"
+      }
+    },
+    "text_root": {
+      "type": "Text",
+      "props": {
+        "text": "根因（09-25 起已定位，仍未修复）：\n① 外部触发源稀疏（scheduler.yml 从未被 GitHub 原生 schedule 触发，全靠外部 pinger）；\n② workflow_dispatch 在创建时刻固化 ref SHA，导致重复/漏派发；\n③ CATCHUP_HOURS=12 回溯窗偏小，日级档期易被整段跳过。",
+        "variant": "body"
+      }
+    },
+    "sep5": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "heading_rec": {
+      "type": "Heading",
+      "props": {
+        "text": "建议",
+        "level": "h3"
+      }
+    },
+    "text_rec": {
+      "type": "Text",
+      "props": {
+        "text": "① 恢复/加固外部触发源（上游）；\n② 落地 scheduler SHA 重解析修复；\n③ 放宽 CATCHUP_HOURS 并单独修 picks-tracker 周日补位；\n④ 启用 skill-health + skill-repair 建第二发现机制。",
+        "variant": "body"
+      }
+    }
+  }
+}
