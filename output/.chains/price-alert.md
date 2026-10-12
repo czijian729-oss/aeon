@@ -1,48 +1,38 @@
-状态已持久化并记录日志。本次运行无任何闸门触发，按规则不发送通知（静默 OK 运行）。
+价格门未触发，无需通知。以下是本次运行的报告。
 
-## Price Threshold Alert — 运行报告
+---
 
-**运行时间**：2026-10-10T10:01:13Z
-**模式**：`execute`（`var` 为空 → 无 targets）
-**状态**：`PRICE_ALERT_OK` — 干净运行，无闸门触发，未发送通知
+# 价格预警 · AEON (Base)
 
-### 行情快照
+**运行时间：** 2026-10-12 13:10 UTC ｜ 模式：`execute`（`var` 为空 → 仅 ATH 与急动门）
 
-| 字段 | 值 |
+## 行情快照
+
+| 指标 | 值 |
 |------|-----|
-| Token | aeon (AEON) |
-| Contract | `0xbf8e8f0e8866a7052f948c16508644347c57aba3` |
-| Chain | base |
-| 当前价 | **$2.0390e-05** |
-| 1h 涨跌 | ±0.0%（API `h1` 为 null，按 0 处理）|
-| 24h 涨跌 | **-6.1%** |
-| 最深池流动性 | $437,190.52 |
-| 池地址 | https://dexscreener.com/base/0x4a9b9e13975d26f4e3e17c655593bb82145dd4452aedafb826d856b817c9cfd4 |
+| 当前价 | **$1.862e-05** |
+| 1h 变动 | −0.3% |
+| 24h 变动 | +1.2% |
+| 数据源 | DexScreener，Base 最深度池（流动性 $419,507） |
+| 池子链接 | https://dexscreener.com/base/0x4a9b9e13975d26f4e3e17c655593bb82145dd4452aedafb826d856b817c9cfd4 |
 
-### 闸门评估
+## 三道闸门评估
 
-- **ATH 闸门** — 未触发。存储 ATH 为 **$3.8970e-05**（2026-08-23 08:22 UTC 设定），当前价 $2.0390e-05 低于该值 → 保持 ATH 不变（ATH 单调不减）。
-- **急涨急跌闸门** — 静默。`|h1| = 0%` < 20% 阈值。
-- **目标价闸门** — 无 targets，跳过。
-- **裁决**：`NONE` → 无通知。
+- **ATH 门 — 未触发。** 当前价 $1.862e-05 低于历史最高 $3.897e-05（2026-08-23 08:22 UTC 创下），ATH 保持不变。距前高还有约 52% 的空间。
+- **急动门 — 静默。** 1h 变动 −0.3%，远低于 ±20% 阈值。
+- **目标穿越门 — 无目标。** 操作员尚未登记任何目标价位。
 
-### 状态写入
+**本轮裁决：`NONE` ｜ 通知数：0 ｜ 状态：`PRICE_ALERT_OK`**
 
-- `memory/topics/price-alert-state.json` — 仅更新 `last_run_at` → `2026-10-10T10:01:13Z`；`ath` / `last_alerts` / `targets` 均不变。已通过 `jq empty` 校验（`STATE_VALID`）。
-- `memory/topics/price-alert-state.json.bak` — 滚动备份更新为本次运行前状态。
-- `memory/logs/2026-10-10.md` — 追加本次运行日志块。
-
-### 说明
-
-- 数据源 DexScreener（keyless），`curl` 直接成功（`curl_exit=0`，14706 字节），无需 WebFetch 回退。
-- 按策略对齐：本次为无事件的常规运行，未推送通知（静默运行符合规则）。24h 小幅回落 -6.1% 属正常波动，未达任何告警阈值。
+无异常、无损坏、无令牌变更 —— 平静的一天，按要求不发通知。
 
 ## Summary
 
-- 执行 `price-alert` skill，模式 `execute`（`var` 空，无 targets）。
-- 解析并写入状态：`memory/topics/price-alert-state.json`（+ `.bak`）、追加 `memory/logs/2026-10-10.md`。
-- 拉取 DexScreener 行情：AEON/Base 现价 $2.0390e-05，24h -6.1%，1h 0.0%。
-- ATH 未破（ATH $3.8970e-05 保持不变）；急涨急跌闸门静默；无目标价。
-- 裁决 `PRICE_ALERT_OK`，**未发送通知**（无事件，符合“静默运行不通知”规则）。
-- 遗留：`output/dex.json` 为本次拉取的原始响应（临时文件，无 rm 权限未能清理，无害）。
-- 后续：如需在当前价上方设置目标价，可通过 Telegram 回复价格注册（`set-target:<price>`）。
+- 读取 `skills/price-alert/SKILL.md` 并按步骤执行；`${var}` 为空 → `MODE=execute`，无目标价位。
+- 从 `memory/MEMORY.md` 解析被追踪代币：AEON / `0xbf8e8f0e8866a7052f948c16508644347c57aba3` / base；与状态文件一致，无需重置。
+- 通过 DexScreener 公共 API 取价（`http=200`，10 个 Base 交易对，取流动性最深者）。
+- 评估 ATH / 急动 / 目标三道闸门，均未触发 → 未发送任何通知（符合"仅在信号时通知"约束）。
+- **修改文件：**
+  - `memory/topics/price-alert-state.json` — 仅更新 `last_run_at` 为 `2026-10-12T13:10:41Z`，ATH 与 `last_alerts` 不变；`jq empty` 校验通过。
+  - `memory/logs/2026-10-12.md` — 新建并写入本轮归档块。
+- **后续动作：** 无需。若操作员希望在某价位（例如高于当前价的突破位）收到提醒，可通过 Telegram 回复一个价格来登记目标。
