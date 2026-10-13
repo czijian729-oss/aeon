@@ -1,10 +1,10 @@
 {
   "skill": "onchain-monitor",
-  "last_analyzed": "2026-10-12T13:11:33Z",
+  "last_analyzed": "2026-10-13T14:16:30Z",
   "quality_score": 4,
-  "assessment": "Legitimate no-op handled well — thorough diagnostic report on 9 consecutive empty runs, clear escalation of the broken force-reply loop, and two concrete actionable paths forward; no on-chain data produced only because no watchlist exists.",
+  "assessment": "Legitimate no-op run (empty watchlist) handled cleanly and documented with dedup reasoning, run-history analysis, and a concrete operator recommendation; no alert appropriate.",
   "flags": [],
-  "avg_score": 3.8,
+  "avg_score": 3.82,
   "history": [
     {
       "date": "2026-08-18",
@@ -44,6 +44,10 @@
     },
     {
       "date": "2026-10-12",
+      "score": 4
+    },
+    {
+      "date": "2026-10-13",
       "score": 4
     }
   ]
