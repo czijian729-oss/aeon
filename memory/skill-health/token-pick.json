@@ -1,10 +1,10 @@
 {
   "skill": "token-pick",
-  "last_analyzed": "2026-10-13T14:22:50Z",
-  "quality_score": 5,
-  "assessment": "结构完整、论据充分：给出代币选币（DELTA）与预测市场两项推荐，附评分明细、催化剂、风险与备选观察池，并明确对齐 Operator Investment Thesis，全部简体中文，可执行性强。",
+  "last_analyzed": "2026-10-14T19:08:19Z",
+  "quality_score": 4,
+  "assessment": "Substantive daily pick: a quantified prediction-market edge (~11.5pp on Fed hike) with 3 cited inputs, explicit risk, and a justified token SKIP plus a self-flagged skill/thesis conflict — well-structured and actionable.",
   "flags": [],
-  "avg_score": 4.5,
+  "avg_score": 4.33,
   "history": [
     {
       "date": "2026-10-12",
@@ -13,6 +13,10 @@
     {
       "date": "2026-10-13",
       "score": 5
+    },
+    {
+      "date": "2026-10-14",
+      "score": 4
     }
   ]
 }
