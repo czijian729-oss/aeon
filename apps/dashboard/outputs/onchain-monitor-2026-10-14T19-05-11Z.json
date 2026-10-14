@@ -1,0 +1,113 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "onchain-monitor",
+        "description": "添加监控地址"
+      },
+      "children": [
+        "heading",
+        "sep1",
+        "text_intro",
+        "chain_label",
+        "chains",
+        "alert_auto",
+        "text_edit"
+      ]
+    },
+    "heading": {
+      "type": "Heading",
+      "props": {
+        "text": "添加监控地址",
+        "level": "h3"
+      }
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "text_intro": {
+      "type": "Text",
+      "props": {
+        "text": "还没有在监控的地址。发一个给我就行 —— 一个 0x… 钱包地址，可带链名，例如 0x… base。",
+        "variant": "body"
+      }
+    },
+    "chain_label": {
+      "type": "Text",
+      "props": {
+        "text": "支持的链名：",
+        "variant": "muted"
+      }
+    },
+    "chains": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "badge_eth",
+        "badge_base",
+        "badge_arb",
+        "badge_op",
+        "badge_poly"
+      ]
+    },
+    "badge_eth": {
+      "type": "Badge",
+      "props": {
+        "text": "ethereum",
+        "variant": "secondary"
+      }
+    },
+    "badge_base": {
+      "type": "Badge",
+      "props": {
+        "text": "base",
+        "variant": "secondary"
+      }
+    },
+    "badge_arb": {
+      "type": "Badge",
+      "props": {
+        "text": "arbitrum",
+        "variant": "secondary"
+      }
+    },
+    "badge_op": {
+      "type": "Badge",
+      "props": {
+        "text": "optimism",
+        "variant": "secondary"
+      }
+    },
+    "badge_poly": {
+      "type": "Badge",
+      "props": {
+        "text": "polygon",
+        "variant": "secondary"
+      }
+    },
+    "alert_auto": {
+      "type": "Alert",
+      "props": {
+        "title": "自动加入监控",
+        "message": "回复后会自动加入监控列表，默认按单笔 ≥ 1000 美元告警。",
+        "type": "info"
+      }
+    },
+    "text_edit": {
+      "type": "Text",
+      "props": {
+        "text": "之后可随时编辑 memory/on-chain-watches.yml 调整链、阈值和类型。",
+        "variant": "muted"
+      }
+    }
+  }
+}

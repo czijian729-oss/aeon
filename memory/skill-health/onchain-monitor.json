@@ -1,10 +1,10 @@
 {
   "skill": "onchain-monitor",
-  "last_analyzed": "2026-10-13T14:16:30Z",
-  "quality_score": 4,
-  "assessment": "Legitimate no-op run (empty watchlist) handled cleanly and documented with dedup reasoning, run-history analysis, and a concrete operator recommendation; no alert appropriate.",
+  "last_analyzed": "2026-10-14T19:05:11Z",
+  "quality_score": 3,
+  "assessment": "Legitimate no-op (no watch config) handled honestly with clear reporting and a flagged decision point, but the 10th consecutive empty run delivers no monitoring signal.",
   "flags": [],
-  "avg_score": 3.82,
+  "avg_score": 3.75,
   "history": [
     {
       "date": "2026-08-18",
@@ -49,6 +49,10 @@
     {
       "date": "2026-10-13",
       "score": 4
+    },
+    {
+      "date": "2026-10-14",
+      "score": 3
     }
   ]
 }
