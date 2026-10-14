@@ -1,40 +1,47 @@
-心跳巡检完成（ambient 默认路径，`${var}` 为空）。
+## Heartbeat — Ambient Fleet Check
 
-## 集群健康巡检 — 2026-10-13 14:17 UTC
+**运行时间：** 2026-10-14 19:04 UTC · **模式：** ambient（`${var}` 为空，LIVE 路径）· **采集输出**
 
-**总体：🟡 WATCH**（无 P0 故障；由 P3 档期超期单独触发）
+### P0 — 失败 / 卡死 skill：无
 
-### P0 — 失败 / stuck skill：干净
-- `cron-state.json` 内 6 个 skill **全部 `last_status: success`**；无 `dispatched` 悬挂条目（故无 stuck）；无 `consecutive_failures ≥ 3`；无 chronic failure（最低 success_rate = token-pick 13/14 = 93%）。
-- **自检 ✅ 已恢复**：heartbeat `last_success` = 2026-10-12 13:11 UTC，距本次 run ~25h < 36h 阈值 → 不命中。**昨日 🔴 DEGRADED 的触发条件（自检静默 52h）已解除。**
+`memory/cron-state.json` 内 6 个 skill 全部 `last_status: success`：
 
-### P1 / P2 — 干净
-- open PR：**0**；仓库 issues 已禁用 → 无 urgent issue。
-- MEMORY.md：无 flagged 待办（「Next Priorities」为常驻策略指引，非遗留）。
+| Skill | 最近成功 | 状态 | 成功率 | 连续失败 |
+|-------|----------|------|-------:|---------:|
+| price-alert | 2026-10-13 14:32 UTC | ✅ | 100% (57/57) | 0 |
+| token-pick | 2026-10-13 14:22 UTC | ✅ | 93% (14/15) | 0 |
+| heartbeat | 2026-10-13 14:18 UTC | ✅ | 100% (20/20) | 0 |
+| token-movers | 2026-10-13 14:17 UTC | ✅ | 100% (12/12) | 0 |
+| onchain-monitor | 2026-10-13 14:16 UTC | ✅ | 100% (13/13) | 0 |
+| picks-tracker | 2026-08-30 14:22 UTC | ✅ | 100% (1/1) | 0 |
 
-### P3 — 两个档期超期项
-| Skill | 档期 | 最近成功 | 静默 | 阈值 | 判定 |
-|---|---|---|---|---|---|
-| `price-alert` | `*/30` | 2026-10-13 05:02 UTC | ~9h13m | 1h | 🔴 超期 |
-| `picks-tracker` | 周日 `0 9 * * 0` | 2026-08-30 | ~44 天 | 14 天 | 🟡 慢性缺口（漏约 6 个周日） |
+- 无 stuck（无 `dispatched` 条目，更无 >45min 的）· 无 `consecutive_failures ≥ 3` · 无 chronic failure。
+- **自检 ✅ 通过**：heartbeat 自身 `last_success` = 2026-10-13 14:18 UTC，距本 run 约 **4.8h**（< 36h 阈值）→ 不命中。
 
-`token-pick` / `token-movers` / `onchain-monitor`（`0 12`）最近成功均为 10-12 13:1x（~25h）< 48h 阈值 → **未超期，不报**。`investigation-report` 为手动型，跳过。
+### P1 — PR / issue：无
+`gh pr list --state open` → **0 个 open PR**；仓库 `czijian729-oss/aeon` 已禁用 issues（`hasIssuesEnabled=false`）→ 无 urgent issue。
 
-**相对昨日是恢复**：10-12 13:1x 有一轮集中派发，今日 price-alert 05:02 亦成功 —— 比昨日的「~51h 零 run」活跃，唯档期仍稀疏。**问题仍在调度层，没有 skill 自身损坏。**
+### P2 — 记忆标记：无
+MEMORY.md 与 `memory/topics/` 无 flagged follow-up 条目。
 
-### 去重 → **未发通知**
-48h 窗口内，`memory/logs/2026-10-12.md` 的 heartbeat 条目（~25h 前）已明确报告同两个 P3 项（原文点名 price-alert 与 picks-tracker 的缺跑）——本轮为**同类、同 skill 的复现**，距上次报告 < 48h → 按 dedup 规则跳过通知。（昨日可报，是因当时参照的 10-10 条目在 48h 窗口外；本次参照在窗口内。）根因与 4 条修复建议均已在前次报告中给出，无新增信息，故不再重复推送。
+### P3 — 档期超期：2 项（均为复现，非新发）
+- **`price-alert`（`*/30`）**：最近成功 2026-10-13 14:32 UTC，此后 **~4.5h** 无 run（阈值 2× 间隔 = 1h）。
+- **`picks-tracker`（周日 `0 9 * * 0`）**：最近成功 2026-08-30，已静默 **~45 天**（阈值 14 天，漏约 6 个周日，慢性缺口）。
+- `token-pick` / `token-movers` / `onchain-monitor`（`0 12`，~29h）未达日级 48h 阈值 → 不报；`investigation-report` 为 `workflow_dispatch` 手动型 → 跳过。
 
-### 已写入
-- `docs/status.md` — 全量重写，**🟡 WATCH**；无 Token pulse 段（`output/articles/` 下无 `token-report-*.md`，按规则整段省略）。
-- `memory/logs/2026-10-13.md` — 追加 `### heartbeat`（`mode: ambient`）条目，含 findings、判定链与 dedup 说明。
+### 通知：未发送（dedup 命中）
+48h 窗口内，10-12 与 10-13 两轮 heartbeat 已分别报告**同一 skill、同一类**的 P3 项；距最近一次报告（10-13 14:17 UTC，~29h 前）< 48h → 按 dedup 规则静默。
 
-**待办 / 跟进**（沿用既有根因，修复仍未落地）：① 恢复/加固外部触发源（所有缺口的上游）；② 落地 `scheduler.yml` SHA 重解析修复（约 2 行）；③ 放宽 `CATCHUP_HOURS` + 单独修 `picks-tracker` 周日补位；④ 启用 `skill-health` + `skill-repair` 建立第二发现机制。
+### 状态页
+`docs/status.md` 全量重写 → **🟡 WATCH**（依据：无 P0 故障，问题全在调度层；无 Token pulse 段——`output/articles/` 无 `token-report-*.md`）。
+
+> **恢复证据**：对比上版状态页，`price-alert` / `token-pick` / `token-movers` / `onchain-monitor` / `heartbeat` 五行时间戳均前移，说明 10-13 下午确有一轮集中派发，调度仍在断续运转。根因（外部 pinger 驱动 + `workflow_dispatch` SHA 固化 + `CATCHUP_HOURS=12` 偏小）仍未有修复落地。
 
 ## Summary
-- 执行 heartbeat 的 **Ambient check**（`${var}` 为空，LIVE 调度路径）。
-- 检查项：P0 失败/stuck/退避/慢性失败/自检，P1 PR+issue，P2 记忆flag，P3 档期交叉核对 —— 全部基于 `cron-state.json`（权威源）。
-- 结论：无 skill 自身损坏；**🟡 WATCH**，由 P3（price-alert 静默 ~9h、picks-tracker 静默 ~44 天）触发；heartbeat 自检已从昨日 🔴 恢复。
-- 文件：改写 `docs/status.md`（🟡 WATCH）；追加 `memory/logs/2026-10-13.md` 的 `### heartbeat` 条目。
-- 通知：**未发送** —— dedup 命中（同项 25h 前已报，< 48h）。
-- 运维：`docs/status.md` / 日志由工作流 auto-commit 落 main，无需手动 git（本次未执行 git 写操作）。
+
+- **执行**：`heartbeat` skill（ambient 分支）——跑完全部 P0–P3 检查。
+- **结论**：P0/P1/P2 全清；P3 两个档期超期项（`price-alert`、`picks-tracker`），均为已报告项的复现 → **不通知**（dedup）。
+- **文件创建/修改**：
+  - `docs/status.md` — 全量重写，**🟡 WATCH**
+  - `memory/logs/2026-10-14.md` — 新建，`### heartbeat` 条目（`mode: ambient`）
+- **待办/跟进**：① 恢复/加固外部触发源；② 落地 `scheduler.yml` SHA 重解析修复（约 2 行）；③ 放宽 `CATCHUP_HOURS` + 修 `picks-tracker` 周日补位；④ 启用 `skill-health` + `skill-repair` 建立第二发现机制。
