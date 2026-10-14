@@ -1,8 +1,8 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-10-13T14:17:19Z",
+  "last_analyzed": "2026-10-14T19:05:36Z",
   "quality_score": 4,
-  "assessment": "Well-structured Chinese-language crypto movers report with winners/losers tables, trending tags, and cross-day analysis (RSR capitulation, Sonic's 2-day persistence) — substantive and actionable.",
+  "assessment": "Comprehensive token-movers digest with winners/losers/trending tables, risk tags, and Chinese-language notable analysis; well-structured and actionable, though truncated mid-sentence in notable section.",
   "flags": [],
   "avg_score": 4,
   "history": [
@@ -12,6 +12,10 @@
     },
     {
       "date": "2026-10-13",
+      "score": 4
+    },
+    {
+      "date": "2026-10-14",
       "score": 4
     }
   ]
